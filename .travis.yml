@@ -2,23 +2,28 @@ branches:
   only:
   - master
 language: python
+
 python:
-- '3.4'
+    - '3.4'
+
 before_install:
-- openssl aes-256-cbc -K $encrypted_26b4962af0e7_key -iv $encrypted_26b4962af0e7_iv
-  -in ci.enc -out ~/.ssh/id_rsa -d
-- chmod 600 ~/.ssh/id_rsa
-- eval $(ssh-agent)
-- ssh-add ~/.ssh/id_rsa
-- cp ssh_config ~/.ssh/config
-- git config --global user.name "xuanwo"
-- git config --global user.email xuanwo.cn@gmail.com
-- git clone -b gh-pages git@github.com:Xuanwo/CommandWiki.git output
+  - openssl aes-256-cbc -K $encrypted_26b4962af0e7_key -iv $encrypted_26b4962af0e7_iv
+    -in ci.enc -out ~/.ssh/id_rsa -d
+  - chmod 600 ~/.ssh/id_rsa
+  - eval $(ssh-agent)
+  - ssh-add ~/.ssh/id_rsa
+  - cp ssh_config ~/.ssh/config
+  - git config --global push.default simple
+  - git config --global user.name "xuanwo"
+  - git config --global user.email xuanwo.cn@gmail.com
+  - git clone -b gh-pages git@github.com:Xuanwo/CommandWiki.git output
+
 install:
-- sudo pip install simiki
+  - sudo pip install simiki
+
 script:
-- simiki generate
-- cd output
-- git add --all
-- git commit -m "Site Update"
-- git push --force
+  - simiki generate
+  - cd output
+  - git add --all
+  - git commit -m "Site Update"
+  - git push --force
