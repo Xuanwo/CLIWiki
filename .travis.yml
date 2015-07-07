@@ -1,13 +1,12 @@
 branches:
   only:
   - master
-
 language: python
-
 python:
-  - "3.4"
-
+- '3.4'
 before_install:
+- openssl aes-256-cbc -K $encrypted_26b4962af0e7_key -iv $encrypted_26b4962af0e7_iv
+  -in ci.enc -out ci -d
 - openssl aes-256-cbc -K $encrypted_26b4962af0e7_key -iv $encrypted_26b4962af0e7_iv
   -in travis.enc -out ~/.ssh/id_rsa -d
 - chmod 600 ~/.ssh/id_rsa
@@ -17,10 +16,8 @@ before_install:
 - git config --global user.name "xuanwo"
 - git config --global user.email xuanwo.cn@gmail.com
 - git clone -b gh-pages git@github.com:Xuanwo/CommandWiki.git output
-
 install:
 - sudo pip install simiki
-
 script:
 - simiki generate
 - cd output
