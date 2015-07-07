@@ -16,7 +16,7 @@ before_install:
   - git config --global push.default simple
   - git config --global user.name "xuanwo"
   - git config --global user.email xuanwo.cn@gmail.com
-  - git clone -b gh-pages git@github.com:Xuanwo/CommandWiki.git output
+  - git clone -b gh-pages git@github.com:Xuanwo/CLIWiki.git output
 
 install:
   - sudo pip install simiki
