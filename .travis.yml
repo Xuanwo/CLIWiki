@@ -25,6 +25,7 @@ script:
   - cd output
   - rm -rf !(.git)
   - cd ..
+  - cp -r themes/yasimple/static output/static
   - simiki generate
   - cd output
   - echo "cli.xuanwo.org" >> CNAME
