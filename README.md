@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/Xuanwo/CLIWiki.svg?branch=master)](https://travis-ci.org/Xuanwo/CLIWiki)
 # 介绍
 本项目致力于搭建一个清晰易懂的关于各种CLI命令的Wiki。
 
