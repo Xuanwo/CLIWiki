@@ -27,7 +27,7 @@ html {
 }
 
 body {
-    font-family: "Helvetica Neue", "Segoe UI", Arial, Sans-Serif;
+    font-family: "Microsoft YaHei", "Helvetica Neue", "Segoe UI", Arial, Sans-Serif;
     /* font-family: Monaco, 'Courier New', monospace; */
     line-height: 1.5em;
     background-color: #95AFBA;
@@ -296,6 +296,6 @@ table.hlcodetable {
     vertical-align: middle;
     margin: 0 auto;
     max-width: 720px;
-    display: block;
+    display: inline;
 }
 
