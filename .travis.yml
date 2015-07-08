@@ -22,8 +22,12 @@ install:
   - sudo pip install simiki
 
 script:
+  - cd output
+  - rm -rf !(.git)
+  - cd ..
   - simiki generate
   - cd output
+  - echo "cli.xuanwo.org" >> CNAME
   - git add --all
   - git commit -m "Site Update"
   - git push --force
