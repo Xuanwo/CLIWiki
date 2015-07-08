@@ -1,4 +1,4 @@
-/*  
+/*
 Theme Name: YASimple
 Author: Tanky Woo<me@tankywoo.com>
 Author URI: http://www.wutianqi.com/
@@ -47,7 +47,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 { font-size: 2.0em; }
-h2 { font-size: 1.6em; padding-bottom: 5px; overflow:hidden }
+h2 { font-size: 1.6em; padding-bottom: 5px; overflow:inherit }
 h3 { font-size: 1.4em; }
 h4 { font-size: 1.2em; }
 h5 { font-size: 1.0em; }
@@ -88,7 +88,7 @@ td {
 }
 
 /* Optimization for pre and code tag */
-pre, code { 
+pre, code {
     /* font-family: Consolas, "DejaVu Sans Mono", "Lucida Console", Monaco, Andale Mono, "MS Gothic", monospace; */
     font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
     font-size: 12px;
@@ -105,7 +105,7 @@ code {
     padding: 1px 3px;
 }
 
-pre { 
+pre {
     padding: 8px 12px;
     white-space: pre;
     white-space: -moz-pre-wrap; /* Firefox */
@@ -285,8 +285,8 @@ table.hlcodetable {
 }
 
 #nav {
-    position:fixed; 
-    left:0; 
+    position:fixed;
+    left:0;
     top: 150px;
     border:0;
 }
