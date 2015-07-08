@@ -27,6 +27,9 @@ script:
   - cd ..
   - cp -r themes/yasimple/static output/static
   - simiki generate
+  - if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
+  - exit
+  - fi
   - cd output
   - echo "cli.xuanwo.org" >> CNAME
   - git add --all
