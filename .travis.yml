@@ -3,6 +3,8 @@ branches:
   - master
 language: python
 
+sudo: false
+
 python:
     - '3.4'
 
@@ -19,7 +21,7 @@ before_install:
   - git clone -b gh-pages git@github.com:Xuanwo/CLIWiki.git output
 
 install:
-  - sudo pip install simiki
+  - pip install simiki
 
 script:
   - cd output
