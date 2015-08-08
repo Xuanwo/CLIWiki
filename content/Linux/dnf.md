@@ -2,94 +2,94 @@
 title: "dnf"
 date: 2015-8-9 03:06:28
 ---
-# dnf简介
+## dnf简介
 dnf，全称Dandified Yum，是RPM发行版的软件包管理器Yellowdog Updater, Modified（yum）的下一代版本。dnf最早出现在Fedora 18中，并在Fedora 22中替代yum。
 
-# dnf命令格式
+## dnf命令格式
 ```
 dnf [options] <command> [<args>...]
 ```
 
-# dnf参数
+## dnf参数
 
-## --assumeno
+### --assumeno
 
-## --best
+### --best
 
-## -C
+### -C
 
-## -c
+### -c
 
-## -d
+### -d
 
-## --disableexcludes
+### --disableexcludes
 
-## -e
+### -e
 
-## -x
+### -x
 
-## -h
+### -h
 
-## --installroot
+### --installroot
 
-## --nogpgcheck
+### --nogpgcheck
 
-## -q
+### -q
 
-## -R
+### -R
 
-## --releasever
+### --releasever
 
-## --rpmverbosity
+### --rpmverbosity
 
-## --showduplicates
+### --showduplicates
 
-## -v
+### -v
 
-## --version
+### --version
 
-## -y
+### -y
 
-# dnf命令
+## dnf命令
 
-## check-update
+### check-update
 
-## clean
+### clean
 
-## dist-sync
+### dist-sync
 
-## distribution-sync
+### distribution-sync
 
-## downgrade
+### downgrade
 
-## erase
+### erase
 
-## group
+### group
 
-## help
+### help
 
-## history
+### history
 
-## info
+### info
 
-## install
+### install
 
-## list
+### list
 
-## makecache
+### makecache
 
-## provides
+### provides
 
-## reinstall
+### reinstall
 
-## repolist
+### repolist
 
-## search
+### search
 
-## update
+### update
 
-## update-to
+### update-to
 
-## upgrade
+### upgrade
 
-## upgrade-to
+### upgrade-to
