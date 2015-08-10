@@ -13,12 +13,17 @@ dnf [options] <command> [<args>...]
 ## dnf参数
 
 ### --assumeno
+对所有询问均回答`no`。
 
 ### --best
+尝试查询结果中可提供的最优的包
 
 ### -C
+> `--cacheonly`
+完全从系统缓存中运行，不更新缓存
 
 ### -c
+
 
 ### -d
 
