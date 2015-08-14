@@ -23,9 +23,17 @@ dnf [options] <command> [<args>...]
 完全从系统缓存中运行，不更新缓存
 
 ### -c
-
+```
+-c <config file>, --config=<config file>
+```
+指定配置文件路径
 
 ### -d
+```
+-d <debug level>, --debuglevel=<debug level>
+```
+指定Debug的等级，从0（没有多余的信息）到10（显示所有的Debug信息，包括不能被用户理解的）。
+*已经被弃用，使用`-v`作为替代*
 
 ### --disableexcludes
 
