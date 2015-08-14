@@ -24,9 +24,6 @@ install:
   - pip install simiki
 
 script:
-  - cd output
-  - rm -rf !(.git)
-  - cd ..
   - cp -r themes/yasimple/static output/static
   - simiki generate
   - chmod ugo+x deploy.sh
@@ -34,4 +31,8 @@ script:
   - echo "cli.xuanwo.org" >> CNAME
   - DATE=`date +%Y-%m-%d`
   - TIME=`date +%H:%M:%S`
+  - cd ..
+  - cp deploy.sh output
+  - cd output
+  - rm -rf !(.git)
   - ./deploy.sh
