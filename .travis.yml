@@ -26,6 +26,7 @@ install:
 script:
   - cd output
   - rm -rf !(.git)
+  - cd ..
   - cp -r themes/yasimple/static output/static
   - simiki generate
   - chmod ugo+x deploy.sh
