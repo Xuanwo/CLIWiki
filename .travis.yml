@@ -24,10 +24,10 @@ install:
   - pip install simiki
 
 script:
-  - cd output
-  - rm -rf !(.git)
-  - cd ..
+  - cp -r output/.git backup
+  - rm -rf output
   - cp -r themes/yasimple/static output/static
   - simiki generate
+  - cp -r  backup output/.git
   - chmod ugo+x deploy.sh
   - ./deploy.sh
