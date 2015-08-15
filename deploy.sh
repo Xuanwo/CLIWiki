@@ -4,9 +4,6 @@ if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
     echo "cli.xuanwo.org" >> CNAME
     DATE=`date +%Y-%m-%d`
     TIME=`date +%H:%M:%S`
-    cd .git
-    cat config
-    cd ..
     git add --all .
     git commit -m "CLI wiki updated at $DATE $TIME"
     git push --force
