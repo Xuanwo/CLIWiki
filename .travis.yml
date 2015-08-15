@@ -26,6 +26,10 @@ install:
 script:
   - cd output
   - rm -rf !(.git)
+  - cd .git
+  - ls
+  - cat config
+  - cd ..
   - cd ..
   - cp -r themes/yasimple/static output/static
   - simiki generate
