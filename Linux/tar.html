@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>tar - CLI Wiki</title>
+        <meta name="keywords" content="wiki, makrdown, linux, CLI"/>
+        <meta name="description" content="A wiki for CLI"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+    <a href="https://github.com/Xuanwo/CLIWiki"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://7xk8bq.com1.z0.glb.clouddn.com/fork.png" alt="Fork me on GitHub" data-canonical-src="http://7xk8bq.com1.z0.glb.clouddn.com/forkme_right_gray_6d6d6d.png"></a>
+        <!--
+        <div id="nav">
+            <ul>
+                <li><a href="http://tankywoo.com"></a></li>
+                <li><a href="">Github</a></li>
+                <li><a href="">Simiki</a></li>
+            </ul>
+        </div>
+        -->
+        <div id="container">
+            
+    <div id="header">
+        <div id="post-nav">
+            
+            <a href="/">Home</a> » <a href="/#Linux">Linux</a> » tar
+            
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="title">tar</div>
+    <div id="content">
+        <h2 id="tar">tar简介</h2>
+<p>Unix和类Unix系统上的压缩打包工具，可以将多个文件合并为一个文件，打包后的文件名亦为“tar”。目前，tar文件格式已经成为POSIX标准，最初是POSIX.1-1988，目前是POSIX.1-2001。本程序最初的设计目的是将文件备份到磁带上(tape archive)，因而得名tar。</p>
+<h2 id="tar_1">tar命令格式</h2>
+<div class="hlcode"><pre><span class="n">tar</span> <span class="err">功能</span> <span class="err">选项</span> <span class="err">文件</span>
+</pre></div>
+
+
+<p>可以将代表功能和选项的单个字母合并；当使用单个字母时，可以不用在字母前面加<code>-</code>。某些版本的tar要求严格按照功能字、选项字的顺序，而有些版本的tar并不在意这个顺序。</p>
+<h2 id="tar_2">tar功能参数</h2>
+<h3 id="-c-create">-c，--create</h3>
+<p>创建新的tar文件</p>
+<h3 id="-x-extract-get">-x，--extract，--get</h3>
+<p>解开tar文件</p>
+<h3 id="-t-list">-t，--list</h3>
+<p>列出tar文件中包含的文件的信息</p>
+<h3 id="-r-append">-r，--append</h3>
+<p>附加新的文件到tar文件中</p>
+<h3 id="-u-update">-u，--update</h3>
+<p>用已打包的文件的较新版本更新tar文件</p>
+<h3 id="-a-catenate-concatenate">-A，--catenate，--concatenate</h3>
+<p>将tar文件作为一个整体追加到另一个tar文件中</p>
+<h3 id="-d-diff-compare">-d，--diff，--compare</h3>
+<p>将文件系统里的文件和tar文件里的文件进行比较</p>
+<h3 id="-delete">--delete</h3>
+<p>删除tar文件里的文件。
+<strong>这个功能不能用于已保存在磁带上的tar文件！</strong></p>
+<h2 id="tar_3">tar选项参数</h2>
+<h3 id="-v-verbose">-v，--verbose</h3>
+<p>列出每一步处理涉及的文件的信息，只用一个“v”时，仅列出文件名，使用两个“v”时，列出权限、所有者、大小、时间、文件名等信息。</p>
+<h3 id="-k-keep-old-files">-k，--keep-old-files</h3>
+<p>不覆盖文件系统上已有的文件</p>
+<h3 id="-f-file">-f，--file</h3>
+<p>[主机名:]文件名 指定要处理的文件名。可以用“-”代表标准输出或标准输入。</p>
+<h3 id="-p-absolute-names">-P，--absolute-names</h3>
+<p>使用绝对路径（默认使用相对路径）。</p>
+<h3 id="-j-bzip2">-j，--bzip2</h3>
+<p>调用bzip2执行压缩或解压缩。</p>
+<h3 id="-j-xz-lzma">-J，--xz，--lzma</h3>
+<p>调用XZ Utils执行压缩或解压缩。依赖XZ Utils。</p>
+<h3 id="-z-gzip-gunzip-ungzip">-z，--gzip，--gunzip，--ungzip</h3>
+<p>调用gzip执行压缩或解压缩</p>
+<h3 id="-z-compress-uncompress">-Z，--compress，--uncompress</h3>
+<p>调用compress执行压缩或解压缩</p>
+<h2 id="tar_4">tar应用举例</h2>
+<h3 id="_1">打包指定目录</h3>
+<div class="hlcode"><pre><span class="n">tar</span> <span class="o">-</span><span class="n">cvf</span> <span class="n">home_backup</span><span class="p">.</span><span class="n">tar</span> <span class="o">/</span><span class="n">home</span>
+</pre></div>
+
+
+<p>将<code>/home</code>目录下的所有文件打包入<code>home_backup.tar</code>文件中。</p>
+<h3 id="tar_5">解开tar文件</h3>
+<div class="hlcode"><pre><span class="n">tar</span> <span class="o">-</span><span class="n">xvf</span> <span class="n">xxx</span><span class="p">.</span><span class="n">tar</span>
+</pre></div>
+
+
+<p>将tar文件解压缩至当前目录下</p>
+<h3 id="gzip">解开gzip压缩的文件</h3>
+<blockquote>
+<p>后缀一般为：<code>.tar.gz</code>或<code>.tgz</code></p>
+</blockquote>
+<div class="hlcode"><pre><span class="n">tar</span> <span class="o">-</span><span class="n">xvzf</span> <span class="n">xxx</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span>
+</pre></div>
+
+
+<p>把gzip压缩的文件解开至当前目录下</p>
+<h3 id="compress">解开compress压缩的文件</h3>
+<blockquote>
+<p>后缀一般为：<code>.tar.Z</code>或<code>.taz</code></p>
+</blockquote>
+<div class="hlcode"><pre><span class="n">tar</span> <span class="o">-</span><span class="n">xvZf</span> <span class="n">xxx</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">Z</span>
+</pre></div>
+
+
+<p>把compress压缩的文件解开至当前目录下</p>
+<h3 id="bzip2">解开bzip2压缩的文件</h3>
+<blockquote>
+<p>后缀一般为：<code>.tar.bz2</code>或<code>.tbz</code></p>
+</blockquote>
+<div class="hlcode"><pre><span class="n">tar</span> <span class="o">-</span><span class="n">xvjf</span> <span class="n">xxx</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">bz2</span>
+</pre></div>
+
+
+<p>把bzip2压缩的文件解开至当前目录下</p>
+<h3 id="xz-utils">解开XZ Utils压缩的文件</h3>
+<blockquote>
+<p>后缀一般为：<code>.tar.xz</code>或<code>.txz</code></p>
+</blockquote>
+<div class="hlcode"><pre><span class="n">tar</span> <span class="o">-</span><span class="n">xvJf</span> <span class="n">xxx</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">xz</span>
+</pre></div>
+
+
+<p>把xz压缩的文件解开至当前目录下</p>
+    </div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © 2015 Xuanwo.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+    </body>
+</html>
