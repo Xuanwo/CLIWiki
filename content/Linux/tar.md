@@ -103,7 +103,7 @@ tar -xvjf xxx.tar.bz2
 把bzip2压缩的文件解开至当前目录下
 
 ### 解开XZ Utils压缩的文件
-> 后缀一般为：`.tar.xz`或`.txz`
+> 后缀一般为：`.tar.xz`或`.txz`或`.tar.lzma`或`.tlz`
 
 ```
 tar -xvJf xxx.tar.xz
