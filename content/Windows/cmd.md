@@ -1,5 +1,5 @@
 ---
-title: "CMD"
+title: "cmd"
 date: 2015-10-29 16:37:52
 ---
 

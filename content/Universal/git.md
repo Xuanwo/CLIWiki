@@ -1,5 +1,5 @@
 ---
-title: "Git"
+title: "git"
 date: 2015-11-14 16:13:09
 ---
 [TOC]
