@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>Git - CLI cookbook</title>
+        <meta name="keywords" content="wiki, makrdown, linux, CLI, cookbook"/>
+        <meta name="description" content="CLI cookbook"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+    <a href="https://github.com/Xuanwo/CLIWiki"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/static/images/fork.png" alt="Fork me on GitHub" data-canonical-src="/static/images/forkme_right_gray_6d6d6d.png"></a>
+        <div id="container">
+            
+    <div id="header">
+        <div id="post-nav">
+            
+            <a href="/">Home</a> » <a href="/#Universal">Universal</a> » Git
+            
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="title">Git</div>
+    <div id="content">
+        <div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#_1">不再跟踪指定文件</a></li>
+<li><a href="#_2">取消对文件的修改</a></li>
+<li><a href="#_3">取消已经暂存的文件</a></li>
+<li><a href="#commit">合并多个commit</a></li>
+</ul>
+</div>
+<h2 id="_1">不再跟踪指定文件</h2>
+<div class="hlcode"><pre><span class="nx">git</span> <span class="nx">rm</span> <span class="o">--</span><span class="nx">cached</span> <span class="o">&lt;</span><span class="nb">file</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<p>命令说明：</p>
+<ul>
+<li><code>rm --cached</code> : 从缓存中清除指定文件，支持正则</li>
+</ul>
+<h2 id="_2">取消对文件的修改</h2>
+<div class="hlcode"><pre><span class="nx">git</span> <span class="nx">checkout</span> <span class="o">--</span> <span class="o">&lt;</span><span class="nb">file</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<p>命令说明：</p>
+<ul>
+<li><code>checkout --</code> : 抛弃文件修改，返回之前的版本（会覆盖当前文件）</li>
+</ul>
+<h2 id="_3">取消已经暂存的文件</h2>
+<div class="hlcode"><pre><span class="nx">git</span> <span class="nb">reset</span> <span class="nb">HEAD</span> <span class="o">&lt;</span><span class="nb">file</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<p>命令说明：</p>
+<ul>
+<li><code>reset HEAD</code> : 撤销先前的add操作（不会覆盖当前文件）</li>
+</ul>
+<h2 id="commit">合并多个commit</h2>
+<p>合并之前的三个提交，首先运行：</p>
+<div class="hlcode"><pre><span class="n">git</span> <span class="n">rebase</span> <span class="o">-</span><span class="n">i</span> <span class="n">HEAD</span><span class="o">~</span><span class="mi">3</span>
+</pre></div>
+
+
+<p>或者</p>
+<div class="hlcode"><pre><span class="nx">git</span> <span class="nx">rebase</span> <span class="na">-i</span> <span class="o">&lt;</span><span class="nx">commitid</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<p><em>注意，要合并之前的三个提交，后面应当使用你的倒数第四个提交作为参数</em></p>
+<p>然后文本编辑器将会自动打开，并出现类似如下内容：</p>
+<div class="hlcode"><pre><span class="n">pick</span> <span class="n">f7f3f6d</span> <span class="n">changed</span> <span class="n">my</span> <span class="n">name</span> <span class="n">a</span> <span class="n">bit</span>
+<span class="n">pick</span> <span class="mi">310154</span><span class="n">e</span> <span class="n">updated</span> <span class="n">README</span> <span class="n">formatting</span> <span class="n">and</span> <span class="n">added</span> <span class="n">blame</span>
+<span class="n">pick</span> <span class="n">a5f4a0d</span> <span class="n">added</span> <span class="n">cat</span><span class="o">-</span><span class="n">file</span>
+
+<span class="cp"># Rebase 710f0f8..a5f4a0d onto 710f0f8</span>
+<span class="cp">#</span>
+<span class="cp"># Commands:</span>
+<span class="cp">#  p, pick = use commit</span>
+<span class="cp">#  e, edit = use commit, but stop for amending</span>
+<span class="cp">#  s, squash = use commit, but meld into previous commit</span>
+<span class="cp">#</span>
+<span class="cp"># If you remove a line here THAT COMMIT WILL BE LOST.</span>
+<span class="cp"># However, if you remove everything, the rebase will be aborted.</span>
+<span class="cp">#</span>
+</pre></div>
+
+
+<blockquote>
+<p>正如git的注释所说，<code>pick</code>将会采用这次commit，而<code>squash</code>将会把这个commit合并到前一个当中。</p>
+</blockquote>
+<p>我们将后面两个<code>pick</code>修改为<code>squash</code>，现在内容如下：</p>
+<div class="hlcode"><pre><span class="n">pick</span> <span class="n">f7f3f6d</span> <span class="n">changed</span> <span class="n">my</span> <span class="n">name</span> <span class="n">a</span> <span class="n">bit</span>
+<span class="n">squash</span> <span class="mi">310154</span><span class="n">e</span> <span class="n">updated</span> <span class="n">README</span> <span class="n">formatting</span> <span class="n">and</span> <span class="n">added</span> <span class="n">blame</span>
+<span class="n">squash</span> <span class="n">a5f4a0d</span> <span class="n">added</span> <span class="n">cat</span><span class="o">-</span><span class="n">file</span>
+</pre></div>
+
+
+<p>保存并退出后，git将会自动应用并产生一个新的提交，保存后三个提交就被合并成了一个。</p>
+    </div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © 2015 Xuanwo.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+    </body>
+</html>
