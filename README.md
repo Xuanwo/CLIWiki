@@ -30,7 +30,7 @@
 
 ### Fork
 
-首先点击![Fork](fork-to-my-account.png)，将这个库添加一份到您的账户上。
+首先点击![Fork](https://cli.xuanwo.org/static/images/fork-to-my-account.png)，将这个库添加一份到您的账户上。
 
 ### Edit
 
