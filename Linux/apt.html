@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>apt - CLI cookbook</title>
+        <meta name="keywords" content="wiki, makrdown, linux, CLI, cookbook"/>
+        <meta name="description" content="CLI cookbook"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+    <a href="https://github.com/Xuanwo/CLIWiki"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/static/images/fork.png" alt="Fork me on GitHub" data-canonical-src="/static/images/forkme_right_gray_6d6d6d.png"></a>
+        <div id="container">
+            
+    <div id="header">
+        <div id="post-nav">
+            
+            <a href="/">Home</a> » <a href="/#Linux">Linux</a> » apt
+            
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="title">apt</div>
+    <div id="content">
+        <h2 id="usrbinld-cannot-find-lxxx">解决/usr/bin/ld: cannot find -lxxx错误</h2>
+<p><strong>原因：</strong></p>
+<ol>
+<li>系统没有安装相对应的lib</li>
+<li>相对应的lib版本不对</li>
+<li>lib(.so档)的符号链接不正确，没有连结到正确的函式库文件(.so)</li>
+</ol>
+<p><strong>解决方案：</strong></p>
+<ol>
+<li>先判断在<code>/usr/lib</code>下的相对应的函式库文件(.so)的符号链接是否正确，若不正确改成正确的连结目标即可解决问题。</li>
+<li>若不是符号链接的问题引起，而是系统缺少相对应的lib，则安装lib即可解决。</li>
+</ol>
+<p><strong>样例：</strong></p>
+<blockquote>
+<p>包名格式
+<code>lxxx</code>对应so档一般为<code>libxxx.so</code>，对应apt软件包一般为<code>libxxx-dev</code></p>
+</blockquote>
+<p><strong>符号链接不正确</strong></p>
+<div class="hlcode"><pre><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">ld</span><span class="o">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="o">-</span><span class="n">lXtst</span>
+</pre></div>
+
+
+<p>检查发现存在<code>libXtst.so.6</code>，使用命令<code>ln -s libXtst.so.6 libXtst.so</code>建立软连接即可。</p>
+<p><strong>未安装对应包</strong></p>
+<div class="hlcode"><pre><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">ld</span><span class="o">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="o">-</span><span class="n">lc</span>
+</pre></div>
+
+
+<p>不是符号链接的问题，则使用命令<code>apt-get install libc-dev</code></p>
+    </div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © 2015 Xuanwo.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+    </body>
+</html>
