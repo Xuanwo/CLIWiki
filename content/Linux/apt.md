@@ -2,6 +2,7 @@
 title: "apt"
 date: 2015-11-14 16:36:23
 ---
+[TOC]
 
 ## 解决/usr/bin/ld: cannot find -lxxx错误
 
