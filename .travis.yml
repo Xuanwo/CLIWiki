@@ -28,5 +28,6 @@ script:
   - rm -rf output
   - simiki generate
   - cp -r  backup output/.git
+  - cp favicon.ico output
   - chmod ugo+x deploy.sh
   - ./deploy.sh
