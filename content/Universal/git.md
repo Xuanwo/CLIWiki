@@ -79,3 +79,18 @@ squash a5f4a0d added cat-file
 ```
 
 保存并退出后，git将会自动应用并产生一个新的提交，保存后三个提交就被合并成了一个。
+
+## 修改line endings之后更新index
+
+首先清除缓存
+```
+git rm --cached -r .
+```
+
+然后重建index
+```
+git reset --hard
+```
+
+参考[此处](https://help.github.com/articles/dealing-with-line-endings/#refreshing-a-repository-after-changing-line-endings)
+
