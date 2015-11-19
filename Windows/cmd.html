@@ -23,7 +23,15 @@
     <div class="clearfix"></div>
     <div id="title">cmd</div>
     <div id="content">
-        
+        <div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#hostsdns">修改Hosts之后更新DNS缓存</a></li>
+</ul>
+</div>
+<h2 id="hostsdns">修改Hosts之后更新DNS缓存</h2>
+<div class="hlcode"><pre><span class="n">ipconfig</span> <span class="o">/</span><span class="n">flushdns</span>
+<span class="n">ipconfig</span> <span class="o">/</span><span class="n">renew</span>
+<span class="n">ipconfig</span> <span class="o">/</span><span class="n">registerdns</span>  <span class="err">#</span> <span class="err">此命令需要管理员权限</span>
+</pre></div>
     </div>
 
         </div>

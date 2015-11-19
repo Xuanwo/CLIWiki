@@ -28,6 +28,7 @@
 <li><a href="#_2">取消对文件的修改</a></li>
 <li><a href="#_3">取消已经暂存的文件</a></li>
 <li><a href="#commit">合并多个commit</a></li>
+<li><a href="#line-endingsindex">修改line endings之后更新index</a></li>
 </ul>
 </div>
 <h2 id="_1">不再跟踪指定文件</h2>
@@ -98,6 +99,18 @@
 
 
 <p>保存并退出后，git将会自动应用并产生一个新的提交，保存后三个提交就被合并成了一个。</p>
+<h2 id="line-endingsindex">修改line endings之后更新index</h2>
+<p>首先清除缓存</p>
+<div class="hlcode"><pre><span class="n">git</span> <span class="n">rm</span> <span class="o">--</span><span class="n">cached</span> <span class="o">-</span><span class="n">r</span> <span class="p">.</span>
+</pre></div>
+
+
+<p>然后重建index</p>
+<div class="hlcode"><pre><span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">hard</span>
+</pre></div>
+
+
+<p>参考<a href="https://help.github.com/articles/dealing-with-line-endings/#refreshing-a-repository-after-changing-line-endings">此处</a></p>
     </div>
 
         </div>
