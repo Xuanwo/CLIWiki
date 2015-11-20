@@ -94,3 +94,19 @@ git reset --hard
 
 参考[此处](https://help.github.com/articles/dealing-with-line-endings/#refreshing-a-repository-after-changing-line-endings)
 
+## Fork后的项目与上游同步
+
+首先需要为自己的库添加上游的同步地址：
+
+```
+git remote add upstream https://github.com/place/to/where/you/fork
+```
+
+然后就可以执行下列命令来更新本地库：
+
+```
+git pull upstream master
+git push
+```
+
+*如果有志于让自己的代码合并到上游项目，建议保持master始终与上游同步，另开分支来写自己的提交。*
