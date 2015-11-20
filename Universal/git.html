@@ -38,6 +38,7 @@
 <li><a href="#_3">取消已经暂存的文件</a></li>
 <li><a href="#commit">合并多个commit</a></li>
 <li><a href="#line-endingsindex">修改line endings之后更新index</a></li>
+<li><a href="#fork">Fork后的项目与上游同步</a></li>
 </ul>
 </div>
 <h2 id="_1">不再跟踪指定文件</h2>
@@ -120,6 +121,19 @@
 
 
 <p>参考<a href="https://help.github.com/articles/dealing-with-line-endings/#refreshing-a-repository-after-changing-line-endings">此处</a></p>
+<h2 id="fork">Fork后的项目与上游同步</h2>
+<p>首先需要为自己的库添加上游的同步地址：</p>
+<div class="hlcode"><pre><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">upstream</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/place/to/where/you/fork</span>
+</pre></div>
+
+
+<p>然后就可以执行下列命令来更新本地库：</p>
+<div class="hlcode"><pre><span class="n">git</span> <span class="n">pull</span> <span class="n">upstream</span> <span class="n">master</span>
+<span class="n">git</span> <span class="n">push</span>
+</pre></div>
+
+
+<p><em>如果有志于让自己的代码合并到上游项目，建议保持master始终与上游同步，另开分支来写自己的提交。</em></p>
     </div>
 
         </div>
