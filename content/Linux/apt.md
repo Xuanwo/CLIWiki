@@ -1,6 +1,6 @@
 ---
 title: "apt"
-date: 2015-11-14 16:36:23
+date: 2015-11-23 01:12:24
 ---
 [TOC]
 
@@ -33,3 +33,12 @@ date: 2015-11-14 16:36:23
 /usr/bin/ld: cannot find -lc
 ```
 不是符号链接的问题，则使用命令`apt-get install libc-dev`
+
+## 解决fatal error: Python.h: No such file or directory错误
+安装指定的Python版本
+
+```
+apt-get install python3.5-dev
+```
+
+*具体版本取决于编译需要*
