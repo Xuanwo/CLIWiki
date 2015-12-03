@@ -110,3 +110,25 @@ git push
 ```
 
 *如果有志于让自己的代码合并到上游项目，建议保持master始终与上游同步，另开分支来写自己的提交。*
+
+## 通过commit信息来关闭issues
+
+> github专属特性
+
+可以使用如下命令并接上issues编号来关闭issues（以及PR），前提是：你需要有对应repo的push权限。
+
+- close
+- closes
+- closed
+- fix
+- fixes
+- fixed
+- resolve
+- resolves
+- resolved
+
+```
+git commit -m "fixed #12306"  //push之后，本项目的12306号issues就会被关闭
+git commit -m "resolve https://github.com/xxx/yy/pull/40"  //push之后，对应PR会被合并
+git commit -m "close https://github.com/xxx/yy/issues/40"  //push之后，可以关闭跨代码库的issue
+```
