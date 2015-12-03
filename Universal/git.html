@@ -39,6 +39,7 @@
 <li><a href="#commit">合并多个commit</a></li>
 <li><a href="#line-endingsindex">修改line endings之后更新index</a></li>
 <li><a href="#fork">Fork后的项目与上游同步</a></li>
+<li><a href="#commitissues">通过commit信息来关闭issues</a></li>
 </ul>
 </div>
 <h2 id="_1">不再跟踪指定文件</h2>
@@ -134,6 +135,26 @@
 
 
 <p><em>如果有志于让自己的代码合并到上游项目，建议保持master始终与上游同步，另开分支来写自己的提交。</em></p>
+<h2 id="commitissues">通过commit信息来关闭issues</h2>
+<blockquote>
+<p>github专属特性</p>
+</blockquote>
+<p>可以使用如下命令并接上issues编号来关闭issues（以及PR），前提是：你需要有对应repo的push权限。</p>
+<ul>
+<li>close</li>
+<li>closes</li>
+<li>closed</li>
+<li>fix</li>
+<li>fixes</li>
+<li>fixed</li>
+<li>resolve</li>
+<li>resolves</li>
+<li>resolved</li>
+</ul>
+<div class="hlcode"><pre><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s">&quot;fixed #12306&quot;</span>  <span class="c1">//push之后，本项目的12306号issues就会被关闭</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s">&quot;resolve https://github.com/xxx/yy/pull/40&quot;</span>  <span class="c1">//push之后，对应PR会被合并</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s">&quot;close https://github.com/xxx/yy/issues/40&quot;</span>  <span class="c1">//push之后，可以关闭跨代码库的issue</span>
+</pre></div>
     </div>
 
         </div>

@@ -34,6 +34,7 @@
     <div id="content">
         <div class="toc"><span class="toctitle">Table of Contents</span><ul>
 <li><a href="#usrbinld-cannot-find-lxxx">解决/usr/bin/ld: cannot find -lxxx错误</a></li>
+<li><a href="#fatal-error-pythonh-no-such-file-or-directory">解决fatal error: Python.h: No such file or directory错误</a></li>
 </ul>
 </div>
 <h2 id="usrbinld-cannot-find-lxxx">解决/usr/bin/ld: cannot find -lxxx错误</h2>
@@ -65,6 +66,13 @@
 
 
 <p>不是符号链接的问题，则使用命令<code>apt-get install libc-dev</code></p>
+<h2 id="fatal-error-pythonh-no-such-file-or-directory">解决fatal error: Python.h: No such file or directory错误</h2>
+<p>安装指定的Python版本</p>
+<div class="hlcode"><pre><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python3</span><span class="mf">.5</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+
+
+<p><em>具体版本取决于编译需要</em></p>
     </div>
 
         </div>
