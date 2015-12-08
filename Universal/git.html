@@ -51,6 +51,9 @@
 <ul>
 <li><code>rm --cached</code> : 从缓存中清除指定文件，支持正则</li>
 </ul>
+<blockquote>
+<p>执行后更新<code>.gitignore</code>确保不再跟踪已经删除的文件</p>
+</blockquote>
 <h2 id="_2">取消对文件的修改</h2>
 <div class="hlcode"><pre><span class="nx">git</span> <span class="nx">checkout</span> <span class="o">--</span> <span class="o">&lt;</span><span class="nb">file</span><span class="o">&gt;</span>
 </pre></div>
