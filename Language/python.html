@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>python - CLI cookbook</title>
+        <meta name="keywords" content="wiki, makrdown, linux, CLI, cookbook"/>
+        <meta name="description" content="CLI cookbook"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          ga('create', 'UA-51515330-3', 'auto');
+          ga('send', 'pageview');
+          ga('set', '&uid', );
+        </script>
+    </head>
+
+    <body>
+    <a href="https://github.com/Xuanwo/CLIWiki"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/static/images/fork.png" alt="Fork me on GitHub" data-canonical-src="/static/images/forkme_right_gray_6d6d6d.png"></a>
+        <div id="container">
+            
+    <div id="header">
+        <div id="post-nav">
+            
+            <a href="/">Home</a> » <a href="/#Language">Language</a> » python
+            
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="title">python</div>
+    <div id="content">
+        <div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#_1">通过迭代创建字符串</a></li>
+<li><a href="#_2">字符串分隔</a></li>
+</ul>
+</div>
+<h2 id="_1">通过迭代创建字符串</h2>
+<div class="hlcode"><pre><span class="o">&gt;&gt;&gt;</span> <span class="s">&#39;+&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">&#39;abc&#39;</span><span class="p">)</span>
+<span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">+</span><span class="n">c</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="s">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="mi">1</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mi">3</span>
+</pre></div>
+
+
+<p><code>join</code>函数要求传入一个可迭代的字符型参数，然后会在字符之间插入分隔符。</p>
+<h2 id="_2">字符串分隔</h2>
+<div class="hlcode"><pre><span class="o">&gt;&gt;&gt;</span> <span class="s">&#39;1,2,3&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;,&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="s">&#39;1&#39;</span><span class="p">,</span> <span class="s">&#39;2&#39;</span><span class="p">,</span> <span class="s">&#39;3&#39;</span><span class="p">]</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="s">&#39;1,2,,3,&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;,&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="s">&#39;1&#39;</span><span class="p">,</span> <span class="s">&#39;2&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;3&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p><code>split</code>函数要求传入一个分隔符，并使用该分隔符来分割字符串，产生一个列表。</p>
+<blockquote>
+<p>注意样例2，连续的分隔符同样会在列表中插入一个空值</p>
+</blockquote>
+    </div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © 2015 Xuanwo.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+    </body>
+</html>
