@@ -48,3 +48,19 @@ a+b+c
 
 `sum`函数非常简单，传入一个可迭代元素即可~
 
+## 字母的大小写变换
+
+``` python
+>>> 'pyThon'.upper()
+'PYTHON'
+
+>>> 'pyThon'.lower()
+'python'
+
+>>> 'pyThon'.capitalize()
+'Python'
+```
+
+`upper`是将字符串均变为大写，`lower`则是变为小写，而`capitalize`是将字符串第一个字符大写，其它均为小写。
+
+
