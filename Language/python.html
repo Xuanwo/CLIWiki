@@ -38,6 +38,11 @@
 <li><a href="#_3">对迭代器的所有元素进行同一操作</a></li>
 <li><a href="#_4">对迭代器进行求和</a></li>
 <li><a href="#_5">字母的大小写变换</a></li>
+<li><a href="#_6">字符串去重</a><ul>
+<li><a href="#_7">改变原来顺序</a></li>
+<li><a href="#_8">不改变原来顺序（需要优化）</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <h2 id="_1">通过迭代创建字符串</h2>
@@ -90,6 +95,24 @@
 
 
 <p><code>upper</code>是将字符串均变为大写，<code>lower</code>则是变为小写，而<code>capitalize</code>是将字符串第一个字符大写，其它均为小写。</p>
+<h2 id="_6">字符串去重</h2>
+<h3 id="_7">改变原来顺序</h3>
+<div class="hlcode"><pre><span class="o">&gt;&gt;&gt;</span> <span class="nb">set</span><span class="p">(</span><span class="s">&#39;bbaacc&#39;</span><span class="p">)</span>
+<span class="p">{</span><span class="s">&#39;c&#39;</span><span class="p">,</span><span class="s">&#39;b&#39;</span><span class="p">,</span><span class="s">&#39;a&#39;</span><span class="p">}</span>
+</pre></div>
+
+
+<p>如果不要求保持原来的顺序的话，只需要直接使用<code>set()</code>进行类型转换即可</p>
+<h3 id="_8">不改变原来顺序（需要优化）</h3>
+<div class="hlcode"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">ans</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s">&#39;bbaacc&#39;</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ans</span><span class="p">:</span>
+<span class="o">...</span>             <span class="n">ans</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="p">[</span><span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>非常直观而且暴力的写法- -，可能需要更好的姿势。。</p>
     </div>
 
         </div>
