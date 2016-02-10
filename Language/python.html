@@ -43,6 +43,7 @@
 <li><a href="#_8">不改变原来顺序（需要优化）</a></li>
 </ul>
 </li>
+<li><a href="#_9">对迭代器的所有元素判断是否为真</a></li>
 </ul>
 </div>
 <h2 id="_1">通过迭代创建字符串</h2>
@@ -113,6 +114,13 @@
 
 
 <p>非常直观而且暴力的写法- -，可能需要更好的姿势。。</p>
+<h2 id="_9">对迭代器的所有元素判断是否为真</h2>
+<div class="hlcode"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">all</span><span class="p">([</span><span class="mi">47</span><span class="o">%</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="n">in</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">47</span><span class="p">,</span><span class="mi">74</span><span class="p">,</span><span class="mi">447</span><span class="p">,</span><span class="mi">474</span><span class="p">,</span><span class="mi">477</span><span class="p">,</span><span class="mi">747</span><span class="p">,</span><span class="mi">774</span><span class="p">]])</span>
+<span class="n">False</span>
+</pre></div>
+
+
+<p><code>all</code>函数用于对迭代器的每一个元素判断是否为真，如果全部为真，则返回真，如果为假，则返回假并break。</p>
     </div>
 
         </div>
