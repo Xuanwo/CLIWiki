@@ -142,3 +142,20 @@ True
 
 `count`函数用于统计某元素在迭代器中出现的次数
 
+## 控制输出的分隔符与换行符
+
+``` python
+>>> print('abc','def')
+abc def
+
+>>> print('abc', 'def, end='#')
+abc def#
+>>> print('abc', 'def', sep='+')
+abc+def
+```
+
+在`print`函数中：
+- `sep`参数用于控制待输出项之间的分隔符，默认为空格
+- `end`参数用于控制输出完毕后的结束符号，默认为换行
+
+
