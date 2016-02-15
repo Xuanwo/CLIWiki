@@ -49,6 +49,7 @@
 <li><a href="#_12">计算表达式的值</a></li>
 <li><a href="#_13">返回元素在列表中的位置</a></li>
 <li><a href="#_14">统计某元素出现次数</a></li>
+<li><a href="#_15">控制输出的分隔符与换行符</a></li>
 </ul>
 </div>
 <h2 id="_1">通过迭代创建字符串</h2>
@@ -162,6 +163,20 @@
 
 
 <p><code>count</code>函数用于统计某元素在迭代器中出现的次数</p>
+<h2 id="_15">控制输出的分隔符与换行符</h2>
+<div class="hlcode"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s">&#39;abc&#39;</span><span class="p">,</span><span class="s">&#39;def&#39;</span><span class="p">)</span>
+<span class="n">abc</span> <span class="k">def</span>
+
+<span class="err">&gt;&gt;&gt; </span><span class="nf">print</span><span class="p">(</span><span class="s">&#39;abc&#39;</span><span class="p">,</span> <span class="s">&#39;def, end=&#39;</span><span class="c">#&#39;)</span>
+<span class="n">abc</span> <span class="n">def</span><span class="c">#</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s">&#39;abc&#39;</span><span class="p">,</span> <span class="s">&#39;def&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">&#39;+&#39;</span><span class="p">)</span>
+<span class="n">abc</span><span class="o">+</span><span class="k">def</span>
+</pre></div>
+
+
+<p>在<code>print</code>函数中：
+- <code>sep</code>参数用于控制待输出项之间的分隔符，默认为空格
+- <code>end</code>参数用于控制输出完毕后的结束符号，默认为换行</p>
     </div>
 
         </div>
