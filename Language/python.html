@@ -77,12 +77,12 @@
 <p>注意样例2，连续的分隔符同样会在列表中插入一个空值</p>
 </blockquote>
 <h2 id="_3">对迭代器的所有元素进行同一操作</h2>
-<div class="hlcode"><pre><span class="o">&gt;&gt;&gt;</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;1&#39;</span><span class="p">,</span><span class="s">&#39;2&#39;</span><span class="p">,</span><span class="s">&#39;3&#39;</span><span class="p">])</span>
+<div class="hlcode"><pre><span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;1&#39;</span><span class="p">,</span><span class="s">&#39;2&#39;</span><span class="p">,</span><span class="s">&#39;3&#39;</span><span class="p">]))</span>
 <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
 </pre></div>
 
 
-<p><code>map</code>函数第一个参数传入一个函数，第二个参数传入一个迭代器。之后会对该迭代器的每一个元素执行传入函数定义的操作</p>
+<p><code>map</code>函数第一个参数传入一个函数，第二个参数传入一个迭代器。之后会对该迭代器的每一个元素执行传入函数定义的操作，函数返回的结果是一个迭代器，将其转换为list之后再做下一步使用。</p>
 <h2 id="_4">对迭代器进行求和</h2>
 <div class="hlcode"><pre><span class="o">&gt;&gt;&gt;</span> <span class="nb">sum</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 <span class="mi">6</span>
