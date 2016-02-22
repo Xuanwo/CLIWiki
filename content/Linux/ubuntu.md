@@ -36,3 +36,5 @@ git clone https://github.com/ziahamza/webui-aria2.git
 
 ## Ubuntu支持Cisco Anyconnent VPN [Todo]
 openconnect
+
+## pycharm的安装 [Todo]
