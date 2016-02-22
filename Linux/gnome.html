@@ -3,7 +3,7 @@
     <head>
         <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
         <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
-        <title>ubuntu - CLI cookbook</title>
+        <title>gnome - CLI cookbook</title>
         <meta name="keywords" content="wiki, makrdown, linux, CLI, cookbook"/>
         <meta name="description" content="CLI cookbook"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -25,47 +25,23 @@
     <div id="header">
         <div id="post-nav">
             
-            <a href="/">Home</a> » <a href="/#Linux">Linux</a> » ubuntu
+            <a href="/">Home</a> » <a href="/#Linux">Linux</a> » gnome
             
         </div>
     </div>
     <div class="clearfix"></div>
-    <div id="title">ubuntu</div>
+    <div id="title">gnome</div>
     <div id="content">
         <div class="toc"><span class="toctitle">Table of Contents</span><ul>
-<li><a href="#aira2">aira2及其前端的配置</a><ul>
-<li><a href="#aria2">安装aria2</a></li>
-<li><a href="#_1">前端配置</a></li>
-<li><a href="#_2">后台启动</a></li>
-</ul>
-</li>
-<li><a href="#ubuntucisco-anyconnent-vpn-todo">Ubuntu支持Cisco Anyconnent VPN [Todo]</a></li>
+<li><a href="#_1">隐藏标题栏或最大最小话按钮后如何取消最大化</a></li>
 </ul>
 </div>
-<h2 id="aira2">aira2及其前端的配置</h2>
-<h3 id="aria2">安装aria2</h3>
-<div class="hlcode"><pre>sudo apt-get install aria2
-</pre></div>
-
-
-<h3 id="_1">前端配置</h3>
-<p>可以选择uget或者Web化前端，uget直接在设置中开启即可，此处主要介绍一下前端配置。</p>
-<p>首先clone代码：</p>
-<div class="hlcode"><pre>git clone https://github.com/ziahamza/webui-aria2.git
-</pre></div>
-
-
-<p>然后创建<code>~/.aria2/aria2.conf</code>，内容请参考<a href="http://aria2c.com/usage.html">此处</a></p>
-<p>根据自己的需要修改即可，需要注意的有以下地方：</p>
+<p><strong>本文全部内容仅在Gnome 3.14下验证通过</strong></p>
+<h2 id="_1">隐藏标题栏或最大最小话按钮后如何取消最大化</h2>
 <ul>
-<li>涉及到地址的地方最好使用绝对路径，相对路径会出现找不到文件之类的奇怪问题</li>
-<li>不支持中文路径</li>
-<li>按照自己的需要设置<code>rpc-secre</code>并修改<code>webui-aria2</code>路径下的<code>configuration.js</code>文件（<em>直接在浏览器中填写的话，无法保存</em>）</li>
+<li>alt+space可以唤出相关选单，取消最大化即可</li>
+<li>使用鼠标自顶向下拖动即可解除最大化</li>
 </ul>
-<h3 id="_2">后台启动</h3>
-<p>首先使用<code>aria2c</code>命令尝试启动，若测试一切正常，则可以使用<code>aria2c -D</code>命令使其在后台运行。</p>
-<h2 id="ubuntucisco-anyconnent-vpn-todo">Ubuntu支持Cisco Anyconnent VPN [Todo]</h2>
-<p>openconnect</p>
     </div>
 
         </div>
