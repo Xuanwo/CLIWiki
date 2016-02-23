@@ -60,7 +60,7 @@ sudo apt-get install aria2
 git clone https://github.com/ziahamza/webui-aria2.git
 ```
 
-然后创建`~/.aria2/aria2.conf`，内容请参考[此处]( http://aria2c.com/usage.html)
+然后创建`~/.aria2/aria2.conf`，内容请参考[此处](http://aria2c.com/usage.html)
 
 根据自己的需要修改即可，需要注意的有以下地方：
 
@@ -72,7 +72,26 @@ git clone https://github.com/ziahamza/webui-aria2.git
 
 首先使用`aria2c`命令尝试启动，若测试一切正常，则可以使用`aria2c -D`命令使其在后台运行。
 
+### 开机自启
+
+在Ubuntu上可以通过修改`/etc/rc.local`的方式设置开机自启，只需要填写自己需要的命令即可。使用Sudo权限打开文件，在`exit 0`的上方加入：
+
+```
+/usr/bin/aria2c --conf-path=/home/xuanwo/.aria2/aria2.conf &
+```
+
+按照自己的需求修改，需要注意以下地方：
+
+- `rc.local`在启动时没有初始化path，故aria2c不会自动加载配置文件，需要自己手动指定配置文件地址并使用绝对地址运行aria2c，否则无法正确开机自启。
+- `-D`参数错误退出是不会输出stderr信息，推荐使用`&`来让进程运行于后台
+- 一定要确保命令正确退出，否则，轻则程序没有正确自启，重则无法进入桌面
+
+> 如果发现没有正确自启，可以使用`systemctl status re.loacl.service -l`命令查看输出的信息。
+
+
 ## Ubuntu支持Cisco Anyconnent VPN [Todo]
 openconnect
 
 ## pycharm的安装 [Todo]
+
+
