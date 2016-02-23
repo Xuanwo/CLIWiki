@@ -34,7 +34,7 @@
     <div id="content">
         <div class="toc"><span class="toctitle">Table of Contents</span><ul>
 <li><a href="#_1">隐藏标题栏后如何取消最大化</a></li>
-<li><a href="#todo">修改快捷链接 [Todo]</a></li>
+<li><a href="#_2">修改快捷链接</a></li>
 </ul>
 </div>
 <p><strong>本文全部内容仅在Gnome 3.14下验证通过</strong></p>
@@ -43,8 +43,23 @@
 <li>alt+space可以唤出相关选单，取消最大化即可</li>
 <li>使用鼠标自顶向下拖动即可解除最大化</li>
 </ul>
-<h2 id="todo">修改快捷链接 [Todo]</h2>
-<p>/usr/share/applications</p>
+<h2 id="_2">修改快捷链接</h2>
+<p>有时候会出现快捷链接方式错误的现象，这个需要进入<code>/usr/share/applications</code>文件夹寻找对应的<code>.desktop</code>文件来修改。
+<code>.desktop</code>文件只是一个文本文档，大致内容如下：</p>
+<div class="hlcode"><pre><span class="k">[Desktop Entry]</span>
+<span class="na">Version</span><span class="o">=</span><span class="s">1.0</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">Application</span>
+<span class="na">Name</span><span class="o">=</span><span class="s">PyCharm</span>
+<span class="na">Icon</span><span class="o">=</span><span class="s">/home/xuanwo/Soft/pycharm-5.0.4/bin/pycharm.png # 指定图标</span>
+<span class="na">Exec</span><span class="o">=</span><span class="s">&quot;/home/xuanwo/Soft/pycharm-5.0.4/bin/pycharm.sh&quot; %f # 指定可执行文件</span>
+<span class="na">Comment</span><span class="o">=</span><span class="s">Develop with pleasure!</span>
+<span class="na">Categories</span><span class="o">=</span><span class="s">Development;IDE; # 指定分类</span>
+<span class="na">Terminal</span><span class="o">=</span><span class="s">false</span>
+<span class="na">StartupWMClass</span><span class="o">=</span><span class="s">jetbrains-pycharm</span>
+</pre></div>
+
+
+<p>只需要按照正确的地址修改链接即可~</p>
     </div>
 
         </div>
