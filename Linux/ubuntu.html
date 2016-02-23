@@ -39,6 +39,7 @@
 <li><a href="#aria2">安装aria2</a></li>
 <li><a href="#_1">前端配置</a></li>
 <li><a href="#_2">后台启动</a></li>
+<li><a href="#_3">开机自启</a></li>
 </ul>
 </li>
 <li><a href="#ubuntucisco-anyconnent-vpn-todo">Ubuntu支持Cisco Anyconnent VPN [Todo]</a></li>
@@ -103,6 +104,21 @@
 </ul>
 <h3 id="_2">后台启动</h3>
 <p>首先使用<code>aria2c</code>命令尝试启动，若测试一切正常，则可以使用<code>aria2c -D</code>命令使其在后台运行。</p>
+<h3 id="_3">开机自启</h3>
+<p>在Ubuntu上可以通过修改<code>/etc/rc.local</code>的方式设置开机自启，只需要填写自己需要的命令即可。使用Sudo权限打开文件，在<code>exit 0</code>的上方加入：</p>
+<div class="hlcode"><pre><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">aria2c</span> <span class="o">--</span><span class="n">conf</span><span class="o">-</span><span class="n">path</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">xuanwo</span><span class="o">/</span><span class="p">.</span><span class="n">aria2</span><span class="o">/</span><span class="n">aria2</span><span class="p">.</span><span class="n">conf</span> <span class="o">&amp;</span>
+</pre></div>
+
+
+<p>按照自己的需求修改，需要注意以下地方：</p>
+<ul>
+<li><code>rc.local</code>在启动时没有初始化path，故aria2c不会自动加载配置文件，需要自己手动指定配置文件地址并使用绝对地址运行aria2c，否则无法正确开机自启。</li>
+<li><code>-D</code>参数错误退出是不会输出stderr信息，推荐使用<code>&amp;</code>来让进程运行于后台</li>
+<li>一定要确保命令正确退出，否则，轻则程序没有正确自启，重则无法进入桌面</li>
+</ul>
+<blockquote>
+<p>如果发现没有正确自启，可以使用<code>systemctl status re.loacl.service -l</code>命令查看输出的信息。</p>
+</blockquote>
 <h2 id="ubuntucisco-anyconnent-vpn-todo">Ubuntu支持Cisco Anyconnent VPN [Todo]</h2>
 <p>openconnect</p>
 <h2 id="pycharm-todo">pycharm的安装 [Todo]</h2>
