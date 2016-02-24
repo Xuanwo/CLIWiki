@@ -89,9 +89,81 @@ git clone https://github.com/ziahamza/webui-aria2.git
 > 如果发现没有正确自启，可以使用`systemctl status re.loacl.service -l`命令查看输出的信息。
 
 
-## Ubuntu支持Cisco Anyconnent VPN [Todo]
-openconnect
+## Ubuntu支持Cisco Anyconnent VPN
 
-## pycharm的安装 [Todo]
+由于Cisco的Anyconnect是一个私有的程序，只有在部署了Cisco VPN的地方才能够下载到相应的程序。因此我们可以转而使用开源的Openconnent：
+
+```
+sudo apt-get install network-manager-openconnect-gnome
+```
+
+安装完毕后，在网络管理器中添加网络-VPN，就能看到关于`Cisco Anyconnect兼容的VPN`选项。
+
+## JetBrains开发工具的安装
+
+在官网上下载压缩包，在合适的位置解压缩，然后运行`bin`文件夹中对应sh文件即可。
+
+> 运行完毕后建议不要在移动文件夹，否则自动创建的快捷方式会失效，需要自行修改位置。
+
+
+## 查看端口占用情况
+
+```bash
+netstat -ap | grep <port>
+```
+
+使用过程中经常出现端口被占用导致无法启动程序的情况，只要使用此命令查看端口占用，然后使用`kill`杀死占用端口的进程即可
+
+## 查看运行中的进程
+
+```bash
+ps -aux
+```
+> 需要注意的是，只会显示当前用户开启的进程，如果想查看所有进程，需要添加`sudo`
+
+## 杀死某个僵死的进程
+
+```bash
+kill pid
+```
+
+> 在ZSH中输入`kill`然后敲击`tab`，会出现所有运行中的进程，输入名字即可自动转换为pid。
+
+## 开机自动挂载NTFS分区
+
+打开磁盘应用，选中自己想要自动挂载的NTFS分区，点击下方的设置-编辑挂载选项，然后勾选`启动时挂载`即可。
+
+## 安装英伟达私有驱动并进行双显卡切换
+
+安装英伟达的驱动有两种方法：
+
+- 执行`sudo apt-get install nvidia-<version>`
+- 在`附加驱动`中勾选NVIDIA闭源驱动
+
+这两种方法本质上是一样的，当前的最新版本号为352。
+安装完成后，在程序菜单中找到`NVIDIA X Server Setting`，然后在`PRIME Setting`中可以选择是使用`低能耗（Intel）`还是`高性能（NVIDIA）`模式。勾选完成后重启即可。
+
+> 按照程序的提示是只需要logout即可，但是我测试之后发现无法正常进入桌面，所以还是直接重启吧~
+
+## 转换MP3编码
+转换MP3编码可以使用`EasyTag`。
+```
+sudo apt-get install easytag
+```
+然后选择乱码的MP3，读取使用对应的语言，然后写入为`UTF-8`即可。
+
+## 在后台运行程序
+
+- `<command> &`：后台运行
+- `Ctrl+z`： 将命令转到后台并停止运行
+- `jobs`：查看后台运行的任务
+- `fg %<id>`：将后台任务调至前台运行
+- `bg %<id>`：让后台任务从停止状态转为运行状态用
+
+**注意，以上所有的后台任务在退出当前Shell时都会中断**，如果想在退出Shell或者SSH后，任务依然执行，可以使用下列命令：
+
+- `(<command> &)`：将命令使用括号包裹，使其在另一个shell中运行
+- `nohup <command> &`：在命令之前加`nohup`，使得命令不受中断信号影响
+
 
 
