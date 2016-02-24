@@ -42,8 +42,15 @@
 <li><a href="#_3">开机自启</a></li>
 </ul>
 </li>
-<li><a href="#ubuntucisco-anyconnent-vpn-todo">Ubuntu支持Cisco Anyconnent VPN [Todo]</a></li>
-<li><a href="#pycharm-todo">pycharm的安装 [Todo]</a></li>
+<li><a href="#ubuntucisco-anyconnent-vpn">Ubuntu支持Cisco Anyconnent VPN</a></li>
+<li><a href="#jetbrains">JetBrains开发工具的安装</a></li>
+<li><a href="#_4">查看端口占用情况</a></li>
+<li><a href="#_5">查看运行中的进程</a></li>
+<li><a href="#_6">杀死某个僵死的进程</a></li>
+<li><a href="#ntfs">开机自动挂载NTFS分区</a></li>
+<li><a href="#_7">安装英伟达私有驱动并进行双显卡切换</a></li>
+<li><a href="#mp3">转换MP3编码</a></li>
+<li><a href="#_8">在后台运行程序</a></li>
 </ul>
 </div>
 <h2 id="usrbinld-cannot-find-lxxx">解决/usr/bin/ld: cannot find -lxxx错误</h2>
@@ -119,9 +126,73 @@
 <blockquote>
 <p>如果发现没有正确自启，可以使用<code>systemctl status re.loacl.service -l</code>命令查看输出的信息。</p>
 </blockquote>
-<h2 id="ubuntucisco-anyconnent-vpn-todo">Ubuntu支持Cisco Anyconnent VPN [Todo]</h2>
-<p>openconnect</p>
-<h2 id="pycharm-todo">pycharm的安装 [Todo]</h2>
+<h2 id="ubuntucisco-anyconnent-vpn">Ubuntu支持Cisco Anyconnent VPN</h2>
+<p>由于Cisco的Anyconnect是一个私有的程序，只有在部署了Cisco VPN的地方才能够下载到相应的程序。因此我们可以转而使用开源的Openconnent：</p>
+<div class="hlcode"><pre><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">network</span><span class="o">-</span><span class="n">manager</span><span class="o">-</span><span class="n">openconnect</span><span class="o">-</span><span class="n">gnome</span>
+</pre></div>
+
+
+<p>安装完毕后，在网络管理器中添加网络-VPN，就能看到关于<code>Cisco Anyconnect兼容的VPN</code>选项。</p>
+<h2 id="jetbrains">JetBrains开发工具的安装</h2>
+<p>在官网上下载压缩包，在合适的位置解压缩，然后运行<code>bin</code>文件夹中对应sh文件即可。</p>
+<blockquote>
+<p>运行完毕后建议不要在移动文件夹，否则自动创建的快捷方式会失效，需要自行修改位置。</p>
+</blockquote>
+<h2 id="_4">查看端口占用情况</h2>
+<div class="hlcode"><pre>netstat -ap | grep &lt;port&gt;
+</pre></div>
+
+
+<p>使用过程中经常出现端口被占用导致无法启动程序的情况，只要使用此命令查看端口占用，然后使用<code>kill</code>杀死占用端口的进程即可</p>
+<h2 id="_5">查看运行中的进程</h2>
+<div class="hlcode"><pre>ps -aux
+</pre></div>
+
+
+<blockquote>
+<p>需要注意的是，只会显示当前用户开启的进程，如果想查看所有进程，需要添加<code>sudo</code></p>
+</blockquote>
+<h2 id="_6">杀死某个僵死的进程</h2>
+<div class="hlcode"><pre><span class="nb">kill </span>pid
+</pre></div>
+
+
+<blockquote>
+<p>在ZSH中输入<code>kill</code>然后敲击<code>tab</code>，会出现所有运行中的进程，输入名字即可自动转换为pid。</p>
+</blockquote>
+<h2 id="ntfs">开机自动挂载NTFS分区</h2>
+<p>打开磁盘应用，选中自己想要自动挂载的NTFS分区，点击下方的设置-编辑挂载选项，然后勾选<code>启动时挂载</code>即可。</p>
+<h2 id="_7">安装英伟达私有驱动并进行双显卡切换</h2>
+<p>安装英伟达的驱动有两种方法：</p>
+<ul>
+<li>执行<code>sudo apt-get install nvidia-&lt;version&gt;</code></li>
+<li>在<code>附加驱动</code>中勾选NVIDIA闭源驱动</li>
+</ul>
+<p>这两种方法本质上是一样的，当前的最新版本号为352。
+安装完成后，在程序菜单中找到<code>NVIDIA X Server Setting</code>，然后在<code>PRIME Setting</code>中可以选择是使用<code>低能耗（Intel）</code>还是<code>高性能（NVIDIA）</code>模式。勾选完成后重启即可。</p>
+<blockquote>
+<p>按照程序的提示是只需要logout即可，但是我测试之后发现无法正常进入桌面，所以还是直接重启吧~</p>
+</blockquote>
+<h2 id="mp3">转换MP3编码</h2>
+<p>转换MP3编码可以使用<code>EasyTag</code>。</p>
+<div class="hlcode"><pre><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">easytag</span>
+</pre></div>
+
+
+<p>然后选择乱码的MP3，读取使用对应的语言，然后写入为<code>UTF-8</code>即可。</p>
+<h2 id="_8">在后台运行程序</h2>
+<ul>
+<li><code>&lt;command&gt; &amp;</code>：后台运行</li>
+<li><code>Ctrl+z</code>： 将命令转到后台并停止运行</li>
+<li><code>jobs</code>：查看后台运行的任务</li>
+<li><code>fg %&lt;id&gt;</code>：将后台任务调至前台运行</li>
+<li><code>bg %&lt;id&gt;</code>：让后台任务从停止状态转为运行状态用</li>
+</ul>
+<p><strong>注意，以上所有的后台任务在退出当前Shell时都会中断</strong>，如果想在退出Shell或者SSH后，任务依然执行，可以使用下列命令：</p>
+<ul>
+<li><code>(&lt;command&gt; &amp;)</code>：将命令使用括号包裹，使其在另一个shell中运行</li>
+<li><code>nohup &lt;command&gt; &amp;</code>：在命令之前加<code>nohup</code>，使得命令不受中断信号影响</li>
+</ul>
     </div>
 
         </div>
