@@ -51,6 +51,7 @@
 <li><a href="#_7">安装英伟达私有驱动并进行双显卡切换</a></li>
 <li><a href="#mp3">转换MP3编码</a></li>
 <li><a href="#_8">在后台运行程序</a></li>
+<li><a href="#ssh">通过SSH传输文件</a></li>
 </ul>
 </div>
 <h2 id="usrbinld-cannot-find-lxxx">解决/usr/bin/ld: cannot find -lxxx错误</h2>
@@ -193,6 +194,13 @@
 <li><code>(&lt;command&gt; &amp;)</code>：将命令使用括号包裹，使其在另一个shell中运行</li>
 <li><code>nohup &lt;command&gt; &amp;</code>：在命令之前加<code>nohup</code>，使得命令不受中断信号影响</li>
 </ul>
+<h2 id="ssh">通过SSH传输文件</h2>
+<p>只需要使用scp命令：</p>
+<div class="hlcode"><pre>scp <span class="nb">source </span>target
+</pre></div>
+
+
+<p>这里的源和目标均支持文件和目录，如果复制的是一个目录，需要在scp后添加<code>-r</code>参数。</p>
     </div>
 
         </div>
