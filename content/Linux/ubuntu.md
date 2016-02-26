@@ -165,5 +165,14 @@ sudo apt-get install easytag
 - `(<command> &)`：将命令使用括号包裹，使其在另一个shell中运行
 - `nohup <command> &`：在命令之前加`nohup`，使得命令不受中断信号影响
 
+## 通过SSH传输文件
+
+只需要使用scp命令：
+
+```bash
+scp source target
+```
+
+这里的源和目标均支持文件和目录，如果复制的是一个目录，需要在scp后添加`-r`参数。
 
 
