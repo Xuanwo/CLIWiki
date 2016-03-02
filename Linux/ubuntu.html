@@ -52,6 +52,8 @@
 <li><a href="#mp3">转换MP3编码</a></li>
 <li><a href="#_8">在后台运行程序</a></li>
 <li><a href="#ssh">通过SSH传输文件</a></li>
+<li><a href="#ssh-agent">将密钥加入SSH-Agent</a></li>
+<li><a href="#_9">查看内核</a></li>
 </ul>
 </div>
 <h2 id="usrbinld-cannot-find-lxxx">解决/usr/bin/ld: cannot find -lxxx错误</h2>
@@ -201,6 +203,14 @@
 
 
 <p>这里的源和目标均支持文件和目录，如果复制的是一个目录，需要在scp后添加<code>-r</code>参数。</p>
+<h2 id="ssh-agent">将密钥加入SSH-Agent</h2>
+<div class="hlcode"><pre>ssh-add + &lt;private key&gt;
+</pre></div>
+
+
+<h2 id="_9">查看内核</h2>
+<div class="hlcode"><pre>uname -a
+</pre></div>
     </div>
 
         </div>
