@@ -175,4 +175,16 @@ scp source target
 
 这里的源和目标均支持文件和目录，如果复制的是一个目录，需要在scp后添加`-r`参数。
 
+## 将密钥加入SSH-Agent
+
+```bash
+ssh-add + <private key>
+```
+
+## 查看内核
+
+```bash
+uname -a
+```
+
 
