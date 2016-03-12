@@ -1,6 +1,6 @@
 ---
 title: "ubuntu"
-date: 2016-02-23 00:37
+date: 2016-03-12 15:57
 ---
 [TOC]
 
@@ -186,5 +186,68 @@ ssh-add + <private key>
 ```bash
 uname -a
 ```
+
+## 修改分屏分辨率
+
+执行如下命令，显示目前显示器支持的分辨率：
+```
+xrandr
+```
+结果如下：
+```
+Screen 0: minimum 8 x 8, current 3286 x 1080, maximum 32767 x 32767
+LVDS1 connected primary 1366x768+0+0 (normal left inverted right x axis y axis) 344mm x 194mm
+   1366x768      60.01*+
+   1360x768      59.80    59.96
+   1280x720      60.00  
+   1024x768      60.00  
+   1024x576      60.00  
+   960x540       60.00  
+   800x600       60.32    56.25  
+   864x486       60.00  
+   640x480       59.94  
+   720x405       60.00  
+   680x384       60.00  
+   640x360       60.00  
+DP1 disconnected (normal left inverted right x axis y axis)
+DP2 disconnected (normal left inverted right x axis y axis)
+HDMI1 disconnected (normal left inverted right x axis y axis)
+HDMI2 disconnected (normal left inverted right x axis y axis)
+VGA1 connected 1920x1080+1366+0 (normal left inverted right x axis y axis) 0mm x 0mm
+   1024x768      60.00  
+   800x600       60.32    56.25  
+   848x480       60.00  
+   640x480       59.94  
+VIRTUAL1 disconnected (normal left inverted right x axis y axis)
+```
+
+我们可以看到显示器目前是不支持1920x1080分辨率的，因此我们需要首先自行生成相关分辨率的配置参数：
+```
+cvt 1920 1080
+```
+输出如下：
+```
+# 1920x1080 59.96 Hz (CVT 2.07M9) hsync: 67.16 kHz; pclk: 173.00 MHz
+Modeline "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
+```
+
+然后新建显示模式并添加到配置列表中去：
+```
+sudo xrandr --newmode "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
+sudo xrandr --addmode VGA1 "1920x1080_60.00"
+```
+
+然后我们就可以设定显示屏的分辨率了：
+```
+xrandr --output VGA1 --mode 1920x1080_60.00
+```
+
+如果担心自己设定的分辨率不支持，可以再追加一个`sleep`命令以保证不会困在无效的分辨率下：
+
+```
+xrandr --output VGA1 --mode 1920x1080_60.00 && sleep 5
+```
+
+此配置仅在当前会话下生效，如果需要永久生效可以考虑修改`xorg.conf`或者设定一个开机执行的脚本。
 
 
