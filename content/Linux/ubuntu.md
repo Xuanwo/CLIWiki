@@ -199,25 +199,25 @@ Screen 0: minimum 8 x 8, current 3286 x 1080, maximum 32767 x 32767
 LVDS1 connected primary 1366x768+0+0 (normal left inverted right x axis y axis) 344mm x 194mm
    1366x768      60.01*+
    1360x768      59.80    59.96
-   1280x720      60.00  
-   1024x768      60.00  
-   1024x576      60.00  
-   960x540       60.00  
-   800x600       60.32    56.25  
-   864x486       60.00  
-   640x480       59.94  
-   720x405       60.00  
-   680x384       60.00  
-   640x360       60.00  
+   1280x720      60.00
+   1024x768      60.00
+   1024x576      60.00
+   960x540       60.00
+   800x600       60.32    56.25
+   864x486       60.00
+   640x480       59.94
+   720x405       60.00
+   680x384       60.00
+   640x360       60.00
 DP1 disconnected (normal left inverted right x axis y axis)
 DP2 disconnected (normal left inverted right x axis y axis)
 HDMI1 disconnected (normal left inverted right x axis y axis)
 HDMI2 disconnected (normal left inverted right x axis y axis)
 VGA1 connected 1920x1080+1366+0 (normal left inverted right x axis y axis) 0mm x 0mm
-   1024x768      60.00  
-   800x600       60.32    56.25  
-   848x480       60.00  
-   640x480       59.94  
+   1024x768      60.00
+   800x600       60.32    56.25
+   848x480       60.00
+   640x480       59.94
 VIRTUAL1 disconnected (normal left inverted right x axis y axis)
 ```
 
