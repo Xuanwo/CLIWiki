@@ -52,6 +52,7 @@
 <li><a href="#ssh">通过SSH传输文件</a></li>
 <li><a href="#ssh-agent">将密钥加入SSH-Agent</a></li>
 <li><a href="#_9">查看内核</a></li>
+<li><a href="#_10">修改分屏分辨率</a></li>
 </ul>
 </div>
 <h2 id="usrbinld-cannot-find-lxxx">解决/usr/bin/ld: cannot find -lxxx错误</h2>
@@ -209,6 +210,70 @@
 <h2 id="_9">查看内核</h2>
 <div class="hlcode"><pre>uname -a
 </pre></div>
+
+
+<h2 id="_10">修改分屏分辨率</h2>
+<p>执行如下命令，显示目前显示器支持的分辨率：</p>
+<div class="hlcode"><pre><span class="n">xrandr</span>
+</pre></div>
+
+
+<p>结果如下：</p>
+<div class="hlcode"><pre><span class="n">Screen</span> <span class="mi">0</span><span class="o">:</span> <span class="n">minimum</span> <span class="mi">8</span> <span class="n">x</span> <span class="mi">8</span><span class="p">,</span> <span class="n">current</span> <span class="mi">3286</span> <span class="n">x</span> <span class="mi">1080</span><span class="p">,</span> <span class="n">maximum</span> <span class="mi">32767</span> <span class="n">x</span> <span class="mi">32767</span>
+<span class="n">LVDS1</span> <span class="n">connected</span> <span class="n">primary</span> <span class="mi">1366</span><span class="n">x768</span><span class="o">+</span><span class="mi">0</span><span class="o">+</span><span class="mi">0</span> <span class="p">(</span><span class="n">normal</span> <span class="n">left</span> <span class="n">inverted</span> <span class="n">right</span> <span class="n">x</span> <span class="n">axis</span> <span class="n">y</span> <span class="n">axis</span><span class="p">)</span> <span class="mi">344</span><span class="n">mm</span> <span class="n">x</span> <span class="mi">194</span><span class="n">mm</span>
+   <span class="mi">1366</span><span class="n">x768</span>      <span class="mf">60.01</span><span class="o">*+</span>
+   <span class="mi">1360</span><span class="n">x768</span>      <span class="mf">59.80</span>    <span class="mf">59.96</span>
+   <span class="mi">1280</span><span class="n">x720</span>      <span class="mf">60.00</span>  
+   <span class="mi">1024</span><span class="n">x768</span>      <span class="mf">60.00</span>  
+   <span class="mi">1024</span><span class="n">x576</span>      <span class="mf">60.00</span>  
+   <span class="mi">960</span><span class="n">x540</span>       <span class="mf">60.00</span>  
+   <span class="mi">800</span><span class="n">x600</span>       <span class="mf">60.32</span>    <span class="mf">56.25</span>  
+   <span class="mi">864</span><span class="n">x486</span>       <span class="mf">60.00</span>  
+   <span class="mi">640</span><span class="n">x480</span>       <span class="mf">59.94</span>  
+   <span class="mi">720</span><span class="n">x405</span>       <span class="mf">60.00</span>  
+   <span class="mi">680</span><span class="n">x384</span>       <span class="mf">60.00</span>  
+   <span class="mi">640</span><span class="n">x360</span>       <span class="mf">60.00</span>  
+<span class="n">DP1</span> <span class="n">disconnected</span> <span class="p">(</span><span class="n">normal</span> <span class="n">left</span> <span class="n">inverted</span> <span class="n">right</span> <span class="n">x</span> <span class="n">axis</span> <span class="n">y</span> <span class="n">axis</span><span class="p">)</span>
+<span class="n">DP2</span> <span class="n">disconnected</span> <span class="p">(</span><span class="n">normal</span> <span class="n">left</span> <span class="n">inverted</span> <span class="n">right</span> <span class="n">x</span> <span class="n">axis</span> <span class="n">y</span> <span class="n">axis</span><span class="p">)</span>
+<span class="n">HDMI1</span> <span class="n">disconnected</span> <span class="p">(</span><span class="n">normal</span> <span class="n">left</span> <span class="n">inverted</span> <span class="n">right</span> <span class="n">x</span> <span class="n">axis</span> <span class="n">y</span> <span class="n">axis</span><span class="p">)</span>
+<span class="n">HDMI2</span> <span class="n">disconnected</span> <span class="p">(</span><span class="n">normal</span> <span class="n">left</span> <span class="n">inverted</span> <span class="n">right</span> <span class="n">x</span> <span class="n">axis</span> <span class="n">y</span> <span class="n">axis</span><span class="p">)</span>
+<span class="n">VGA1</span> <span class="n">connected</span> <span class="mi">1920</span><span class="n">x1080</span><span class="o">+</span><span class="mi">1366</span><span class="o">+</span><span class="mi">0</span> <span class="p">(</span><span class="n">normal</span> <span class="n">left</span> <span class="n">inverted</span> <span class="n">right</span> <span class="n">x</span> <span class="n">axis</span> <span class="n">y</span> <span class="n">axis</span><span class="p">)</span> <span class="mi">0</span><span class="n">mm</span> <span class="n">x</span> <span class="mi">0</span><span class="n">mm</span>
+   <span class="mi">1024</span><span class="n">x768</span>      <span class="mf">60.00</span>  
+   <span class="mi">800</span><span class="n">x600</span>       <span class="mf">60.32</span>    <span class="mf">56.25</span>  
+   <span class="mi">848</span><span class="n">x480</span>       <span class="mf">60.00</span>  
+   <span class="mi">640</span><span class="n">x480</span>       <span class="mf">59.94</span>  
+<span class="n">VIRTUAL1</span> <span class="n">disconnected</span> <span class="p">(</span><span class="n">normal</span> <span class="n">left</span> <span class="n">inverted</span> <span class="n">right</span> <span class="n">x</span> <span class="n">axis</span> <span class="n">y</span> <span class="n">axis</span><span class="p">)</span>
+</pre></div>
+
+
+<p>我们可以看到显示器目前是不支持1920x1080分辨率的，因此我们需要首先自行生成相关分辨率的配置参数：</p>
+<div class="hlcode"><pre><span class="n">cvt</span> <span class="mi">1920</span> <span class="mi">1080</span>
+</pre></div>
+
+
+<p>输出如下：</p>
+<div class="hlcode"><pre><span class="cp"># 1920x1080 59.96 Hz (CVT 2.07M9) hsync: 67.16 kHz; pclk: 173.00 MHz</span>
+<span class="n">Modeline</span> <span class="s">&quot;1920x1080_60.00&quot;</span>  <span class="mf">173.00</span>  <span class="mi">1920</span> <span class="mi">2048</span> <span class="mi">2248</span> <span class="mi">2576</span>  <span class="mi">1080</span> <span class="mi">1083</span> <span class="mi">1088</span> <span class="mi">1120</span> <span class="o">-</span><span class="n">hsync</span> <span class="o">+</span><span class="n">vsync</span>
+</pre></div>
+
+
+<p>然后新建显示模式并添加到配置列表中去：</p>
+<div class="hlcode"><pre><span class="n">sudo</span> <span class="n">xrandr</span> <span class="o">--</span><span class="n">newmode</span> <span class="s">&quot;1920x1080_60.00&quot;</span>  <span class="mf">173.00</span>  <span class="mi">1920</span> <span class="mi">2048</span> <span class="mi">2248</span> <span class="mi">2576</span>  <span class="mi">1080</span> <span class="mi">1083</span> <span class="mi">1088</span> <span class="mi">1120</span> <span class="o">-</span><span class="n">hsync</span> <span class="o">+</span><span class="n">vsync</span>
+<span class="n">sudo</span> <span class="n">xrandr</span> <span class="o">--</span><span class="n">addmode</span> <span class="n">VGA1</span> <span class="s">&quot;1920x1080_60.00&quot;</span>
+</pre></div>
+
+
+<p>然后我们就可以设定显示屏的分辨率了：</p>
+<div class="hlcode"><pre><span class="n">xrandr</span> <span class="o">--</span><span class="n">output</span> <span class="n">VGA1</span> <span class="o">--</span><span class="n">mode</span> <span class="mi">1920</span><span class="n">x1080_60</span><span class="mf">.00</span>
+</pre></div>
+
+
+<p>如果担心自己设定的分辨率不支持，可以再追加一个<code>sleep</code>命令以保证不会困在无效的分辨率下：</p>
+<div class="hlcode"><pre><span class="n">xrandr</span> <span class="o">--</span><span class="n">output</span> <span class="n">VGA1</span> <span class="o">--</span><span class="n">mode</span> <span class="mi">1920</span><span class="n">x1080_60</span><span class="mf">.00</span> <span class="o">&amp;&amp;</span> <span class="n">sleep</span> <span class="mi">5</span>
+</pre></div>
+
+
+<p>此配置仅在当前会话下生效，如果需要永久生效可以考虑修改<code>xorg.conf</code>或者设定一个开机执行的脚本。</p>
     </div>
 
         </div>
