@@ -1,6 +1,6 @@
 ---
 title: "gnome"
-date: 2016-02-23 00:19
+date: 2016-03-12 15:46
 ---
 [TOC]
 
@@ -15,6 +15,7 @@ date: 2016-02-23 00:19
 
 有时候会出现快捷链接方式错误的现象，这个需要进入`/usr/share/applications`文件夹寻找对应的`.desktop`文件来修改。
 `.desktop`文件只是一个文本文档，大致内容如下：
+
 ```
 [Desktop Entry]
 Version=1.0
@@ -30,4 +31,8 @@ StartupWMClass=jetbrains-pycharm
 
 只需要按照正确的地址修改链接即可~
 
+## 桌面快捷方式位置
+
+桌面快捷方式文件放置于/usr/share/applications或者~/.local/share/applications处。
+前一个目录存储的桌面快捷方式每个用户都可以使用，而后一个目录则含有仅仅为特定用户创建的快捷方式。
 
