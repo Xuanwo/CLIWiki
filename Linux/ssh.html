@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>ssh - CLI cookbook</title>
+        <meta name="keywords" content="wiki, makrdown, linux, CLI, cookbook"/>
+        <meta name="description" content="CLI cookbook"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<script type="text/javascript">
+			var CONFIG = {
+			analytics: {
+				google: 'UA-51515330-3'
+			}
+		};
+</script>
+    </head>
+
+    <body>
+    <a href="https://github.com/Xuanwo/CLIWiki"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/static/images/fork.png" alt="Fork me on GitHub" data-canonical-src="/static/images/forkme_right_gray_6d6d6d.png"></a>
+        <div id="container">
+            
+    <div id="header">
+        <div id="post-nav">
+            
+            <a href="/">Home</a> » <a href="/#Linux">Linux</a> » ssh
+            
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="title">ssh</div>
+    <div id="content">
+        <div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#ssh">防止SSH掉线</a></li>
+</ul>
+</div>
+<h2 id="ssh">防止SSH掉线</h2>
+<p>打开<code>ssh</code>配置文件：</p>
+<div class="hlcode"><pre><span class="n">sudo</span> <span class="n">vim</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ssh</span><span class="o">/</span><span class="n">ssh_config</span>
+</pre></div>
+
+
+<p>在文件中添加如下两行：</p>
+<div class="hlcode"><pre><span class="n">ServerAliveInterval</span> <span class="mi">20</span>
+<span class="n">ServerAliveCountMax</span> <span class="mi">999</span>
+</pre></div>
+    </div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © 2015-2016 Xuanwo.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+		<script type="text/javascript" src="/static/js/analytics_google-analytics.js"></script>
+    </body>
+</html>
