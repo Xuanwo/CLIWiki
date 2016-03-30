@@ -1,6 +1,6 @@
 ---
 title: "python"
-date: 2016-2-5 22:15:47
+date: 2016-03-30 10:37 
 ---
 [TOC]
 
@@ -179,3 +179,10 @@ abc+def
 ```
 
 字符串逆序只需要使用切片的小技巧即可
+
+## 上传wheel分发包
+
+```python
+python setup.py bdist_wheel upload
+```
+
