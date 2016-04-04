@@ -261,3 +261,13 @@ Ubuntu非常令人讨厌的一点就是时不时弹出的错误报告，又不�
 sudo apt-get purge apport*
 ```
 
+## 修改网卡的物理地址
+
+在某些需要网卡物理地址和IP绑定的情形下，会有需要修改网卡物理地址的需求，可以通过如下命令进行修改：
+
+```bash
+sudo ifconfig enp5s0 down
+sudo ifconfig enp5s0 hw ether XX:XX:XX:XX:XX:XX
+sudo ifconfig enp5s0 up
+```
+
