@@ -54,6 +54,7 @@
 <li><a href="#_9">查看内核</a></li>
 <li><a href="#_10">修改分屏分辨率</a></li>
 <li><a href="#_11">去除恼人的错误报告提示</a></li>
+<li><a href="#_12">修改网卡的物理地址</a></li>
 </ul>
 </div>
 <h2 id="usrbinld-cannot-find-lxxx">解决/usr/bin/ld: cannot find -lxxx错误</h2>
@@ -282,6 +283,14 @@
 <h2 id="_11">去除恼人的错误报告提示</h2>
 <p>Ubuntu非常令人讨厌的一点就是时不时弹出的错误报告，又不能给出有效的诊断信息，还总是打乱自己当前正在运行的全屏程序，使用下列命令可以去除这个错误报告提示：</p>
 <div class="hlcode"><pre><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">purge</span> <span class="n">apport</span><span class="o">*</span>
+</pre></div>
+
+
+<h2 id="_12">修改网卡的物理地址</h2>
+<p>在某些需要网卡物理地址和IP绑定的情形下，会有需要修改网卡物理地址的需求，可以通过如下命令进行修改：</p>
+<div class="hlcode"><pre>sudo ifconfig enp5s0 down
+sudo ifconfig enp5s0 hw ether XX:XX:XX:XX:XX:XX
+sudo ifconfig enp5s0 up
 </pre></div>
     </div>
 
