@@ -32,6 +32,7 @@
     <div id="content">
         <div class="toc"><span class="toctitle">Table of Contents</span><ul>
 <li><a href="#_1">设置不显示自己的用户名信息</a></li>
+<li><a href="#mac-os-x">解决 Mac OS X 安装时提示“系统在安装或下载时已破坏或篡改”</a></li>
 </ul>
 </div>
 <h2 id="_1">设置不显示自己的用户名信息</h2>
@@ -41,6 +42,14 @@
 
 
 <p>开启终端后就不会显示自己的用户名信息。</p>
+<h2 id="mac-os-x">解决 Mac OS X 安装时提示“系统在安装或下载时已破坏或篡改”</h2>
+<p>打包时系统内置的密钥在安装时已过期，故安装工具会提示“系统在安装或下载时已破坏或篡改”，可以通过命令行工具修复：</p>
+<p>打开<code>实用工具 -&gt; 终端</code>，输入：</p>
+<div class="hlcode"><pre><span class="n">date</span> <span class="mf">122014102015.30</span> <span class="err">＃</span> <span class="err">打包时间，</span><span class="mi">12</span><span class="err">是月，</span><span class="mi">20</span><span class="err">是日，</span><span class="mi">14</span><span class="err">是时，</span><span class="mi">10</span><span class="err">是分，</span><span class="mi">2015</span><span class="err">是年，</span><span class="mi">30</span><span class="err">是秒</span>
+</pre></div>
+
+
+<p>以上为示例，具体使用时请询问打包者真实的打包时间</p>
     </div>
 
         </div>
