@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>sh - CLI cookbook</title>
+        <meta name="keywords" content="wiki, makrdown, linux, CLI, cookbook"/>
+        <meta name="description" content="CLI cookbook"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<script type="text/javascript">
+			var CONFIG = {
+			analytics: {
+				google: 'UA-51515330-3'
+			}
+		};
+</script>
+    </head>
+
+    <body>
+    <a href="https://github.com/Xuanwo/CLIWiki"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/static/images/fork.png" alt="Fork me on GitHub" data-canonical-src="/static/images/forkme_right_gray_6d6d6d.png"></a>
+        <div id="container">
+            
+    <div id="header">
+        <div id="post-nav">
+            
+            <a href="/">Home</a> » <a href="/#Linux">Linux</a> » sh
+            
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="title">sh</div>
+    <div id="content">
+        <div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#chgrp">改变所属群组, chgrp</a></li>
+<li><a href="#chown">改变文件拥有者, chown</a></li>
+<li><a href="#chmod">改变权限, chmod</a><ul>
+<li><a href="#_1">数字形式修改权限</a></li>
+<li><a href="#_2">字母形式修改权限</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="chgrp">改变所属群组, chgrp</h2>
+<div class="hlcode"><pre><span class="n">chgrp</span> <span class="p">[</span><span class="o">-</span><span class="n">R</span><span class="p">]</span> <span class="n">dirname</span><span class="o">/</span><span class="n">filename</span> <span class="p">...</span>
+</pre></div>
+
+
+<p><code>-R</code> : 意为递归修改</p>
+<h2 id="chown">改变文件拥有者, chown</h2>
+<div class="hlcode"><pre><span class="n">chown</span> <span class="p">[</span><span class="o">-</span><span class="n">R</span><span class="p">]</span> <span class="err">账号名称</span> <span class="err">文件或目录</span>
+<span class="n">chown</span> <span class="p">[</span><span class="o">-</span><span class="n">R</span><span class="p">]</span> <span class="err">账号名称</span><span class="o">:</span><span class="err">组名</span> <span class="err">文件或目录</span>
+</pre></div>
+
+
+<p><code>-R</code> : 意为递归修改</p>
+<p>可以同时修改文件所有者和所属群组</p>
+<h2 id="chmod">改变权限, chmod</h2>
+<p>Linux文件的基本权限就有九个，分别是owner/group/others三种身份各有自己的read/write/execute权限。</p>
+<h3 id="_1">数字形式修改权限</h3>
+<p>我们可以使用数字来代表各个权限，各权限的分数对照表如下：
+|权限|对应数字|
+|-|-|
+|<code>r</code>|<code>4</code>|
+|<code>w</code>|<code>2</code>|
+|<code>x</code>|<code>1</code>|</p>
+<p>每种身份(owner/group/others)各自的三个权限(r/w/x)分数是需要累加的，例如当权限为： <code>[-rwxrwx---]</code> 分数则是：</p>
+<p>owner = rwx = 4+2+1 = 7
+group = rwx = 4+2+1 = 7
+others= --- = 0+0+0 = 0</p>
+<p>变更文件权限的命令为：</p>
+<div class="hlcode"><pre><span class="n">chmod</span> <span class="p">[</span><span class="o">-</span><span class="n">R</span><span class="p">]</span> <span class="n">xyz</span> <span class="err">文件或目录</span>
+</pre></div>
+
+
+<h3 id="_2">字母形式修改权限</h3>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用户类型</th>
+<th>修改操作</th>
+<th>权限类型</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>chmod</td>
+<td>u<br>g<br>o<br>a</td>
+<td>+(加入)<br>-(除去)<br>=(设定)</td>
+<td>r<br>w<br>x</td>
+<td>文件或目录</td>
+</tr>
+</tbody>
+</table>
+<p>样例：</p>
+<div class="hlcode"><pre><span class="n">chmod</span>  <span class="n">u</span><span class="o">=</span><span class="n">rwx</span><span class="p">,</span><span class="n">go</span><span class="o">=</span><span class="n">rx</span>  <span class="p">.</span><span class="n">bashrc</span>
+<span class="cp"># -rwxr-xr-x .bashrc</span>
+<span class="n">chmod</span>  <span class="n">a</span><span class="o">+</span><span class="n">w</span>  <span class="p">.</span><span class="n">bashrc</span>
+<span class="cp"># -rwxrwxrwx .bashrc</span>
+</pre></div>
+    </div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © 2015-2016 Xuanwo.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+		<script type="text/javascript" src="/static/js/analytics_google-analytics.js"></script>
+    </body>
+</html>
