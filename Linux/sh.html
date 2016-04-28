@@ -57,16 +57,33 @@
 <h2 id="chmod">改变权限, chmod</h2>
 <p>Linux文件的基本权限就有九个，分别是owner/group/others三种身份各有自己的read/write/execute权限。</p>
 <h3 id="_1">数字形式修改权限</h3>
-<p>我们可以使用数字来代表各个权限，各权限的分数对照表如下：
-|权限|对应数字|
-|-|-|
-|<code>r</code>|<code>4</code>|
-|<code>w</code>|<code>2</code>|
-|<code>x</code>|<code>1</code>|</p>
+<p>我们可以使用数字来代表各个权限，各权限的分数对照表如下：</p>
+<table>
+<thead>
+<tr>
+<th>权限</th>
+<th>对应数字</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r</td>
+<td>4</td>
+</tr>
+<tr>
+<td>w</td>
+<td>2</td>
+</tr>
+<tr>
+<td>x</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
 <p>每种身份(owner/group/others)各自的三个权限(r/w/x)分数是需要累加的，例如当权限为： <code>[-rwxrwx---]</code> 分数则是：</p>
-<p>owner = rwx = 4+2+1 = 7
-group = rwx = 4+2+1 = 7
-others= --- = 0+0+0 = 0</p>
+<p>owner = rwx = 4+2+1 = 7</p>
+<p>group = rwx = 4+2+1 = 7</p>
+<p>others= --- = 0+0+0 = 0</p>
 <p>变更文件权限的命令为：</p>
 <div class="hlcode"><pre><span class="n">chmod</span> <span class="p">[</span><span class="o">-</span><span class="n">R</span><span class="p">]</span> <span class="n">xyz</span> <span class="err">文件或目录</span>
 </pre></div>
