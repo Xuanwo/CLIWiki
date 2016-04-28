@@ -33,6 +33,12 @@
         <div class="toc"><span class="toctitle">Table of Contents</span><ul>
 <li><a href="#_1">使用代理访问</a></li>
 <li><a href="#_2">获取网页源码并保存</a></li>
+<li><a href="#_3">支持网页自动跳转</a></li>
+<li><a href="#_4">发送表单信息</a><ul>
+<li><a href="#get">GET</a></li>
+<li><a href="#post">POST</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <h2 id="_1">使用代理访问</h2>
@@ -53,6 +59,29 @@
 <ul>
 <li><code>-o</code> : 指定输出文件</li>
 </ul>
+<h2 id="_3">支持网页自动跳转</h2>
+<p>有的网址是自动跳转的。使用<code>-L</code>参数，curl就会跳转到新的网址。</p>
+<div class="hlcode"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">L</span> <span class="n">www</span><span class="p">.</span><span class="n">google</span><span class="p">.</span><span class="n">com</span>
+</pre></div>
+
+
+<p>使用上述命令会自动跳转到 https://www.google.com/?gws_rd=ssl</p>
+<h2 id="_4">发送表单信息</h2>
+<h3 id="get">GET</h3>
+<p>GET只需要直接curl带有数据的网址即可。</p>
+<div class="hlcode"><pre><span class="n">curl</span> <span class="n">example</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">form</span><span class="p">.</span><span class="n">cgi</span><span class="o">?</span><span class="n">data</span><span class="o">=</span><span class="n">xxx</span>
+</pre></div>
+
+
+<h3 id="post">POST</h3>
+<p>POST则需要使用POST动词再加上<code>--data</code>参数</p>
+<div class="hlcode"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s">&quot;data=xxx&quot;</span> <span class="n">example</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">form</span><span class="p">.</span><span class="n">cgi</span>
+</pre></div>
+
+
+<p>还可以让curl进行urlencode编码：</p>
+<div class="hlcode"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span><span class="o">--</span><span class="n">data</span><span class="o">-</span><span class="n">urlencode</span> <span class="s">&quot;date=April 1&quot;</span> <span class="n">example</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">form</span><span class="p">.</span><span class="n">cgi</span>
+</pre></div>
     </div>
 
         </div>
