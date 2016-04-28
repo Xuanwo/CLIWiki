@@ -39,6 +39,7 @@
 <li><a href="#post">POST</a></li>
 </ul>
 </li>
+<li><a href="#header">修改header信息</a></li>
 </ul>
 </div>
 <h2 id="_1">使用代理访问</h2>
@@ -82,6 +83,15 @@
 <p>还可以让curl进行urlencode编码：</p>
 <div class="hlcode"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span><span class="o">--</span><span class="n">data</span><span class="o">-</span><span class="n">urlencode</span> <span class="s">&quot;date=April 1&quot;</span> <span class="n">example</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">form</span><span class="p">.</span><span class="n">cgi</span>
 </pre></div>
+
+
+<h2 id="header">修改header信息</h2>
+<p>有时需要在http request之中，自行增加一个头信息。</p>
+<div class="hlcode"><pre><span class="n">curl</span> <span class="o">--</span><span class="n">header</span> <span class="s">&quot;Content-Type:application/json&quot;</span> <span class="n">http</span><span class="o">:</span><span class="c1">//example.com</span>
+</pre></div>
+
+
+<p>搭配发送POST使用则可以实现向指定网址发送json的效果</p>
     </div>
 
         </div>
