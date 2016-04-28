@@ -58,4 +58,14 @@ curl -X POST --data "data=xxx" example.com/form.cgi
 curl -X POST--data-urlencode "date=April 1" example.com/form.cgi
 ```
 
+## 修改header信息
+
+有时需要在http request之中，自行增加一个头信息。
+
+```
+curl --header "Content-Type:application/json" http://example.com
+```
+
+搭配发送POST使用则可以实现向指定网址发送json的效果
+
 
