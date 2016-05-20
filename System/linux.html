@@ -70,6 +70,7 @@
 <li><a href="#_18">修改分屏分辨率</a></li>
 <li><a href="#_19">去除恼人的错误报告提示</a></li>
 <li><a href="#_20">修改网卡的物理地址</a></li>
+<li><a href="#fuse">目录下有.fuse开头的隐藏文件</a></li>
 </ul>
 </div>
 <h2 id="chgrp">改变所属群组, chgrp</h2>
@@ -194,8 +195,8 @@
 </ul>
 <h2 id="_4">修改快捷链接</h2>
 <p><strong>适用于 Gnome 3.14</strong></p>
-<p>有时候会出现快捷链接方式错误的现象，这个需要进入<code>/usr/share/applications</code>文件夹寻找对应的<code>.desktop</code>文件来修改。
-<code>.desktop</code>文件只是一个文本文档，大致内容如下：</p>
+<p>有时候会出现快捷链接方式错误的现象，这个需要进入<code>/usr/share/applications</code>文件夹寻找对应的<code>.desktop</code>文件来修改。</p>
+<p><code>.desktop</code>文件只是一个文本文档，大致内容如下：</p>
 <div class="hlcode"><pre><span class="k">[Desktop Entry]</span>
 <span class="na">Version</span><span class="o">=</span><span class="s">1.0</span>
 <span class="na">Type</span><span class="o">=</span><span class="s">Application</span>
@@ -464,6 +465,20 @@
 sudo ifconfig enp5s0 hw ether XX:XX:XX:XX:XX:XX
 sudo ifconfig enp5s0 up
 </pre></div>
+
+
+<h2 id="fuse">目录下有.fuse开头的隐藏文件</h2>
+<p><code>.fuse_hiddenXXXX</code>的隐藏文件表示当前目录正在被某个程序使用，如果需要删除当前文件夹，可以使用</p>
+<div class="hlcode"><pre><span class="n">lsof</span> <span class="o">/</span><span class="n">just</span><span class="o">/</span><span class="n">the</span><span class="o">/</span><span class="n">directory</span><span class="o">/</span><span class="n">path</span>
+</pre></div>
+
+
+<p>来查看当前目录的使用情况，使用</p>
+<div class="hlcode"><pre><span class="n">kill</span> <span class="n">PID</span>
+</pre></div>
+
+
+<p>来关闭占用当前目录的程序即可。</p>
     </div>
 
         </div>
