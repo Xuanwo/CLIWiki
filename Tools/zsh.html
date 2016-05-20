@@ -3,7 +3,7 @@
     <head>
         <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
         <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
-        <title>fedora - CLI cookbook</title>
+        <title>zsh - CLI cookbook</title>
         <meta name="keywords" content="wiki, makrdown, linux, CLI, cookbook"/>
         <meta name="description" content="CLI cookbook"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -23,47 +23,24 @@
     <div id="header">
         <div id="post-nav">
             
-            <a href="/">Home</a> » <a href="/#Linux">Linux</a> » fedora
+            <a href="/">Home</a> » <a href="/#Tools">Tools</a> » zsh
             
         </div>
     </div>
     <div class="clearfix"></div>
-    <div id="title">fedora</div>
+    <div id="title">zsh</div>
     <div id="content">
         <div class="toc"><span class="toctitle">Table of Contents</span><ul>
-<li><a href="#bcm43142">安装博通 BCM43142 网卡驱动</a></li>
+<li><a href="#_1">设置不显示自己的用户名信息</a></li>
 </ul>
 </div>
-<h2 id="bcm43142">安装博通 BCM43142 网卡驱动</h2>
-<blockquote>
-<p>首先应当确认自己的网卡型号： <code>lspci | grep Network</code>
-如果后面的芯片型号包括 BCM4312，BCM43142 等可以应用本教程</p>
-</blockquote>
-<p>首先需要添加 RPMFusion 以支持添加更多软件来源：</p>
-<p>Fedora 22 and later:</p>
-<div class="hlcode"><pre>su -c <span class="s1">&#39;dnf install http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm&#39;</span>
+<h2 id="_1">设置不显示自己的用户名信息</h2>
+<p>只需要在<code>.zshrc</code>中添加设置：</p>
+<div class="hlcode"><pre><span class="n">DEFAULT_USER</span><span class="o">=&lt;</span><span class="nx">username</span><span class="o">&gt;</span>
 </pre></div>
 
 
-<p>更多版本请参见： http://rpmfusion.org/Configuration</p>
-<p>然后执行下列命令以安装需要的包：</p>
-<div class="hlcode"><pre>sudo dnf install kernel-devel akmod-wl 
-</pre></div>
-
-
-<p>然后执行下列命令以重新编译内核模块：</p>
-<div class="hlcode"><pre>sudo akmods
-</pre></div>
-
-
-<p>然后执行下列命令以加载内核代码：</p>
-<div class="hlcode"><pre>sudo modprobe wl
-</pre></div>
-
-
-<p>最后重启网络管理器：</p>
-<div class="hlcode"><pre>sudo systemctl restart NetworkManager
-</pre></div>
+<p>开启终端后就不会显示自己的用户名信息。</p>
     </div>
 
         </div>

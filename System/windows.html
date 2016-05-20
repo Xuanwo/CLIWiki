@@ -3,7 +3,7 @@
     <head>
         <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
         <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
-        <title>cmd - CLI cookbook</title>
+        <title>windows - CLI cookbook</title>
         <meta name="keywords" content="wiki, makrdown, linux, CLI, cookbook"/>
         <meta name="description" content="CLI cookbook"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -23,19 +23,14 @@
     <div id="header">
         <div id="post-nav">
             
-            <a href="/">Home</a> » <a href="/#Windows">Windows</a> » cmd
+            <a href="/">Home</a> » <a href="/#System">System</a> » windows
             
         </div>
     </div>
     <div class="clearfix"></div>
-    <div id="title">cmd</div>
+    <div id="title">windows</div>
     <div id="content">
-        <div class="toc"><span class="toctitle">Table of Contents</span><ul>
-<li><a href="#hostsdns">修改Hosts之后更新DNS缓存</a></li>
-<li><a href="#_1">删除无法删除的文件夹/文件</a></li>
-</ul>
-</div>
-<h2 id="hostsdns">修改Hosts之后更新DNS缓存</h2>
+        <h2 id="hostsdns">修改Hosts之后更新DNS缓存</h2>
 <div class="hlcode"><pre><span class="n">ipconfig</span> <span class="o">/</span><span class="n">flushdns</span>
 <span class="n">ipconfig</span> <span class="o">/</span><span class="n">renew</span>
 <span class="n">ipconfig</span> <span class="o">/</span><span class="n">registerdns</span>  <span class="err">#</span> <span class="err">此命令需要管理员权限</span>
@@ -46,6 +41,12 @@
 <div class="hlcode"><pre><span class="cp"># 建议使用管理员权限</span>
 <span class="n">rd</span> <span class="o">/</span><span class="n">s</span><span class="o">/</span><span class="n">q</span> <span class="err">盘符</span><span class="o">:</span><span class="err">\某个文件夹</span>
 <span class="n">del</span> <span class="o">/</span><span class="n">f</span><span class="o">/</span><span class="n">s</span><span class="o">/</span><span class="n">q</span> <span class="err">盘符</span><span class="o">:</span><span class="err">\文件名</span>
+</pre></div>
+
+
+<h2 id="ps1">允许系统执行ps1脚本</h2>
+<p>在 Powershell 中执行</p>
+<div class="hlcode"><pre><span class="nb">Set-ExecutionPolicy</span> <span class="n">-ExecutionPolicy</span> <span class="n">UNRESTRICTED</span>
 </pre></div>
     </div>
 

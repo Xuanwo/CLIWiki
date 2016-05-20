@@ -3,7 +3,7 @@
     <head>
         <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
         <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
-        <title>powershell - CLI cookbook</title>
+        <title>ssh - CLI cookbook</title>
         <meta name="keywords" content="wiki, makrdown, linux, CLI, cookbook"/>
         <meta name="description" content="CLI cookbook"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -23,19 +23,35 @@
     <div id="header">
         <div id="post-nav">
             
-            <a href="/">Home</a> » <a href="/#Windows">Windows</a> » powershell
+            <a href="/">Home</a> » <a href="/#Tools">Tools</a> » ssh
             
         </div>
     </div>
     <div class="clearfix"></div>
-    <div id="title">powershell</div>
+    <div id="title">ssh</div>
     <div id="content">
         <div class="toc"><span class="toctitle">Table of Contents</span><ul>
-<li><a href="#ps1">允许系统执行ps1脚本</a></li>
+<li><a href="#ssh">防止SSH掉线</a></li>
+<li><a href="#ssh_1">修复SSH中文方块（乱码）</a></li>
 </ul>
 </div>
-<h2 id="ps1">允许系统执行ps1脚本</h2>
-<div class="hlcode"><pre><span class="nb">Set-ExecutionPolicy</span> <span class="n">-ExecutionPolicy</span> <span class="n">UNRESTRICTED</span>
+<h2 id="ssh">防止SSH掉线</h2>
+<p>打开<code>ssh</code>配置文件：</p>
+<div class="hlcode"><pre>sudo vim /etc/ssh/ssh_config
+</pre></div>
+
+
+<p>在文件中添加如下两行：</p>
+<div class="hlcode"><pre><span class="n">ServerAliveInterval</span> <span class="mi">20</span>
+<span class="n">ServerAliveCountMax</span> <span class="mi">999</span>
+</pre></div>
+
+
+<h2 id="ssh_1">修复SSH中文方块（乱码）</h2>
+<p>SSH会将当前Shell中的语言设定传递过去，如果服务器端没有安装对应的语言，就会出现中文字块等现象。</p>
+<p>在Shell中执行：</p>
+<div class="hlcode"><pre><span class="nb">export </span><span class="nv">LC_ALL</span><span class="o">=</span>en_US.UTF-8
+<span class="nb">export </span><span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8
 </pre></div>
     </div>
 
