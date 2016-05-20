@@ -1,8 +1,7 @@
 ---
-title: "cmd"
-date: 2015-11-19 19:02:09
+title: "windows"
+date: 2016-5-20 15:01:00
 ---
-[TOC]
 
 ## 修改Hosts之后更新DNS缓存
 
@@ -19,3 +18,12 @@ ipconfig /registerdns  # 此命令需要管理员权限
 rd /s/q 盘符:\某个文件夹
 del /f/s/q 盘符:\文件名
 ```
+
+## 允许系统执行ps1脚本
+
+在 Powershell 中执行
+
+``` powershell
+Set-ExecutionPolicy -ExecutionPolicy UNRESTRICTED
+```
+
