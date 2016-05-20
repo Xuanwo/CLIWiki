@@ -126,6 +126,7 @@ sudo systemctl restart NetworkManager
 **适用于 Gnome 3.14**
 
 有时候会出现快捷链接方式错误的现象，这个需要进入`/usr/share/applications`文件夹寻找对应的`.desktop`文件来修改。
+
 `.desktop`文件只是一个文本文档，大致内容如下：
 
 ```
@@ -448,5 +449,21 @@ sudo ifconfig enp5s0 down
 sudo ifconfig enp5s0 hw ether XX:XX:XX:XX:XX:XX
 sudo ifconfig enp5s0 up
 ```
+
+## 目录下有.fuse开头的隐藏文件
+
+`.fuse_hiddenXXXX`的隐藏文件表示当前目录正在被某个程序使用，如果需要删除当前文件夹，可以使用
+
+```
+lsof /just/the/directory/path
+```
+
+来查看当前目录的使用情况，使用
+
+```
+kill PID
+```
+
+来关闭占用当前目录的程序即可。
 
 
