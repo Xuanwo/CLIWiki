@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>curl - CLI cookbook</title>
+        <meta name="keywords" content="wiki, makrdown, linux, CLI, cookbook"/>
+        <meta name="description" content="CLI cookbook"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-51515330-3', 'auto');
+			ga('send', 'pageview');
+		</script>
+    </head>
+
+    <body>
+    <a href="https://github.com/Xuanwo/CLIWiki"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/static/images/fork.png" alt="Fork me on GitHub" data-canonical-src="/static/images/forkme_right_gray_6d6d6d.png"></a>
+        <div id="container">
+            
+    <div id="header">
+        <div id="post-nav">
+            
+            <a href="/">Home</a> » <a href="/#Tools">Tools</a> » curl
+            
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="title">curl</div>
+    <div id="content">
+        <div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#_1">使用代理访问</a></li>
+<li><a href="#_2">获取网页源码并保存</a></li>
+<li><a href="#_3">支持网页自动跳转</a></li>
+<li><a href="#_4">发送表单信息</a><ul>
+<li><a href="#get">GET</a></li>
+<li><a href="#post">POST</a></li>
+</ul>
+</li>
+<li><a href="#header">修改header信息</a></li>
+</ul>
+</div>
+<h2 id="_1">使用代理访问</h2>
+<div class="hlcode"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">x</span> <span class="mf">127.0.0.1</span><span class="o">:</span><span class="mi">1080</span> <span class="n">cli</span><span class="p">.</span><span class="n">xuanwo</span><span class="p">.</span><span class="n">org</span>
+</pre></div>
+
+
+<p>参数说明：</p>
+<ul>
+<li><code>-x</code> : 设置代理，格式为host[:port]，port的缺省值为1080</li>
+</ul>
+<h2 id="_2">获取网页源码并保存</h2>
+<div class="hlcode"><pre><span class="n">curl</span> <span class="n">cli</span><span class="p">.</span><span class="n">xuanwo</span><span class="p">.</span><span class="n">org</span> <span class="o">-</span><span class="n">o</span> <span class="n">sample</span><span class="p">.</span><span class="n">html</span>
+</pre></div>
+
+
+<p>参数说明：</p>
+<ul>
+<li><code>-o</code> : 指定输出文件</li>
+</ul>
+<h2 id="_3">支持网页自动跳转</h2>
+<p>有的网址是自动跳转的。使用<code>-L</code>参数，curl就会跳转到新的网址。</p>
+<div class="hlcode"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">L</span> <span class="n">www</span><span class="p">.</span><span class="n">google</span><span class="p">.</span><span class="n">com</span>
+</pre></div>
+
+
+<p>使用上述命令会自动跳转到 https://www.google.com/?gws_rd=ssl</p>
+<h2 id="_4">发送表单信息</h2>
+<h3 id="get">GET</h3>
+<p>GET只需要直接curl带有数据的网址即可。</p>
+<div class="hlcode"><pre><span class="n">curl</span> <span class="n">example</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">form</span><span class="p">.</span><span class="n">cgi</span><span class="o">?</span><span class="n">data</span><span class="o">=</span><span class="n">xxx</span>
+</pre></div>
+
+
+<h3 id="post">POST</h3>
+<p>POST则需要使用POST动词再加上<code>--data</code>参数</p>
+<div class="hlcode"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">--</span><span class="n">data</span> <span class="s">&quot;data=xxx&quot;</span> <span class="n">example</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">form</span><span class="p">.</span><span class="n">cgi</span>
+</pre></div>
+
+
+<p>还可以让curl进行urlencode编码：</p>
+<div class="hlcode"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span><span class="o">--</span><span class="n">data</span><span class="o">-</span><span class="n">urlencode</span> <span class="s">&quot;date=April 1&quot;</span> <span class="n">example</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">form</span><span class="p">.</span><span class="n">cgi</span>
+</pre></div>
+
+
+<h2 id="header">修改header信息</h2>
+<p>有时需要在http request之中，自行增加一个头信息。</p>
+<div class="hlcode"><pre><span class="n">curl</span> <span class="o">--</span><span class="n">header</span> <span class="s">&quot;Content-Type:application/json&quot;</span> <span class="n">http</span><span class="o">:</span><span class="c1">//example.com</span>
+</pre></div>
+
+
+<p>搭配发送POST使用则可以实现向指定网址发送json的效果</p>
+    </div>
+
+		</div>
+		
+<div id="disqus_thread"></div>
+<script>
+/**
+* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+*/
+var disqus_config = function () {
+	this.page.url = "/Tools/curl"; // Replace PAGE_URL with your page's canonical URL variable
+	this.page.identifier = "curl" ; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//clicookbook.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+        <div id="footer">
+            <span>
+                Copyright © 2015-2016 Xuanwo.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+    </body>
+</html>

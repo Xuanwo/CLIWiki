@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>ssh - CLI cookbook</title>
+        <meta name="keywords" content="wiki, makrdown, linux, CLI, cookbook"/>
+        <meta name="description" content="CLI cookbook"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-51515330-3', 'auto');
+			ga('send', 'pageview');
+		</script>
+    </head>
+
+    <body>
+    <a href="https://github.com/Xuanwo/CLIWiki"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/static/images/fork.png" alt="Fork me on GitHub" data-canonical-src="/static/images/forkme_right_gray_6d6d6d.png"></a>
+        <div id="container">
+            
+    <div id="header">
+        <div id="post-nav">
+            
+            <a href="/">Home</a> » <a href="/#Tools">Tools</a> » ssh
+            
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="title">ssh</div>
+    <div id="content">
+        <div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#ssh">防止SSH掉线</a></li>
+<li><a href="#ssh_1">修复SSH中文方块（乱码）</a></li>
+<li><a href="#_1">设置通过密钥登陆</a><ul>
+<li><a href="#_2">制作密钥对</a></li>
+<li><a href="#_3">在服务器上配置公钥</a></li>
+<li><a href="#ssh_2">设置SSH，打开密钥登陆并禁止密码登陆</a></li>
+<li><a href="#agent">下载私钥并添加到本地agent</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="ssh">防止SSH掉线</h2>
+<p>打开<code>ssh</code>配置文件：</p>
+<div class="hlcode"><pre>sudo vim /etc/ssh/ssh_config
+</pre></div>
+
+
+<p>在文件中添加如下两行：</p>
+<div class="hlcode"><pre><span class="n">ServerAliveInterval</span> <span class="mi">20</span>
+<span class="n">ServerAliveCountMax</span> <span class="mi">999</span>
+</pre></div>
+
+
+<h2 id="ssh_1">修复SSH中文方块（乱码）</h2>
+<p>SSH会将当前Shell中的语言设定传递过去，如果服务器端没有安装对应的语言，就会出现中文字块等现象。</p>
+<p>在Shell中执行：</p>
+<div class="hlcode"><pre><span class="nb">export </span><span class="nv">LC_ALL</span><span class="o">=</span>en_US.UTF-8
+<span class="nb">export </span><span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8
+</pre></div>
+
+
+<h2 id="_1">设置通过密钥登陆</h2>
+<p>允许root用户通过密码登陆十分危险，容易被暴力破解，所以有条件的情况下应当尽可能的使用密钥登陆。</p>
+<h3 id="_2">制作密钥对</h3>
+<p>如果没有自己的密钥，则需要自行创建一个。</p>
+<div class="hlcode"><pre><span class="nv">$ </span>ssh-keygen
+</pre></div>
+
+
+<p>首先选择密钥存放地址，默认为：<code>~/.ssh/id_rsa</code>。
+然后输入passphrase，这个相当于给密钥加上了一个双保险，需要密钥＋密码才能登陆，根据自己需求进行设置即可。
+再次回车之后，密钥就创建完毕了。</p>
+<p>此时，在<code>~/.ssh</code>目录下会产生两个新文件：一个<code>id_rsa</code>私钥文件，一个<code>id_rsa.pub</code>公钥文件。</p>
+<h3 id="_3">在服务器上配置公钥</h3>
+<blockquote>
+<p>公钥好比是锁，私钥好比是钥匙。在服务器上安装公钥，然后用户使用私钥就可以解锁。</p>
+</blockquote>
+<p>安装公钥很简单，只需要把公钥文件输入到<code>.ssh</code>目录下的<code>authorized_keys</code>文件中即可。</p>
+<div class="hlcode"><pre>cat id_rsa.pub &gt;&gt; authorized_keys
+</pre></div>
+
+
+<p>同时需要注意，<code>authorized_keys</code>文件权限应为<code>600</code>，而<code>.ssh</code>文件夹权限应为<code>700</code>，否则链接可能出现错误。</p>
+<h3 id="ssh_2">设置SSH，打开密钥登陆并禁止密码登陆</h3>
+<p>修改<code>/etc/ssh/sshd_config</code>：</p>
+<div class="hlcode"><pre><span class="n">RSAAuthentication</span> <span class="n">yes</span>
+<span class="n">PubkeyAuthentication</span> <span class="n">yes</span>
+<span class="n">PermitRootLogin</span> <span class="n">yes</span>
+</pre></div>
+
+
+<p>在确认使用密钥登录成功后，再关闭密码登陆：</p>
+<div class="hlcode"><pre><span class="n">PasswordAuthentication</span> <span class="n">no</span>
+</pre></div>
+
+
+<p>然后重启sshd服务：</p>
+<div class="hlcode"><pre>systemctl restart sshd
+</pre></div>
+
+
+<h3 id="agent">下载私钥并添加到本地agent</h3>
+<p>首先使用SCP命令下载私钥到本地：</p>
+<blockquote>
+<p>需要注意不要覆盖了本地的密钥</p>
+</blockquote>
+<div class="hlcode"><pre>scp root@123.123.123.123:/root/.ssh/id_rsa ~/.ssh
+</pre></div>
+
+
+<p>然后将该密钥添加到agent：</p>
+<div class="hlcode"><pre>ssh-add ~/.ssh/id_rsa
+</pre></div>
+    </div>
+
+		</div>
+		
+<div id="disqus_thread"></div>
+<script>
+/**
+* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+*/
+var disqus_config = function () {
+	this.page.url = "/Tools/ssh"; // Replace PAGE_URL with your page's canonical URL variable
+	this.page.identifier = "ssh" ; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//clicookbook.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+        <div id="footer">
+            <span>
+                Copyright © 2015-2016 Xuanwo.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+    </body>
+</html>

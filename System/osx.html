@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>osx - CLI cookbook</title>
+        <meta name="keywords" content="wiki, makrdown, linux, CLI, cookbook"/>
+        <meta name="description" content="CLI cookbook"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-51515330-3', 'auto');
+			ga('send', 'pageview');
+		</script>
+    </head>
+
+    <body>
+    <a href="https://github.com/Xuanwo/CLIWiki"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/static/images/fork.png" alt="Fork me on GitHub" data-canonical-src="/static/images/forkme_right_gray_6d6d6d.png"></a>
+        <div id="container">
+            
+    <div id="header">
+        <div id="post-nav">
+            
+            <a href="/">Home</a> » <a href="/#System">System</a> » osx
+            
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="title">osx</div>
+    <div id="content">
+        <h2 id="mac-os-x">解决 Mac OS X 安装时提示“系统在安装或下载时已破坏或篡改”</h2>
+<p>打包时系统内置的密钥在安装时已过期，故安装工具会提示“系统在安装或下载时已破坏或篡改”，可以通过命令行工具修复：</p>
+<p>打开<code>实用工具 -&gt; 终端</code>，输入：</p>
+<div class="hlcode"><pre><span class="n">date</span> <span class="mf">122014102015.30</span> <span class="err">＃</span> <span class="err">打包时间，</span><span class="mi">12</span><span class="err">是月，</span><span class="mi">20</span><span class="err">是日，</span><span class="mi">14</span><span class="err">是时，</span><span class="mi">10</span><span class="err">是分，</span><span class="mi">2015</span><span class="err">是年，</span><span class="mi">30</span><span class="err">是秒</span>
+</pre></div>
+
+
+<p>以上为示例，具体使用时请询问打包者真实的打包时间</p>
+    </div>
+
+		</div>
+		
+<div id="disqus_thread"></div>
+<script>
+/**
+* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+*/
+var disqus_config = function () {
+	this.page.url = "/System/osx"; // Replace PAGE_URL with your page's canonical URL variable
+	this.page.identifier = "osx" ; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//clicookbook.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+        <div id="footer">
+            <span>
+                Copyright © 2015-2016 Xuanwo.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+    </body>
+</html>

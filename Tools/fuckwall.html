@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>fuckwall - CLI cookbook</title>
+        <meta name="keywords" content="wiki, makrdown, linux, CLI, cookbook"/>
+        <meta name="description" content="CLI cookbook"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-51515330-3', 'auto');
+			ga('send', 'pageview');
+		</script>
+    </head>
+
+    <body>
+    <a href="https://github.com/Xuanwo/CLIWiki"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/static/images/fork.png" alt="Fork me on GitHub" data-canonical-src="/static/images/forkme_right_gray_6d6d6d.png"></a>
+        <div id="container">
+            
+    <div id="header">
+        <div id="post-nav">
+            
+            <a href="/">Home</a> » <a href="/#Tools">Tools</a> » fuckwall
+            
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="title">fuckwall</div>
+    <div id="content">
+        <div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#sockshttp">Socks代理转为HTTP代理</a><ul>
+<li><a href="#linux">Linux</a></li>
+<li><a href="#mac-os-x">Mac OS X</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="sockshttp">Socks代理转为HTTP代理</h2>
+<blockquote>
+<p>本条目要求你已经有一个配置好的Shadowsocks代理，并将本地监听地址设为1080。</p>
+</blockquote>
+<p>Shadowsocks代理的Win版有一个非常cool的特性是自带privoxy，可以同时输出socks代理和http代理。但是在Linux和Mac平台下，就需要自己动手了。</p>
+<h3 id="linux">Linux</h3>
+<p><strong>本条目适用于Fedora 23</strong></p>
+<p>首先安装Privoxy。</p>
+<div class="hlcode"><pre>sudo dnf install privoxy
+</pre></div>
+
+
+<p>然后修改配置文件<code>/etc/privoxy/config</code>，在配置文件的最后添加如下两行：</p>
+<div class="hlcode"><pre>listen-address 0.0.0.0:1090
+forward-socks5 / localhost:1080 .
+</pre></div>
+
+
+<p>Privoxy在Linux平台上是以服务形式存在的，所以启动Privoxy需要使用systemctl工具：</p>
+<div class="hlcode"><pre>systemctl start privoxy
+</pre></div>
+
+
+<blockquote>
+<p>启用了selinux的系统可能会在启动时报错，可以使用命令<code>semanage port -a -t http_cache_port_t -p tcp 1090</code>来启用这个端口。</p>
+</blockquote>
+<p>此时，你已经可以通过<code>127.0.0.1:1090</code>来使用HTTP代理了，同时公网或局域网内也能使用<code>IP:port</code>的形式来使用。</p>
+<h3 id="mac-os-x">Mac OS X</h3>
+<p>首先你需要配置好brewhome工具，然后安装privoxy：</p>
+<div class="hlcode"><pre>brew install privoxy
+</pre></div>
+
+
+<p>然后修改配置文件<code>/usr/local/etc/privoxy/config</code>，在配置文件的最后添加如下两行：</p>
+<div class="hlcode"><pre>listen-address 0.0.0.0:1090
+forward-socks5 / localhost:1080 .
+</pre></div>
+
+
+<p>然后运行</p>
+<div class="hlcode"><pre>privoxy /usr/local/etc/privoxy/config
+</pre></div>
+
+
+<p>此时，你已经可以通过<code>127.0.0.1:1090</code>来使用这个HTTP代理了，公网和局域网也能通过<code>IP:port</code>的形式来使用</p>
+    </div>
+
+		</div>
+		
+<div id="disqus_thread"></div>
+<script>
+/**
+* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+*/
+var disqus_config = function () {
+	this.page.url = "/Tools/fuckwall"; // Replace PAGE_URL with your page's canonical URL variable
+	this.page.identifier = "fuckwall" ; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//clicookbook.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+        <div id="footer">
+            <span>
+                Copyright © 2015-2016 Xuanwo.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+    </body>
+</html>

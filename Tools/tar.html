@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="/static/css/tango.css">
+        <title>tar - CLI cookbook</title>
+        <meta name="keywords" content="wiki, makrdown, linux, CLI, cookbook"/>
+        <meta name="description" content="CLI cookbook"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-51515330-3', 'auto');
+			ga('send', 'pageview');
+		</script>
+    </head>
+
+    <body>
+    <a href="https://github.com/Xuanwo/CLIWiki"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/static/images/fork.png" alt="Fork me on GitHub" data-canonical-src="/static/images/forkme_right_gray_6d6d6d.png"></a>
+        <div id="container">
+            
+    <div id="header">
+        <div id="post-nav">
+            
+            <a href="/">Home</a> » <a href="/#Tools">Tools</a> » tar
+            
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="title">tar</div>
+    <div id="content">
+        <div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#_1">打包指定目录</a></li>
+<li><a href="#tar">解开tar文件</a></li>
+<li><a href="#gzip">解开gzip压缩的文件</a></li>
+<li><a href="#compress">解开compress压缩的文件</a></li>
+<li><a href="#bzip2">解开bzip2压缩的文件</a></li>
+<li><a href="#xz-utils">解开XZ Utils压缩的文件</a></li>
+</ul>
+</div>
+<h2 id="_1">打包指定目录</h2>
+<div class="hlcode"><pre><span class="n">tar</span> <span class="o">-</span><span class="n">cvf</span> <span class="n">home_backup</span><span class="p">.</span><span class="n">tar</span> <span class="o">/</span><span class="n">home</span>
+</pre></div>
+
+
+<p>将<code>/home</code>目录下的所有文件打包入<code>home_backup.tar</code>文件中。</p>
+<h2 id="tar">解开tar文件</h2>
+<div class="hlcode"><pre><span class="n">tar</span> <span class="o">-</span><span class="n">xvf</span> <span class="n">xxx</span><span class="p">.</span><span class="n">tar</span>
+</pre></div>
+
+
+<p>将tar文件解压缩至当前目录下</p>
+<h2 id="gzip">解开gzip压缩的文件</h2>
+<blockquote>
+<p>后缀一般为：<code>.tar.gz</code>或<code>.tgz</code></p>
+</blockquote>
+<div class="hlcode"><pre><span class="n">tar</span> <span class="o">-</span><span class="n">xvzf</span> <span class="n">xxx</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span>
+</pre></div>
+
+
+<p>把gzip压缩的文件解开至当前目录下</p>
+<h2 id="compress">解开compress压缩的文件</h2>
+<blockquote>
+<p>后缀一般为：<code>.tar.Z</code>或<code>.taz</code></p>
+</blockquote>
+<div class="hlcode"><pre><span class="n">tar</span> <span class="o">-</span><span class="n">xvZf</span> <span class="n">xxx</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">Z</span>
+</pre></div>
+
+
+<p>把compress压缩的文件解开至当前目录下</p>
+<h2 id="bzip2">解开bzip2压缩的文件</h2>
+<blockquote>
+<p>后缀一般为：<code>.tar.bz2</code>或<code>.tbz</code></p>
+</blockquote>
+<div class="hlcode"><pre><span class="n">tar</span> <span class="o">-</span><span class="n">xvjf</span> <span class="n">xxx</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">bz2</span>
+</pre></div>
+
+
+<p>把bzip2压缩的文件解开至当前目录下</p>
+<h2 id="xz-utils">解开XZ Utils压缩的文件</h2>
+<blockquote>
+<p>后缀一般为：<code>.tar.xz</code>或<code>.txz</code>或<code>.tar.lzma</code>或<code>.tlz</code></p>
+</blockquote>
+<div class="hlcode"><pre><span class="n">tar</span> <span class="o">-</span><span class="n">xvJf</span> <span class="n">xxx</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">xz</span>
+</pre></div>
+
+
+<p>把xz压缩的文件解开至当前目录下</p>
+    </div>
+
+		</div>
+		
+<div id="disqus_thread"></div>
+<script>
+/**
+* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+*/
+var disqus_config = function () {
+	this.page.url = "/Tools/tar"; // Replace PAGE_URL with your page's canonical URL variable
+	this.page.identifier = "tar" ; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//clicookbook.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+        <div id="footer">
+            <span>
+                Copyright © 2015-2016 Xuanwo.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+    </body>
+</html>
