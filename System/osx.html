@@ -39,6 +39,31 @@
 
 
 <p>以上为示例，具体使用时请询问打包者真实的打包时间</p>
+<h2 id="mac-os-xpyyaml">在Mac OS X下安装pyyaml</h2>
+<p>Mac下默认没有libyaml这个库，所以需要使用brew安装：</p>
+<div class="hlcode"><pre><span class="n">brew</span> <span class="n">install</span> <span class="n">libyaml</span>
+</pre></div>
+
+
+<p>由于brew的库都安装在一个非常规路径下，所以我们需要将libyaml所在库路径添加到安装时的搜索路径中。
+首先下载源码包：</p>
+<div class="hlcode"><pre><span class="n">pip</span> <span class="n">download</span> <span class="n">pyyaml</span>
+</pre></div>
+
+
+<p>然后修改对应pyyaml的setup.cfg文件：</p>
+<div class="hlcode"><pre><span class="c1"># List of directories to search for &#39;yaml.h&#39; (separated by &#39;:&#39;).</span>
+<span class="na">include_dirs</span><span class="o">=</span><span class="s">/usr/local/include:../../include:/usr/local/Cellar/libyaml/0.1.6_1/include</span>
+
+<span class="c1"># List of directories to search for &#39;libyaml.a&#39; (separated by &#39;:&#39;).</span>
+<span class="na">library_dirs</span><span class="o">=</span><span class="s">/usr/local/lib:../../lib:/usr/local/Cellar/libyaml/0.1.6_1/lib</span>
+</pre></div>
+
+
+<p>在路径最后加入libyaml的安装地址，根据安装的实际情况进行调整。</p>
+<p>最后使用setuptools进行安装：</p>
+<div class="hlcode"><pre><span class="n">python</span> <span class="n">setup</span><span class="p">.</span><span class="n">py</span> <span class="n">install</span>
+</pre></div>
     </div>
 
 			
