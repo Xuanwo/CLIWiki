@@ -466,4 +466,40 @@ kill PID
 
 来关闭占用当前目录的程序即可。
 
+## 美化字体
+
+**适用于Fedora23，24**
+
+> 原来的infinality包似乎已经不再维护也没有地方下载了，有热心人重新制作了一个`Infinality Ultimate Bundle`，试用之后感觉效果非常不错。
+
+首先添加相关的repo：
+
+```bash
+dnf install http://rpm.danielrenninghoff.com/infinality/fedora/$(rpm -E %fedora)/noarch/infinality-ultimate-repo-$(rpm -E %fedora)-1.noarch.rpm
+```
+
+然后安装打过补丁的字体和字体设定以及freetype包：
+
+```bash
+dnf install --allowerasing cairo-infinality-ultimate fontconfig-infinality-ultimate freetype-infinality-ultimate
+```
+
+如果之前安装过`devel`的包，开发者在库里面同样提供了对应的包，只需要在包名后添加`*-infinality-ultimate-devel`即可。
+
+为了最好的效果，你还可以安装附加的字体包：
+
+```bash
+dnf install --allowerasing ibfonts-meta-base ibfonts-meta-extended-lt ibfonts-meta-extended
+```
+
+> 某些字体在fedora23升级24时出现冲突，删除即可。
+
+对于试用java的应用，开发者提供了打过补丁的jdk-1.8.0以提供良好的字体渲染。
+
+```bash
+dnf install --allowerasing java-1.8.0-openjdk-infinality-ultimate-headless
+```
+
+对于某些使用自带jre的软件，比如说`Jetbrains`家的IDE，需要指定它使用系统的jre。对于`Jetbrains`来说，就是删除它自带的jre目录。
+
 
