@@ -72,6 +72,7 @@
 <li><a href="#_19">去除恼人的错误报告提示</a></li>
 <li><a href="#_20">修改网卡的物理地址</a></li>
 <li><a href="#fuse">目录下有.fuse开头的隐藏文件</a></li>
+<li><a href="#_21">美化字体</a></li>
 </ul>
 </div>
 <h2 id="chgrp">改变所属群组, chgrp</h2>
@@ -480,6 +481,36 @@ sudo ifconfig enp5s0 up
 
 
 <p>来关闭占用当前目录的程序即可。</p>
+<h2 id="_21">美化字体</h2>
+<p><strong>适用于Fedora23，24</strong></p>
+<blockquote>
+<p>原来的infinality包似乎已经不再维护也没有地方下载了，有热心人重新制作了一个<code>Infinality Ultimate Bundle</code>，试用之后感觉效果非常不错。</p>
+</blockquote>
+<p>首先添加相关的repo：</p>
+<div class="hlcode"><pre>dnf install http://rpm.danielrenninghoff.com/infinality/fedora/<span class="k">$(</span>rpm -E %fedora<span class="k">)</span>/noarch/infinality-ultimate-repo-<span class="k">$(</span>rpm -E %fedora<span class="k">)</span>-1.noarch.rpm
+</pre></div>
+
+
+<p>然后安装打过补丁的字体和字体设定以及freetype包：</p>
+<div class="hlcode"><pre>dnf install --allowerasing cairo-infinality-ultimate fontconfig-infinality-ultimate freetype-infinality-ultimate
+</pre></div>
+
+
+<p>如果之前安装过<code>devel</code>的包，开发者在库里面同样提供了对应的包，只需要在包名后添加<code>*-infinality-ultimate-devel</code>即可。</p>
+<p>为了最好的效果，你还可以安装附加的字体包：</p>
+<div class="hlcode"><pre>dnf install --allowerasing ibfonts-meta-base ibfonts-meta-extended-lt ibfonts-meta-extended
+</pre></div>
+
+
+<blockquote>
+<p>某些字体在fedora23升级24时出现冲突，删除即可。</p>
+</blockquote>
+<p>对于试用java的应用，开发者提供了打过补丁的jdk-1.8.0以提供良好的字体渲染。</p>
+<div class="hlcode"><pre>dnf install --allowerasing java-1.8.0-openjdk-infinality-ultimate-headless
+</pre></div>
+
+
+<p>对于某些使用自带jre的软件，比如说<code>Jetbrains</code>家的IDE，需要指定它使用系统的jre。对于<code>Jetbrains</code>来说，就是删除它自带的jre目录。</p>
     </div>
 
 			
