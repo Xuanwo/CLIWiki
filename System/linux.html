@@ -73,6 +73,7 @@
 <li><a href="#_20">修改网卡的物理地址</a></li>
 <li><a href="#fuse">目录下有.fuse开头的隐藏文件</a></li>
 <li><a href="#_21">美化字体</a></li>
+<li><a href="#ntfs">NTFS分区下文件无法正常删除</a></li>
 </ul>
 </div>
 <h2 id="chgrp">改变所属群组, chgrp</h2>
@@ -170,7 +171,7 @@
 
 <p>更多版本请参见： http://rpmfusion.org/Configuration</p>
 <p>然后执行下列命令以安装需要的包：</p>
-<div class="hlcode"><pre>sudo dnf install kernel-devel akmod-wl 
+<div class="hlcode"><pre>sudo dnf install kernel-devel akmod-wl
 </pre></div>
 
 
@@ -511,6 +512,15 @@ sudo ifconfig enp5s0 up
 
 
 <p>对于某些使用自带jre的软件，比如说<code>Jetbrains</code>家的IDE，需要指定它使用系统的jre。对于<code>Jetbrains</code>来说，就是删除它自带的jre目录。</p>
+<h2 id="ntfs">NTFS分区下文件无法正常删除</h2>
+<p>NTFS设置自动挂载之后发现无法在图形界面下正常删除，但是通过Shell可以。这个问题是因为Gnome在删除文件时会首先将文件移动到<code>.Trash</code>目录下，如果没有权限创建<code>.Trash</code>目录就会导致删除失败。所以需要修改NTFS分区挂载时的参数：</p>
+<div class="hlcode"><pre>nosuid,nodev,nofail,x-gvfs-show,rw,uid<span class="o">=</span>1000,gid<span class="o">=</span>users
+</pre></div>
+
+
+<blockquote>
+<p>其中，uid可以通过命令<code>id -u</code>获得</p>
+</blockquote>
     </div>
 
 			
