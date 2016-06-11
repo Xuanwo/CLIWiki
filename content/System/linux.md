@@ -93,7 +93,7 @@ su -c 'dnf install http://download1.rpmfusion.org/free/fedora/rpmfusion-free-rel
 然后执行下列命令以安装需要的包：
 
 ```bash
-sudo dnf install kernel-devel akmod-wl 
+sudo dnf install kernel-devel akmod-wl
 ```
 
 然后执行下列命令以重新编译内核模块：
@@ -501,5 +501,16 @@ dnf install --allowerasing java-1.8.0-openjdk-infinality-ultimate-headless
 ```
 
 对于某些使用自带jre的软件，比如说`Jetbrains`家的IDE，需要指定它使用系统的jre。对于`Jetbrains`来说，就是删除它自带的jre目录。
+
+
+## NTFS分区下文件无法正常删除
+
+NTFS设置自动挂载之后发现无法在图形界面下正常删除，但是通过Shell可以。这个问题是因为Gnome在删除文件时会首先将文件移动到`.Trash`目录下，如果没有权限创建`.Trash`目录就会导致删除失败。所以需要修改NTFS分区挂载时的参数：
+
+```bash
+nosuid,nodev,nofail,x-gvfs-show,rw,uid=1000,gid=users
+```
+
+> 其中，uid可以通过命令`id -u`获得
 
 
