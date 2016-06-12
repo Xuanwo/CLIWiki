@@ -74,6 +74,7 @@
 <li><a href="#fuse">目录下有.fuse开头的隐藏文件</a></li>
 <li><a href="#_21">美化字体</a></li>
 <li><a href="#ntfs">NTFS分区下文件无法正常删除</a></li>
+<li><a href="#rpm-gpg-key-fedora-x86_64">缺少RPM-GPG-KEY-fedora-x86_64文件</a></li>
 </ul>
 </div>
 <h2 id="chgrp">改变所属群组, chgrp</h2>
@@ -521,6 +522,20 @@ sudo ifconfig enp5s0 up
 <blockquote>
 <p>其中，uid可以通过命令<code>id -u</code>获得</p>
 </blockquote>
+<h2 id="rpm-gpg-key-fedora-x86_64">缺少RPM-GPG-KEY-fedora-x86_64文件</h2>
+<p>从Fedora 23 更新至 Fedora 24 时提示：</p>
+<div class="hlcode"><pre>GPG key retrieval failed: [Errno 14] curl#37 - &quot;Couldn&#39;t open file /etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-x86_64&quot;
+</pre></div>
+
+
+<p>或者：</p>
+<div class="hlcode"><pre>Downloading failed: GPG key retrieval failed: [Errno 14] curl#37 - &quot;Couldn&#39;t open file /etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-x86_64&quot;
+</pre></div>
+
+
+<p>只需要进入<code>/etc/pki/rpm-gpg/</code>然后引入对应密钥即可，比如：</p>
+<div class="hlcode"><pre><span class="n">rpmkeys</span> <span class="o">--</span><span class="n">import</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">pki</span><span class="o">/</span><span class="n">rpm</span><span class="o">-</span><span class="n">gpg</span><span class="o">/</span><span class="n">RPM</span><span class="o">-</span><span class="n">GPG</span><span class="o">-</span><span class="n">KEY</span><span class="o">-</span><span class="n">fedora</span><span class="o">-</span><span class="mi">24</span><span class="o">-</span><span class="n">x86_64</span>
+</pre></div>
     </div>
 
 			
