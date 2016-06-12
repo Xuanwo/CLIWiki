@@ -513,4 +513,24 @@ nosuid,nodev,nofail,x-gvfs-show,rw,uid=1000,gid=users
 
 > 其中，uid可以通过命令`id -u`获得
 
+## 缺少RPM-GPG-KEY-fedora-x86_64文件
+
+从Fedora 23 更新至 Fedora 24 时提示：
+
+```
+GPG key retrieval failed: [Errno 14] curl#37 - "Couldn't open file /etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-x86_64"
+```
+
+或者：
+
+```
+Downloading failed: GPG key retrieval failed: [Errno 14] curl#37 - "Couldn't open file /etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-x86_64"
+```
+
+只需要进入`/etc/pki/rpm-gpg/`然后引入对应密钥即可，比如：
+
+```
+rpmkeys --import /etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-24-x86_64
+```
+
 
