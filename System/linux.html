@@ -75,6 +75,11 @@
 <li><a href="#_21">美化字体</a></li>
 <li><a href="#ntfs">NTFS分区下文件无法正常删除</a></li>
 <li><a href="#rpm-gpg-key-fedora-x86_64">缺少RPM-GPG-KEY-fedora-x86_64文件</a></li>
+<li><a href="#shell">重定向Shell标准输入，输出和错误</a><ul>
+<li><a href="#_22">将错误信息重定向到空设备</a></li>
+<li><a href="#_23">将标准输出和错误重定向到指定文件</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <h2 id="chgrp">改变所属群组, chgrp</h2>
@@ -535,6 +540,88 @@ sudo ifconfig enp5s0 up
 
 <p>只需要进入<code>/etc/pki/rpm-gpg/</code>然后引入对应密钥即可，比如：</p>
 <div class="hlcode"><pre><span class="n">rpmkeys</span> <span class="o">--</span><span class="n">import</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">pki</span><span class="o">/</span><span class="n">rpm</span><span class="o">-</span><span class="n">gpg</span><span class="o">/</span><span class="n">RPM</span><span class="o">-</span><span class="n">GPG</span><span class="o">-</span><span class="n">KEY</span><span class="o">-</span><span class="n">fedora</span><span class="o">-</span><span class="mi">24</span><span class="o">-</span><span class="n">x86_64</span>
+</pre></div>
+
+
+<h2 id="shell">重定向Shell标准输入，输出和错误</h2>
+<p>在Linux系统中每一个进程都会有对应的三个打开的文件：输入，输出和错误。</p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>文件描述符</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>标准输入</td>
+<td>0</td>
+<td>键盘</td>
+</tr>
+<tr>
+<td>标准输出</td>
+<td>1</td>
+<td>屏幕</td>
+</tr>
+<tr>
+<td>标准错误</td>
+<td>2</td>
+<td>屏幕</td>
+</tr>
+</tbody>
+</table>
+<p>然后我们可以通过这样的形式来重定向一个进程的输入，输出和错误</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>command &gt; file</td>
+<td>将输出重定向到 file。</td>
+</tr>
+<tr>
+<td>command &lt; file</td>
+<td>将输入重定向到 file。</td>
+</tr>
+<tr>
+<td>command &gt;&gt; file</td>
+<td>将输出以追加的方式重定向到 file。</td>
+</tr>
+<tr>
+<td>n &gt; file</td>
+<td>将文件描述符为 n 的文件重定向到 file。</td>
+</tr>
+<tr>
+<td>n &gt;&gt; file</td>
+<td>将文件描述符为 n 的文件以追加的方式重定向到 file。</td>
+</tr>
+<tr>
+<td>n &gt;&amp; m</td>
+<td>将输出文件 m 和 n 合并。</td>
+</tr>
+<tr>
+<td>n &lt;&amp; m</td>
+<td>将输入文件 m 和 n 合并。</td>
+</tr>
+<tr>
+<td>&lt;&lt; tag</td>
+<td>将开始标记 tag 和结束标记 tag 之间的内容作为输入。</td>
+</tr>
+</tbody>
+</table>
+<p>于是我们可以使用这样的技巧：</p>
+<h3 id="_22">将错误信息重定向到空设备</h3>
+<div class="hlcode"><pre><span class="nb">command </span>2&gt;/dev/null
+</pre></div>
+
+
+<h3 id="_23">将标准输出和错误重定向到指定文件</h3>
+<div class="hlcode"><pre><span class="nb">command</span> &gt; out.put 2&gt;&amp;1
 </pre></div>
     </div>
 
