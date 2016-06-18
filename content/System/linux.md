@@ -533,4 +533,40 @@ Downloading failed: GPG key retrieval failed: [Errno 14] curl#37 - "Couldn't ope
 rpmkeys --import /etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-24-x86_64
 ```
 
+## 重定向Shell标准输入，输出和错误
+
+在Linux系统中每一个进程都会有对应的三个打开的文件：输入，输出和错误。
+
+|文件|文件描述符|默认值|
+|-|-|-|
+|标准输入|0|键盘|
+|标准输出|1|屏幕|
+|标准错误|2|屏幕|
+
+然后我们可以通过这样的形式来重定向一个进程的输入，输出和错误
+
+|命令|说明|
+|-|-|
+|command > file|将输出重定向到 file。|
+|command < file|将输入重定向到 file。|
+|command >> file|将输出以追加的方式重定向到 file。|
+|n > file|将文件描述符为 n 的文件重定向到 file。|
+|n >> file|将文件描述符为 n 的文件以追加的方式重定向到 file。|
+|n >& m|将输出文件 m 和 n 合并。|
+|n <& m|将输入文件 m 和 n 合并。|
+|<< tag|将开始标记 tag 和结束标记 tag 之间的内容作为输入。|
+
+于是我们可以使用这样的技巧：
+
+### 将错误信息重定向到空设备
+
+```bash
+command 2>/dev/null
+```
+
+### 将标准输出和错误重定向到指定文件
+
+```bash
+command > out.put 2>&1
+```
 
