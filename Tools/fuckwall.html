@@ -37,6 +37,7 @@
 <li><a href="#mac-os-x">Mac OS X</a></li>
 </ul>
 </li>
+<li><a href="#socks5">在终端使用Socks5代理</a></li>
 </ul>
 </div>
 <h2 id="sockshttp">Socks代理转为HTTP代理</h2>
@@ -84,6 +85,43 @@ forward-socks5 / localhost:1080 .
 
 
 <p>此时，你已经可以通过<code>127.0.0.1:1090</code>来使用这个HTTP代理了，公网和局域网也能通过<code>IP:port</code>的形式来使用</p>
+<h2 id="socks5">在终端使用Socks5代理</h2>
+<p>首先安装proxychains</p>
+<div class="hlcode"><pre>it clone https://github.com/rofl0r/proxychains-ng.git
+<span class="nb">cd </span>proxychains-ng
+./configure
+make <span class="o">&amp;&amp;</span> make install
+cp ./src/proxychains.conf /etc/proxychians.conf
+<span class="nb">cd</span> .. <span class="o">&amp;&amp;</span> rm -rf proxychains-ng
+</pre></div>
+
+
+<p>然后编辑proxychains的配置</p>
+<div class="hlcode"><pre><span class="n">vim</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">proxychains</span><span class="p">.</span><span class="n">conf</span>
+</pre></div>
+
+
+<p>将<code>socks4 127.0.0.1 9095</code>修改为<code>socks5 127.0.0.1 1080</code></p>
+<p>其它形式的代理配置如下：</p>
+<div class="hlcode"><pre>ProxyList format
+ 94 <span class="c">#       type  ip  port  [user pass]</span>
+ 95 <span class="c">#       (values separated by &#39;tab&#39; or &#39;blank&#39;)</span>
+ 96 <span class="c">#</span>
+ 97 <span class="c">#       only numeric ipv4 addresses are valid</span>
+ 98 <span class="c">#</span>
+ 99 <span class="c">#</span>
+100 <span class="c">#        Examples:</span>
+101 <span class="c">#</span>
+102 <span class="c">#       socks5  192.168.67.78   1080    lamer   secret</span>
+103 <span class="c">#       http    192.168.89.3    8080    justu   hidden</span>
+104 <span class="c">#       socks4  192.168.1.49    1080</span>
+105 <span class="c">#       http    192.168.39.93   8080</span>
+</pre></div>
+
+
+<p>使用时，只需要在命令前加上proxychains4即可，比如：</p>
+<div class="hlcode"><pre><span class="n">proxychains4</span> <span class="n">curl</span> <span class="n">google</span><span class="p">.</span><span class="n">com</span>
+</pre></div>
     </div>
 
 			
