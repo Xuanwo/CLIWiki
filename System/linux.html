@@ -80,6 +80,7 @@
 <li><a href="#_23">将标准输出和错误重定向到指定文件</a></li>
 </ul>
 </li>
+<li><a href="#ap">创建AP热点</a></li>
 </ul>
 </div>
 <h2 id="chgrp">改变所属群组, chgrp</h2>
@@ -623,6 +624,59 @@ sudo ifconfig enp5s0 up
 <h3 id="_23">将标准输出和错误重定向到指定文件</h3>
 <div class="hlcode"><pre><span class="nb">command</span> &gt; out.put 2&gt;&amp;1
 </pre></div>
+
+
+<h2 id="ap">创建AP热点</h2>
+<blockquote>
+<p>要求无线网卡的驱动支持AP模式，Intel基本上都支持，博通很大概率不支持</p>
+</blockquote>
+<p>其实网上有很多创建AP热点的教程，但是有一个通病就是操作比较繁琐，控制不太方便，本条目使用<code>create_ap</code>脚本来开启热点，并使用<code>systemd</code>来管理热点。</p>
+<p>首先检查自己的依赖：</p>
+<ul>
+<li>bash (to run this script)</li>
+<li>util-linux (for getopt)</li>
+<li>procps or procps-ng</li>
+<li>hostapd</li>
+<li>iproute2</li>
+<li>iw</li>
+<li>iwconfig (you only need this if 'iw' can not recognize your adapter)</li>
+<li>haveged (optional)</li>
+<li>dnsmasq</li>
+<li>iptables</li>
+</ul>
+<p>解决依赖问题之后就可以下载脚本并安装了：</p>
+<div class="hlcode"><pre><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/oblique/create_ap.git</span>
+<span class="n">cd</span> <span class="n">create_ap</span>
+<span class="n">make</span> <span class="n">install</span>
+</pre></div>
+
+
+<p>其中<code>make install</code>需要管理员权限。</p>
+<p>然后修改<code>create_ap.service</code>脚本以便使用<code>systemd</code>进行管理。</p>
+<p>使用vim打开配置文件：</p>
+<div class="hlcode"><pre><span class="n">vim</span> <span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">systemd</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">create_ap</span><span class="p">.</span><span class="n">service</span>
+</pre></div>
+
+
+<p>将</p>
+<div class="hlcode"><pre><span class="n">ExecStart</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">create_ap</span> <span class="o">-</span><span class="n">n</span> <span class="o">-</span><span class="n">g</span> <span class="mf">10.0.0.1</span> <span class="n">wlan0</span> <span class="n">AccessPointSSID</span>
+</pre></div>
+
+
+<p>修改为：</p>
+<div class="hlcode"><pre><span class="n">ExecStart</span><span class="o">=</span><span class="p">/</span><span class="nx">usr</span><span class="p">/</span><span class="nx">bin</span><span class="p">/</span><span class="nx">create_ap</span> <span class="o">&lt;</span><span class="nx">Wifi_name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="nx">Ethernet_name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="nx">SSID</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="nx">Password</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<p>其中Wifi名是你的无线网卡设备名，有线网卡名是你的有线网卡设备名，这些可以通过<code>ifconfig</code>查询到。
+SSID就是最后开启的热点名称，Password就是Wifi的密码。</p>
+<p>配置好这些后，使用如下命令来进行管理：</p>
+<ul>
+<li><code>systemctl start create_ap</code>   开启热点</li>
+<li><code>systemctl stop create_ap</code>   关闭热点</li>
+<li><code>systemctl status create_ap</code>   查看热点的状态</li>
+<li><code>systemctl enable create_ap</code>   开机自动启动热点</li>
+</ul>
     </div>
 
 			
