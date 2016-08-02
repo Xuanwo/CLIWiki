@@ -570,3 +570,63 @@ command 2>/dev/null
 command > out.put 2>&1
 ```
 
+## 创建AP热点
+
+> 要求无线网卡的驱动支持AP模式，Intel基本上都支持，博通很大概率不支持
+
+其实网上有很多创建AP热点的教程，但是有一个通病就是操作比较繁琐，控制不太方便，本条目使用`create_ap`脚本来开启热点，并使用`systemd`来管理热点。
+
+首先检查自己的依赖：
+
+- bash (to run this script)
+- util-linux (for getopt)
+- procps or procps-ng
+- hostapd
+- iproute2
+- iw
+- iwconfig (you only need this if 'iw' can not recognize your adapter)
+- haveged (optional)
+- dnsmasq
+- iptables
+
+解决依赖问题之后就可以下载脚本并安装了：
+
+```
+git clone https://github.com/oblique/create_ap.git
+cd create_ap
+make install
+```
+
+其中`make install`需要管理员权限。
+
+然后修改`create_ap.service`脚本以便使用`systemd`进行管理。
+
+使用vim打开配置文件：
+
+```
+vim /lib/systemd/system/create_ap.service
+```
+
+将
+
+```
+ExecStart=/usr/bin/create_ap -n -g 10.0.0.1 wlan0 AccessPointSSID
+```
+
+修改为：
+
+```
+ExecStart=/usr/bin/create_ap <Wifi_name> <Ethernet_name> <SSID> <Password>
+```
+
+其中Wifi名是你的无线网卡设备名，有线网卡名是你的有线网卡设备名，这些可以通过`ifconfig`查询到。
+SSID就是最后开启的热点名称，Password就是Wifi的密码。
+
+配置好这些后，使用如下命令来进行管理：
+
+- `systemctl start create_ap`   开启热点
+- `systemctl stop create_ap`   关闭热点
+- `systemctl status create_ap`   查看热点的状态
+- `systemctl enable create_ap`   开机自动启动热点
+
+
