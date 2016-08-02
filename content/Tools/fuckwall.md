@@ -59,3 +59,49 @@ privoxy /usr/local/etc/privoxy/config
 ```
 
 此时，你已经可以通过`127.0.0.1:1090`来使用这个HTTP代理了，公网和局域网也能通过`IP:port`的形式来使用
+
+## 在终端使用Socks5代理
+
+首先安装proxychains
+
+```bash
+it clone https://github.com/rofl0r/proxychains-ng.git
+cd proxychains-ng
+./configure
+make && make install
+cp ./src/proxychains.conf /etc/proxychians.conf
+cd .. && rm -rf proxychains-ng
+```
+
+然后编辑proxychains的配置
+
+```
+vim /etc/proxychains.conf
+```
+
+将`socks4 127.0.0.1 9095`修改为`socks5 127.0.0.1 1080`
+
+其它形式的代理配置如下：
+
+```bash
+ProxyList format
+ 94 #       type  ip  port  [user pass]
+ 95 #       (values separated by 'tab' or 'blank')
+ 96 #
+ 97 #       only numeric ipv4 addresses are valid
+ 98 #
+ 99 #
+100 #        Examples:
+101 #
+102 #       socks5  192.168.67.78   1080    lamer   secret
+103 #       http    192.168.89.3    8080    justu   hidden
+104 #       socks4  192.168.1.49    1080
+105 #       http    192.168.39.93   8080
+```
+
+使用时，只需要在命令前加上proxychains4即可，比如：
+
+```
+proxychains4 curl google.com
+```
+
