@@ -2,7 +2,7 @@
 title: "windows"
 date: 2016-5-20 15:01:00
 ---
-
+[TOC]
 ## 修改Hosts之后更新DNS缓存
 
 ``` cmd
@@ -26,4 +26,3 @@ del /f/s/q 盘符:\文件名
 ``` powershell
 Set-ExecutionPolicy -ExecutionPolicy UNRESTRICTED
 ```
-
