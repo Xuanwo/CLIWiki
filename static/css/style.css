@@ -1,301 +1,305 @@
 /*
-Theme Name: YASimple
+Theme Name: YASimple_X2
 Author: Tanky Woo<me@tankywoo.com>
-Author URI: http://www.wutianqi.com/
-Description: Yet another simple theme for simiki.
+Author URI: https://tankywoo.com
+Home Page: https://github.com/tankywoo/yasimple_x2
+Description: Fork of YASimple_X
 Version: 0.1
 License: The MIT License (MIT)
 Tags: simple, single-columns, code, codehighlight, white, markdown
-*/
+ */
 
 /* Global Configuration */
-
 html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 /* IE6 ignores this and uses default size of 16pt */
 html>body { font-size: 15px; }
 
 html {
-    font-size: 100%;
-    overflow-y: scroll;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
+  font-size: 100%;
+  overflow-y: scroll;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
 }
 
 body {
-    font-family: "Microsoft YaHei", "Helvetica Neue", "Segoe UI", Arial, Sans-Serif;
-    /* font-family: Monaco, 'Courier New', monospace; */
-    line-height: 1.5em;
-    background-color: #95AFBA;
+  font-family: "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  line-height: 1.5em;
+  background-color: #fbfffd;
 }
 
-a { color: #1863a1; text-decoration: none; }
-a:visited { color: #1863A1;; }
-a:hover { color: #a00; text-decoration: underline; }
-a:active { color: #1863a1; }
+a         { color: #296bcc; }
+a:link    { text-decoration: underline; }
+a:visited { color: #296bcc; }
+a:hover   { color: #075b8d; }
+a:active  { color: #296bcc; }
 
-p { margin: 0 0 1em 0; }
-
-h1, h2, h3, h4, h5, h6 {
-    font-weight: normal;
-    color: #111;
-    margin-bottom: 1em;
+p {
+  line-height: 1.5em;
+  margin-bottom: 1.5em;
 }
-
-h1 { font-size: 2.0em; }
-h2 { font-size: 1.6em; padding-bottom: 5px; overflow:inherit }
-h3 { font-size: 1.4em; }
-h4 { font-size: 1.2em; }
-h5 { font-size: 1.0em; }
-h6 { font-size: 0.8em; }
 
 blockquote {
-    color: #666;
-    margin: 0;
-    padding-left: 3em;
-    border-left: 0.4em #eee solid;
+  margin-left: 0;
+  border-left: 0.15em solid #8c8c8c;
+  padding-left: 1em;
+  color: #8c8c8c;
 }
 
-/* Gradient transparent - color - transparent
-http://css-tricks.com/examples/hrs/
-*/
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
 hr {
-    border: 0px;
-    height: 2px;
-    margin: 15px 0;
-    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));.
-    background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));.
-    background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));.
-    background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+  margin: 2em 0;
+  color: #ccc;
+  background-color: #ccc;
+  height: 1px;
+  border: none;
 }
 
-b, strong { font-weight: bold; }
-
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    margin-bottom: 1em;
-    border: 1px solid #ccc;
+#header {
+  border-bottom: 0.1em solid #ccc;
+  padding-bottom: 0.5em;
+  margin-bottom: 0.5em;
 }
 
-td {
-    vertical-align: top;
-    padding: 3px 6px;
+#header a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #555;
 }
 
-/* Optimization for pre and code tag */
-pre, code {
-    /* font-family: Consolas, "DejaVu Sans Mono", "Lucida Console", Monaco, Andale Mono, "MS Gothic", monospace; */
-    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-    font-size: 12px;
-    color: #586e75;
-    border-radius: 3px;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    overflow: auto;
+#header a:hover {
+  color: black;
 }
 
-code {
-    background-color: #eee;
-    margin: 0 2px;
-    padding: 1px 3px;
-}
-
-pre {
-    padding: 8px 12px;
-    white-space: pre;
-    white-space: -moz-pre-wrap; /* Firefox */
-    white-space: -pre-wrap;     /* ancient Opera */
-    white-space: -o-pre-wrap;   /* newer Opera */
-    white-space: pre-wrap;      /* Chrome; W3C standard */
-    word-wrap: break-word;      /* IE */
-}
-
-pre code {
-    border: 0px !important;
-    padding: 0;
-    color: #000;
-    background-color: #f8f8f8;
-}
-
-/* Custom Configuration */
-#container {
-    width: 50em;
-    margin: 0 auto 3em auto;
-    padding: 3em 2em 1.5em 2em;
-    background-color: #fbfffd;
-    border: 1px solid #ddd;
-}
-
-#container a {
-    color: #333;
-    border-bottom: 2px solid #e1e1e1;
-    text-decoration: none;
-}
-
-#container a:hover {
-    color: #555;
-    border-bottom: 2px solid #88ACDB;
-}
-
-#wiki_title, #title {
-    text-align: center;
-    font-size: 2em;
-    padding-bottom: 10px;
-    margin: 20px 0;
-}
-
-#title {
-    border-bottom: 1px dashed #eee;
+#header .updated {
+  float: right;
+  font-size: 80%;
+  color: #555;
 }
 
 #footer {
-    margin: 10px auto;
-    color: grey;
-    font-size: 80%;
-    text-align: center;
+  width: 60%;
+  margin: 1em auto;
+  font-size: 80%;
+  color: #555;
 }
 
-li.pagelist {
-    width: 22em;
-    margin-right: 1.5em;
-    list-style-type: none;
-    white-space: nowrap;
-    overflow: hidden;
+#footer a { color: #555; }
+#footer a:hover { color: black; }
+
+#footer p {
+  margin: 0;
 }
 
-li.pagelist:before {
-    content: "\0BB \020";
+#footer .footer-left {
+  float: left;
+  max-width: 70%;
+}
+
+#footer .footer-right {
+  float: right;
+  text-align: right;
+  max-width: 30%;
+}
+
+#container {
+  width: 60%;
+  margin: 0.5em auto 1em auto;
+}
+
+.category {
+  border-bottom: 0.1em solid #ccc;
+  min-height: 3em;
+}
+
+.category_name {
+  float: right;
+  text-align: right;
+  word-wrap: break-word;
+}
+
+.category_item a:link {
+  text-decoration: none;
+}
+
+.category_list ul {
+  padding-left: 1em;
+}
+
+.category_list li.pagelist {
+  width: 70%;
+  margin-right: 1.5em;
+}
+
+.category a { color: #555; }
+.category a:hover { color: black; }
+
+.category .page_description {
+  color: gray;
+}
+
+.category h2 {
+  color: #333;
+  font-weight: normal;
+  margin-top: 0;
+}
+
+#content {
+  border-bottom: 0.1em solid #ccc;
+  padding: 0.2em 0;
+}
+
+#content img {
+  border: 0;
+  vertical-align: middle;
+  margin: 0 auto;
+  max-width: 90%;
+  display: block;
+}
+
+.category a, .toc a {
+  text-decoration: none;
+}
+
+.relation {
+  border: 1px solid #eee;
+  padding: 1em;
+  margin: 1em 0;
+  background: #fefefe;
+  font-size: 80%;
 }
 
 /* Table of Contents */
 .toc {
-    margin: 0 0.5em;
-    padding: 0.5em 1em;
-    border: 1px dashed silver;
-    background-color: #ecf5ff;
-    float: right;
-    display: block;
-    font-size: 75%;
+  margin: 0 0.5em;
+  padding: 0.5em 1em;
+  border: 0.1em dashed silver;
+  background-color: #fbfffd;  /* Override others, the same with bg */
+  float: right;
+  display: block;
+  font-size: 75%;
+  max-width: 30%;
 }
 
 .toc > .toctitle {
-    display: block;
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 1em;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 1em;
 }
 
 .toc ul {
-    margin: 0;
-    padding-left: 1.5em;
+  padding-left: 1.5em;
 }
 
-/* Hackers */
-/* Hacker for codehilite */
-table.codehilitetable {
-    border-collapse: separate;
-    border: 1px solid #eee;
-    margin: 14px 0;
-    border-radius: 3px;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
+/* Tables */
+table {
+  padding: 0;
+  border-collapse: collapse;  /* *** */
+  border-spacing: 0;  /* *** */
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+  margin-top: 0;
+  margin-bottom: 1em;
 }
 
-.codehilitetable pre {
-    margin: 0;
-    border: 0 none;
-    box-shadow: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
+table tr {
+  border-top: 1px solid #cccccc;
+  background-color: white;
+  margin: 0;
+  padding: 0;
 }
 
-.codehilitetable td {
-    border: 0 none;
-    padding: 0;
-    margin: 0;
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+table tr th {
+  font-weight: bold;
+  border: 1px solid #cccccc;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
+
+table tr td {
+  border: 1px solid #cccccc;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
+
+table tr th :first-child, table tr td :first-child {
+  margin-top: 0;
+}
+
+table tr th :last-child, table tr td :last-child {
+  margin-bottom: 0;
+}
+
+/* Code Highlight */
+pre code {
+  font-size: 1em;
+  padding: 0px;
+  top: 0px;
+}
+
+code, pre {
+  color: rgb(46, 65, 92);
+  background-color: #f1f5fa;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border-radius: 3px;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+pre {
+  font-size: .9em;
+  padding: 16px 16px 14px 16px;
+  white-space: pre-wrap;
+}
+
+code {
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: .9em;
+  position: relative;
+  top: -1px;
+}
+
+.hlcode pre {
+  overflow: auto;
+  margin: 1em 0;
+  white-space: pre-wrap;       /* CSS 3 */
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+/* Reset pygement css */
+.hlcode .err {
+  color: inherit;
+  background-color: inherit;
 }
 
 /* Clear the float problem */
 .clearfix:after {
-    visibility: hidden;
-    clear: both;
-    font-size: 0;
-    content: ".";
-    display: block;
-    height: 0;
+  visibility: hidden;
+  clear: both;
+  font-size: 0;
+  content: ".";
+  display: block;
+  height: 0;
 }
-
-
-table.hlcodetable {
-    border: 1px solid #eee;
-    border-collapse: separate !important;
-    border-radius: 3px;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-}
-
-.hlcodetable td {
-    padding: 0;
-    border: none;
-}
-
-.hlcodetable .linenodiv {
-    border-right: 1px solid #ccc;
-}
-
-.hlcodetable .linenodiv pre {
-    margin: 0;
-    border: none;
-}
-
-.hlcodetable .hlcode pre {
-    margin: 0;
-    border: none;
-}
-
-.hlcode {
-    margin: 0 0 1em 0;
-    color: #586e75;
-}
-
-.hlcode pre span {
-    font-size: 12px;
-}
-
-.hlcode pre .p, .hlcode pre .n {
-    color: #586e75;
-}
-
-.category {
-    float: left;
-    width: 100px;
-}
-.category_list {
-    float: left;
-}
-
-#container .category h2{
-    color: #aaa;
-    font-family: Monaco, "Helvetica Neue", "Segoe UI", Arial, Sans-Serif;
-}
-
-#nav {
-    position:fixed;
-    left:0;
-    top: 150px;
-    border:0;
-}
-
-#content img {
-    border: 0;
-    vertical-align: middle;
-    margin: 0 auto;
-    max-width: 720px;
-    display: inline;
-}
-
