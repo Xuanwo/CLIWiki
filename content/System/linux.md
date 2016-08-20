@@ -630,3 +630,22 @@ SSID就是最后开启的热点名称，Password就是Wifi的密码。
 - `systemctl enable create_ap`   开机自动启动热点
 
 
+## 为Unity增加系统监视器
+
+`[indicator-sysmonitor](https://github.com/fossfreedom/indicator-sysmonitor)`可以为Unity的状态栏添加一个系统监视器。
+
+比较简单的方式是通过PPA安装：
+
+```
+sudo add-apt-repository ppa:fossfreedom/indicator-sysmonitor
+sudo apt-get update
+sudo apt-get install indicator-sysmonitor
+```
+
+也可以自行Clone之后安装：
+
+```
+git clone https://github.com/fossfreedom/indicator-sysmonitor.git
+cd indicator-sysmonitor
+sudo make install
+```
