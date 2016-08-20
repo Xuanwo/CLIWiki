@@ -79,6 +79,7 @@
 </ul>
 </li>
 <li><a href="#ap">创建AP热点</a></li>
+<li><a href="#unity">为Unity增加系统监视器</a></li>
 </ul>
 </div>
 <h2 id="chgrp">改变所属群组, chgrp</h2>
@@ -675,6 +676,20 @@ SSID就是最后开启的热点名称，Password就是Wifi的密码。</p>
 <li><code>systemctl status create_ap</code>   查看热点的状态</li>
 <li><code>systemctl enable create_ap</code>   开机自动启动热点</li>
 </ul>
+<h2 id="unity">为Unity增加系统监视器</h2>
+<p><code>[indicator-sysmonitor](https://github.com/fossfreedom/indicator-sysmonitor)</code>可以为Unity的状态栏添加一个系统监视器。</p>
+<p>比较简单的方式是通过PPA安装：</p>
+<div class="hlcode"><pre><span class="n">sudo</span> <span class="n">add</span><span class="o">-</span><span class="n">apt</span><span class="o">-</span><span class="n">repository</span> <span class="n">ppa</span><span class="o">:</span><span class="n">fossfreedom</span><span class="o">/</span><span class="n">indicator</span><span class="o">-</span><span class="n">sysmonitor</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">indicator</span><span class="o">-</span><span class="n">sysmonitor</span>
+</pre></div>
+
+
+<p>也可以自行Clone之后安装：</p>
+<div class="hlcode"><pre><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/fossfreedom/indicator-sysmonitor.git</span>
+<span class="n">cd</span> <span class="n">indicator</span><span class="o">-</span><span class="n">sysmonitor</span>
+<span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
+</pre></div>
   
 </div>
       
@@ -710,7 +725,7 @@ s.setAttribute('data-timestamp', +new Date());
         </p>
       </div> <!-- end footer-left -->
       <div class="footer-right">
-        <p>Site Generated 2016-08-20 16:03:09</p>
+        <p>Site Generated 2016-08-20 16:09:06</p>
       </div> <!-- end footer-right -->
     </div>
   </body>
