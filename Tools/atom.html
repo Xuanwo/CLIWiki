@@ -31,10 +31,20 @@
 <div id="content">
   <div class="toc"><span class="toctitle">Table of Contents</span><ul>
 <li><a href="#node-gyp-500">修复node-gyp 500错误</a></li>
+<li><a href="#apm">为apm设置代理</a></li>
 </ul>
 </div>
 <h2 id="node-gyp-500">修复node-gyp 500错误</h2>
 <p>使用全局代理或VPN，无需修改apm相关参数</p>
+<h2 id="apm">为apm设置代理</h2>
+<div class="hlcode"><pre><span class="n">apm</span> <span class="n">config</span> <span class="n">set</span> <span class="n">strict</span><span class="o">-</span><span class="n">ssl</span> <span class="nb">false</span>
+
+<span class="n">apm</span> <span class="n">config</span> <span class="n">set</span> <span class="n">http</span><span class="o">-</span><span class="n">proxy</span> <span class="n">http</span><span class="o">:</span><span class="c1">//127.0.0.1:1080</span>
+<span class="n">apm</span> <span class="n">config</span> <span class="n">set</span> <span class="n">https</span><span class="o">-</span><span class="n">proxy</span> <span class="n">http</span><span class="o">:</span><span class="c1">//127.0.0.1:1080</span>
+</pre></div>
+
+
+<p>如果用的是Shadowsocks的话，Win可以直接用1080端口，Linux和Mac需要通过<code>Privoxy</code>将Socks代理转换为Http代理才能正常使用。</p>
   
 </div>
       
@@ -70,7 +80,7 @@ s.setAttribute('data-timestamp', +new Date());
         </p>
       </div> <!-- end footer-left -->
       <div class="footer-right">
-        <p>Site Generated 2016-08-20 15:18:42</p>
+        <p>Site Generated 2016-08-20 16:00:12</p>
       </div> <!-- end footer-right -->
     </div>
   </body>
