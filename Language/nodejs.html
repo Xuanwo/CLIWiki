@@ -35,6 +35,7 @@
 <li><a href="#_3">持久使用</a></li>
 </ul>
 </li>
+<li><a href="#npm">发布包到npm</a></li>
 </ul>
 </div>
 <h2 id="_1">配置国内镜像源</h2>
@@ -47,6 +48,27 @@
 <h3 id="_3">持久使用</h3>
 <div class="hlcode"><pre><span class="n">npm</span> <span class="n">config</span> <span class="n">set</span> <span class="n">registry</span> <span class="n">https</span><span class="o">:</span><span class="c1">//registry.npm.taobao.org</span>
 </pre></div>
+
+
+<h2 id="npm">发布包到npm</h2>
+<p>首先你需要添加一个账户：</p>
+<div class="hlcode"><pre><span class="n">npm</span> <span class="n">adduser</span>
+</pre></div>
+
+
+<p>然后输入用户名，密码，邮箱即可。</p>
+<p>然后你需要创建跟包有关的信息：</p>
+<div class="hlcode"><pre><span class="n">npm</span> <span class="n">init</span>
+</pre></div>
+
+
+<p>按照指引输入相关信息即可，暂时留空也没关系，你可以后续再修改<code>package.json</code>文件。</p>
+<p>编辑好之后执行：</p>
+<div class="hlcode"><pre><span class="n">npm</span> <span class="n">publish</span>
+</pre></div>
+
+
+<p>即可将包推送到npm上。</p>
   
 </div>
       
@@ -82,7 +104,7 @@ s.setAttribute('data-timestamp', +new Date());
         </p>
       </div> <!-- end footer-left -->
       <div class="footer-right">
-        <p>Site Generated 2016-08-20 15:10:32</p>
+        <p>Site Generated 2016-08-20 15:18:42</p>
       </div> <!-- end footer-right -->
     </div>
   </body>
