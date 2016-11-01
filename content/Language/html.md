@@ -20,3 +20,7 @@ date: 2016-08-20 23:59
 ```
 
 可以使用带有媒体类型和其他属性的 <source> 标签指定媒体文件。video 元素允许使用多个 source 元素，浏览器会使用第一个认可的格式：
+
+## HTML `<option>` 标签的 selected 属性
+
+设置 `selected="selected"` 即可
