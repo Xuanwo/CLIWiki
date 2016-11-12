@@ -45,3 +45,36 @@ npm publish
 ```
 
 即可将包推送到npm上。
+
+## 计算字符串的MD5校验值
+
+使用`crypto`模块：
+
+```nodejs
+var crypto = require('crypto');
+
+var h = crypto.createHash('md5');
+
+h.update("A string");
+h.update("Next string");
+
+var ret = h.digest('hex'); //'11eb1cc525474f34a4eaf2ebc90d421f'
+```
+
+如果是一个文件，可以创建一个文件流：
+
+```nodejs
+var crypto = require('crypto');
+var fs = require('fs');
+
+var rs = fs.createReadStream('./file.tgz');
+
+var hash = crypto.createHash('md5');
+rs.on('data', hash.update.bind(hash));
+
+rs.on('end', function () {
+  console.log(hash.digest('hex'));
+});
+```
+
+
