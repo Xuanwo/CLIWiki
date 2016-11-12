@@ -44,6 +44,7 @@
 </ul>
 </li>
 <li><a href="#npm">发布包到npm</a></li>
+<li><a href="#md5">计算字符串的MD5校验值</a></li>
 </ul>
 </div>
 <h2 id="_1">配置国内镜像源</h2>
@@ -77,6 +78,32 @@
 
 
 <p>即可将包推送到npm上。</p>
+<h2 id="md5">计算字符串的MD5校验值</h2>
+<p>使用<code>crypto</code>模块：</p>
+<div class="hlcode"><pre><span class="n">var</span> <span class="n">crypto</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="err">&#39;</span><span class="n">crypto</span><span class="err">&#39;</span><span class="p">);</span>
+
+<span class="n">var</span> <span class="n">h</span> <span class="o">=</span> <span class="n">crypto</span><span class="p">.</span><span class="n">createHash</span><span class="p">(</span><span class="err">&#39;</span><span class="n">md5</span><span class="err">&#39;</span><span class="p">);</span>
+
+<span class="n">h</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="s">&quot;A string&quot;</span><span class="p">);</span>
+<span class="n">h</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="s">&quot;Next string&quot;</span><span class="p">);</span>
+
+<span class="n">var</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">h</span><span class="p">.</span><span class="n">digest</span><span class="p">(</span><span class="err">&#39;</span><span class="n">hex</span><span class="err">&#39;</span><span class="p">);</span> <span class="c1">//&#39;11eb1cc525474f34a4eaf2ebc90d421f&#39;</span>
+</pre></div>
+
+
+<p>如果是一个文件，可以创建一个文件流：</p>
+<div class="hlcode"><pre><span class="kd">var</span> <span class="nx">crypto</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;crypto&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">rs</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">createReadStream</span><span class="p">(</span><span class="s1">&#39;./file.tgz&#39;</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">hash</span> <span class="o">=</span> <span class="nx">crypto</span><span class="p">.</span><span class="nx">createHash</span><span class="p">(</span><span class="s1">&#39;md5&#39;</span><span class="p">);</span>
+<span class="nx">rs</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="nx">hash</span><span class="p">.</span><span class="nx">update</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">hash</span><span class="p">));</span>
+
+<span class="nx">rs</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;end&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">hash</span><span class="p">.</span><span class="nx">digest</span><span class="p">(</span><span class="s1">&#39;hex&#39;</span><span class="p">));</span>
+<span class="p">});</span>
+</pre></div>
   
 </div>
       
@@ -112,7 +139,7 @@ s.setAttribute('data-timestamp', +new Date());
         </p>
       </div> <!-- end footer-left -->
       <div class="footer-right">
-        <p>Site Generated 2016-11-10 04:10:06</p>
+        <p>Site Generated 2016-11-12 01:43:12</p>
       </div> <!-- end footer-right -->
     </div>
   </body>
