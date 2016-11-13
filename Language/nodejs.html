@@ -45,6 +45,7 @@
 </li>
 <li><a href="#npm">发布包到npm</a></li>
 <li><a href="#md5">计算字符串的MD5校验值</a></li>
+<li><a href="#home">获取用户的HOME目录</a></li>
 </ul>
 </div>
 <h2 id="_1">配置国内镜像源</h2>
@@ -104,6 +105,12 @@
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">hash</span><span class="p">.</span><span class="nx">digest</span><span class="p">(</span><span class="s1">&#39;hex&#39;</span><span class="p">));</span>
 <span class="p">});</span>
 </pre></div>
+
+
+<h2 id="home">获取用户的HOME目录</h2>
+<p>同时支持<code>*nix</code>和<code>windows</code>平台的获取用户目录的方法：</p>
+<div class="hlcode"><pre><span class="n">process</span><span class="p">.</span><span class="n">env</span><span class="p">[(</span><span class="n">process</span><span class="p">.</span><span class="n">platform</span> <span class="o">==</span> <span class="err">&#39;</span><span class="n">win32</span><span class="err">&#39;</span><span class="p">)</span> <span class="o">?</span> <span class="err">&#39;</span><span class="n">USERPROFILE</span><span class="err">&#39;</span> <span class="o">:</span> <span class="err">&#39;</span><span class="n">HOME</span><span class="err">&#39;</span><span class="p">];</span>
+</pre></div>
   
 </div>
       
@@ -139,7 +146,7 @@ s.setAttribute('data-timestamp', +new Date());
         </p>
       </div> <!-- end footer-left -->
       <div class="footer-right">
-        <p>Site Generated 2016-11-12 01:43:12</p>
+        <p>Site Generated 2016-11-13 13:34:19</p>
       </div> <!-- end footer-right -->
     </div>
   </body>
