@@ -77,4 +77,10 @@ rs.on('end', function () {
 });
 ```
 
+## 获取用户的HOME目录
 
+同时支持`*nix`和`windows`平台的获取用户目录的方法：
+
+```nodejs
+process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
+```
