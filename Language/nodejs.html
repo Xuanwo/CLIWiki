@@ -46,6 +46,7 @@
 <li><a href="#npm">发布包到npm</a></li>
 <li><a href="#md5">计算字符串的MD5校验值</a></li>
 <li><a href="#home">获取用户的HOME目录</a></li>
+<li><a href="#_4">判断字典或对象中是否存在某个键</a></li>
 </ul>
 </div>
 <h2 id="_1">配置国内镜像源</h2>
@@ -111,6 +112,18 @@
 <p>同时支持<code>*nix</code>和<code>windows</code>平台的获取用户目录的方法：</p>
 <div class="hlcode"><pre><span class="n">process</span><span class="p">.</span><span class="n">env</span><span class="p">[(</span><span class="n">process</span><span class="p">.</span><span class="n">platform</span> <span class="o">==</span> <span class="err">&#39;</span><span class="n">win32</span><span class="err">&#39;</span><span class="p">)</span> <span class="o">?</span> <span class="err">&#39;</span><span class="n">USERPROFILE</span><span class="err">&#39;</span> <span class="o">:</span> <span class="err">&#39;</span><span class="n">HOME</span><span class="err">&#39;</span><span class="p">];</span>
 </pre></div>
+
+
+<h2 id="_4">判断字典或对象中是否存在某个键</h2>
+<p>判断一个key是否存在于数组中(或对象是否包含某个属性)，不能使用<code>ary[key] == undefined</code>，因为可能存在<code>ary = {key:undefined};</code>
+正确的方法应该为：</p>
+<div class="hlcode"><pre><span class="n">ary</span><span class="p">.</span><span class="n">hasOwnProperty</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+</pre></div>
+
+
+<p>或</p>
+<div class="hlcode"><pre><span class="n">obj</span><span class="p">.</span><span class="n">hasOwnProperty</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+</pre></div>
   
 </div>
       
@@ -146,7 +159,7 @@ s.setAttribute('data-timestamp', +new Date());
         </p>
       </div> <!-- end footer-left -->
       <div class="footer-right">
-        <p>Site Generated 2016-11-13 13:34:19</p>
+        <p>Site Generated 2016-11-14 02:07:30</p>
       </div> <!-- end footer-right -->
     </div>
   </body>
