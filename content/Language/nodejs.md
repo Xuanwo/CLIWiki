@@ -84,3 +84,18 @@ rs.on('end', function () {
 ```nodejs
 process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
 ```
+
+## 判断字典或对象中是否存在某个键
+
+判断一个key是否存在于数组中(或对象是否包含某个属性)，不能使用`ary[key] == undefined`，因为可能存在`ary = {key:undefined};`
+正确的方法应该为：
+
+```nodejs
+ary.hasOwnProperty(key);
+```
+
+或
+
+```nodejs
+obj.hasOwnProperty(key);
+```
