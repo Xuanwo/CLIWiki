@@ -99,3 +99,51 @@ ary.hasOwnProperty(key);
 ```nodejs
 obj.hasOwnProperty(key);
 ```
+
+## 为数组中的每个元素执行指定操作
+
+```nodejs
+array1.forEach(callbackfn[, thisArg])
+```
+
+|参数|定义|
+|-|-|
+|array1|必选。一个数组对象。|
+|callbackfn|必选。最多可以接受三个参数的函数。对于数组中的每个元素，forEach 都会调用 callbackfn 函数一次。|
+|thisArg|可选。 callbackfn 函数中的 this 关键字可引用的对象。如果省略 thisArg，则 undefined 将用作 this 值。|
+
+对于数组中出现的每个元素，forEach 方法都会调用 callbackfn 函数一次（采用升序索引顺序）。将不会为数组中缺少的元素调用回调函数。
+除了数组对象之外，forEach 方法可由具有 length 属性且具有已按数字编制索引的属性名的任何对象使用。
+
+回调函数的语法如下所示：
+
+```nodejs
+function callbackfn(value, index, array1)
+```
+|回调参数|定义|
+|-|-|
+|Value|数组元素的值。|
+|index|数组元素的数字索引。|
+|array1|包含该元素的数组对象。|
+
+
+```javascript
+// Define the callback function.
+function ShowResults(value, index, ar) {
+    document.write("value: " + value);
+    document.write(" index: " + index);
+    document.write("<br />");
+}
+
+// Create an array.
+var letters = ['ab', 'cd', 'ef'];
+
+// Call the ShowResults callback function for each
+// array element.
+letters.forEach(ShowResults);
+
+// Output:
+//  value: ab index: 0
+//  value: cd index: 1
+//  value: ef index: 2
+```
