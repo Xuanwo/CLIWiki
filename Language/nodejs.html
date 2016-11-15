@@ -47,6 +47,7 @@
 <li><a href="#md5">计算字符串的MD5校验值</a></li>
 <li><a href="#home">获取用户的HOME目录</a></li>
 <li><a href="#_4">判断字典或对象中是否存在某个键</a></li>
+<li><a href="#_5">为数组中的每个元素执行指定操作</a></li>
 </ul>
 </div>
 <h2 id="_1">配置国内镜像源</h2>
@@ -124,6 +125,83 @@
 <p>或</p>
 <div class="hlcode"><pre><span class="n">obj</span><span class="p">.</span><span class="n">hasOwnProperty</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
 </pre></div>
+
+
+<h2 id="_5">为数组中的每个元素执行指定操作</h2>
+<div class="hlcode"><pre><span class="n">array1</span><span class="p">.</span><span class="n">forEach</span><span class="p">(</span><span class="n">callbackfn</span><span class="p">[,</span> <span class="n">thisArg</span><span class="p">])</span>
+</pre></div>
+
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>定义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>array1</td>
+<td>必选。一个数组对象。</td>
+</tr>
+<tr>
+<td>callbackfn</td>
+<td>必选。最多可以接受三个参数的函数。对于数组中的每个元素，forEach 都会调用 callbackfn 函数一次。</td>
+</tr>
+<tr>
+<td>thisArg</td>
+<td>可选。 callbackfn 函数中的 this 关键字可引用的对象。如果省略 thisArg，则 undefined 将用作 this 值。</td>
+</tr>
+</tbody>
+</table>
+<p>对于数组中出现的每个元素，forEach 方法都会调用 callbackfn 函数一次（采用升序索引顺序）。将不会为数组中缺少的元素调用回调函数。
+除了数组对象之外，forEach 方法可由具有 length 属性且具有已按数字编制索引的属性名的任何对象使用。</p>
+<p>回调函数的语法如下所示：</p>
+<div class="hlcode"><pre><span class="kd">function</span> <span class="nx">callbackfn</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">array1</span><span class="p">)</span>
+</pre></div>
+
+
+<table>
+<thead>
+<tr>
+<th>回调参数</th>
+<th>定义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Value</td>
+<td>数组元素的值。</td>
+</tr>
+<tr>
+<td>index</td>
+<td>数组元素的数字索引。</td>
+</tr>
+<tr>
+<td>array1</td>
+<td>包含该元素的数组对象。</td>
+</tr>
+</tbody>
+</table>
+<div class="hlcode"><pre><span class="c1">// Define the callback function.</span>
+<span class="kd">function</span> <span class="nx">ShowResults</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">ar</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&quot;value: &quot;</span> <span class="o">+</span> <span class="nx">value</span><span class="p">);</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&quot; index: &quot;</span> <span class="o">+</span> <span class="nx">index</span><span class="p">);</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Create an array.</span>
+<span class="kd">var</span> <span class="nx">letters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ab&#39;</span><span class="p">,</span> <span class="s1">&#39;cd&#39;</span><span class="p">,</span> <span class="s1">&#39;ef&#39;</span><span class="p">];</span>
+
+<span class="c1">// Call the ShowResults callback function for each</span>
+<span class="c1">// array element.</span>
+<span class="nx">letters</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">ShowResults</span><span class="p">);</span>
+
+<span class="c1">// Output:</span>
+<span class="c1">//  value: ab index: 0</span>
+<span class="c1">//  value: cd index: 1</span>
+<span class="c1">//  value: ef index: 2</span>
+</pre></div>
   
 </div>
       
@@ -159,7 +237,7 @@ s.setAttribute('data-timestamp', +new Date());
         </p>
       </div> <!-- end footer-left -->
       <div class="footer-right">
-        <p>Site Generated 2016-11-14 02:07:30</p>
+        <p>Site Generated 2016-11-15 15:21:03</p>
       </div> <!-- end footer-right -->
     </div>
   </body>
