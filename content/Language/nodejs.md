@@ -102,6 +102,7 @@ obj.hasOwnProperty(key);
 
 ## 为数组中的每个元素执行指定操作
 
+语法：
 ```nodejs
 array1.forEach(callbackfn[, thisArg])
 ```
@@ -126,6 +127,7 @@ function callbackfn(value, index, array1)
 |index|数组元素的数字索引。|
 |array1|包含该元素的数组对象。|
 
+样例：
 
 ```javascript
 // Define the callback function.
