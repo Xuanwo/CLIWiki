@@ -41,6 +41,13 @@
 <li><a href="#hostsdns">修改Hosts之后更新DNS缓存</a></li>
 <li><a href="#_1">删除无法删除的文件夹/文件</a></li>
 <li><a href="#ps1">允许系统执行ps1脚本</a></li>
+<li><a href="#_2">修改操作系统右键菜单</a><ul>
+<li><a href="#_3">修改全局右键菜单</a></li>
+<li><a href="#_4">修改特定文件类型右键菜单</a></li>
+<li><a href="#_5">修改文件夹右键菜单</a></li>
+<li><a href="#_6">修改所有的文件与文件夹的右键菜单</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <h2 id="hostsdns">修改Hosts之后更新DNS缓存</h2>
@@ -61,6 +68,47 @@
 <p>在 Powershell 中执行</p>
 <div class="hlcode"><pre><span class="nb">Set-ExecutionPolicy</span> <span class="n">-ExecutionPolicy</span> <span class="n">UNRESTRICTED</span>
 </pre></div>
+
+
+<h2 id="_2">修改操作系统右键菜单</h2>
+<p>系统的右键菜单都在<code>HKEY_CLASSES_ROOT</code>根键下，<strong>修改系统右键菜单是非常危险的操作，做任何变动前请备份并三思</strong>。</p>
+<h3 id="_3">修改全局右键菜单</h3>
+<ol>
+<li>
+<p>打开<code>HKEY_CLASSES_ROOT\*</code>；</p>
+</li>
+<li>
+<p>在其下新建<code>shell\&lt;new command&gt;\command</code>分支，再将command的键值设为执行该命令时所用的可执行程序的绝对路径，并在其后加<code>%1</code>即可。</p>
+</li>
+</ol>
+<p>例: 在<code>HKEY_CLASSES_ROOT\*</code>下新建<code>shell\用写字板打开\command</code>子键，将command的键值设为<code>c:\windows\notepad.exe %1</code>，就会在右键菜单中出现<code>用写字板打开</code>的命令了。</p>
+<h3 id="_4">修改特定文件类型右键菜单</h3>
+<ol>
+<li>
+<p>打开<code>HKEY_CLASSES_ROOT\mp3_auto_file</code>主键；</p>
+</li>
+<li>
+<p>在其下新建<code>shell\Play with Winamp\command</code>，将command的键值设为“C:\Programfiles\winamp\winamp.exe ％1” 。</p>
+</li>
+</ol>
+<h3 id="_5">修改文件夹右键菜单</h3>
+<ol>
+<li>
+<p>打开<code>HKEY_CLASSES_ROOT\diretory\shell</code>主键；</p>
+</li>
+<li>
+<p>在其下新建<code>&lt;new command&gt;\command</code></p>
+</li>
+</ol>
+<h3 id="_6">修改所有的文件与文件夹的右键菜单</h3>
+<ol>
+<li>
+<p>打开<code>HKEY_CLASSES_ROOT\AllFilesystemObjects</code>主键</p>
+</li>
+<li>
+<p>在其下新建<code>shell\&lt;new command&gt;\command</code></p>
+</li>
+</ol>
   
 </div>
       
@@ -96,7 +144,7 @@ s.setAttribute('data-timestamp', +new Date());
         </p>
       </div> <!-- end footer-left -->
       <div class="footer-right">
-        <p>Site Generated 2016-11-15 15:25:45</p>
+        <p>Site Generated 2016-11-16 03:18:56</p>
       </div> <!-- end footer-right -->
     </div>
   </body>
