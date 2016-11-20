@@ -20,3 +20,13 @@ empty ( mixed $var )
 - FALSE
 - array() (an empty array)
 - $var; (a variable declared, but without a value)
+
+## 将两个对象合并在一起
+
+```php
+foreach($objB as $var=>$value){
+    $objA->$var = $value;
+}
+```
+
+在某些特定的场景下会用到，随意使用会污染对象内部的变量。
