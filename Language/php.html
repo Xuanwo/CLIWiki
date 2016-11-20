@@ -39,6 +39,7 @@
 <div id="content">
   <div class="toc"><span class="toctitle">Table of Contents</span><ul>
 <li><a href="#_1">判断一个变量是否为空</a></li>
+<li><a href="#_2">将两个对象合并在一起</a></li>
 </ul>
 </div>
 <h2 id="_1">判断一个变量是否为空</h2>
@@ -57,6 +58,14 @@
 <li>array() (an empty array)</li>
 <li>$var; (a variable declared, but without a value)</li>
 </ul>
+<h2 id="_2">将两个对象合并在一起</h2>
+<div class="hlcode"><pre><span class="x">foreach($objB as $var=&gt;$value){</span>
+<span class="x">    $objA-&gt;$var = $value;</span>
+<span class="x">}</span>
+</pre></div>
+
+
+<p>在某些特定的场景下会用到，随意使用会污染对象内部的变量。</p>
   
 </div>
       
@@ -92,7 +101,7 @@ s.setAttribute('data-timestamp', +new Date());
         </p>
       </div> <!-- end footer-left -->
       <div class="footer-right">
-        <p>Site Generated 2016-11-19 15:14:26</p>
+        <p>Site Generated 2016-11-20 12:51:46</p>
       </div> <!-- end footer-right -->
     </div>
   </body>
