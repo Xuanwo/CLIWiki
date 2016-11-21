@@ -39,6 +39,7 @@
 <div id="content">
   <div class="toc"><span class="toctitle">Table of Contents</span><ul>
 <li><a href="#ul-li">ul li 横向不换行</a></li>
+<li><a href="#css">解决CSS缓存问题</a></li>
 </ul>
 </div>
 <h2 id="ul-li">ul li 横向不换行</h2>
@@ -52,6 +53,11 @@
 
 
 <p>只需要设置<code>li</code>元素的<code>display</code>属性为<code>inline</code>即可</p>
+<h2 id="css">解决CSS缓存问题</h2>
+<p>如果想让浏览器强制缓存css文件,使用带版本号后缀或内容摘要算法(MD5)的方式来加后缀或者命名文件.</p>
+<blockquote>
+<p>带版本号和MD5方式的区别, 假设你让所有css文件都缓存了, 那么当你只更新部分文件, 又不想用户放弃未更新文件的缓存时, 就可以用md5的方式, 这样就只有更新过的文件引用的URL才会变化,导致重新向服务器请求, 而未改变的则继续取用本地缓存.</p>
+</blockquote>
   
 </div>
       
@@ -87,7 +93,7 @@ s.setAttribute('data-timestamp', +new Date());
         </p>
       </div> <!-- end footer-left -->
       <div class="footer-right">
-        <p>Site Generated 2016-11-20 12:51:46</p>
+        <p>Site Generated 2016-11-21 02:04:47</p>
       </div> <!-- end footer-right -->
     </div>
   </body>
