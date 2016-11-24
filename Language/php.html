@@ -40,6 +40,7 @@
   <div class="toc"><span class="toctitle">Table of Contents</span><ul>
 <li><a href="#_1">判断一个变量是否为空</a></li>
 <li><a href="#_2">将两个对象合并在一起</a></li>
+<li><a href="#cgi-escape">CGI escape</a></li>
 </ul>
 </div>
 <h2 id="_1">判断一个变量是否为空</h2>
@@ -66,6 +67,10 @@
 
 
 <p>在某些特定的场景下会用到，随意使用会污染对象内部的变量。</p>
+<h2 id="cgi-escape">CGI escape</h2>
+<p>有时候需要对字符串做CGI escape，将url中不能出现字符进行escape</p>
+<div class="hlcode"><pre><span class="x">urlencode(string);</span>
+</pre></div>
   
 </div>
       
@@ -101,7 +106,7 @@ s.setAttribute('data-timestamp', +new Date());
         </p>
       </div> <!-- end footer-left -->
       <div class="footer-right">
-        <p>Site Generated 2016-11-21 02:04:47</p>
+        <p>Site Generated 2016-11-24 14:39:42</p>
       </div> <!-- end footer-right -->
     </div>
   </body>
