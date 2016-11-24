@@ -30,3 +30,11 @@ foreach($objB as $var=>$value){
 ```
 
 在某些特定的场景下会用到，随意使用会污染对象内部的变量。
+
+## CGI escape
+
+有时候需要对字符串做CGI escape，将url中不能出现字符进行escape
+
+```php
+urlencode(string);
+```
