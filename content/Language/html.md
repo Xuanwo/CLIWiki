@@ -1,10 +1,11 @@
 ---
-title: "html"
-date: 2016-08-20 23:59
+title: html
+date: '2016-08-20 23:59'
 ---
+
 [TOC]
 
-## 浏览器自适应播放视频
+# 浏览器自适应播放视频
 
 ```html
 <!DOCTYPE HTML>
@@ -19,13 +20,17 @@ date: 2016-08-20 23:59
 </html>
 ```
 
-可以使用带有媒体类型和其他属性的 <source> 标签指定媒体文件。video 元素允许使用多个 source 元素，浏览器会使用第一个认可的格式：
+可以使用带有媒体类型和其他属性的
 
-## HTML `<option>` 标签的 selected 属性
+<source>
+
+ 标签指定媒体文件。video 元素允许使用多个 source 元素，浏览器会使用第一个认可的格式：
+
+# HTML `<option>` 标签的 selected 属性
 
 设置 `selected="selected"` 即可
 
-## 设置 Bootstrap 模态对话框只加载一次 remote 数据
+# 设置 Bootstrap 模态对话框只加载一次 remote 数据
 
 首先准备好一个模态对话框：
 
@@ -68,3 +73,9 @@ $("#myModal").on("hidden.bs.modal", function() {
     $(this).removeData("bs.modal");
 });
 ```
+
+# 强制刷新浏览器缓存
+
+![](https://sfault-image.b0.upaiyun.com/292/124/2921246151-5836cbedc9134_articlex)
+
+在打开审查工具的情况下，右键刷新按钮
