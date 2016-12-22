@@ -58,3 +58,11 @@ php_uname('s')
 ```php
 php_uname('r')
 ```
+
+## 获取一个含有短杠的属性
+
+需要使用`{}`进行包裹。
+  
+```php
+$ref->{'ref-type'} = 'Journal Article';
+```
