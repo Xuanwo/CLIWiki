@@ -33,6 +33,7 @@ patch的作用则是将diff记录的结果（即补丁）应用到相应文件�
 为了解释 -p 参数，看看如下patch文件片段：
 
 > --- old/modules/pcitable       Mon Sep 27 11:03:56 1999
+
 > +++ new/modules/pcitable       Tue Dec 19 20:05:41 2000
 
 如果使用参数 -p0，那就表示从当前目录找一个叫做old的文件夹，再在它下面寻找 modules/pcitable 文件来执行patch操作。
