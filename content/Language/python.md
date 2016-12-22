@@ -1,6 +1,6 @@
 ---
 title: "python"
-date: 2016-03-30 10:37 
+date: 2016-03-30 10:37
 ---
 [TOC]
 
@@ -152,13 +152,14 @@ True
 >>> print('abc','def')
 abc def
 
->>> print('abc', 'def, end='#')
+>>> print('abc', 'def', end='#')
 abc def#
 >>> print('abc', 'def', sep='+')
 abc+def
 ```
 
 在`print`函数中：
+
 - `sep`参数用于控制待输出项之间的分隔符，默认为空格
 - `end`参数用于控制输出完毕后的结束符号，默认为换行
 
@@ -186,3 +187,20 @@ abc+def
 python setup.py bdist_wheel upload
 ```
 
+## 获取Python版本号
+
+```python
+import platform  
+print platform.python_version()
+# '3.5.1'
+```
+
+或者
+
+```python
+import sys  
+print sys.version
+# '3.5.1 (default, Jun 25 2016, 11:22:53) \n[GCC 5.3.1 20160413]'
+print sys.version_info
+# sys.version_info(major=3, minor=5, micro=1, releaselevel='final', serial=0)
+```
