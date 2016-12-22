@@ -38,3 +38,23 @@ foreach($objB as $var=>$value){
 ```php
 urlencode(string);
 ```
+
+## 获取系统信息
+
+获取系统类型及版本号
+
+```php
+php_uname()
+```
+
+只获取系统类型
+
+```php
+php_uname('s')
+```
+
+只获取系统版本号
+
+```php
+php_uname('r')
+```
