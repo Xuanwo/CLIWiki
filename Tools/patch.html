@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="Stylesheet" type="text/css" href="/static/css/colorful.css">
+    <link rel="Stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
+    <title>patch - CLI Wiki</title>
+    <meta name="keywords" content="wiki, makrdown, linux, CLI, cookbook"/>
+    <meta name="description" content="CLI cookbook"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-51515330-3', 'auto');
+			ga('send', 'pageview');
+		</script>
+    
+  </head>
+
+  <body>
+    <div id="container" class="typo">
+      
+<div id="header">
+  <div id="post-nav">
+    <a href="/">CLI Wiki</a>
+    &nbsp;&#187;&nbsp;
+    <a href="/#Tools">Tools</a>
+    &nbsp;&#187;&nbsp;patch
+    <span class="updated">Updated&nbsp;
+    2016-12-22 20:51:36
+    </span>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div id="content">
+  <div class="toc"><span class="toctitle">Table of Contents</span><ul>
+<li><a href="#diff">使用diff制作补丁</a></li>
+<li><a href="#patch">使用patch应用补丁</a><ul>
+<li><a href="#_1">单个文件打补丁</a></li>
+<li><a href="#_2">对文件夹打补丁</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="diff">使用diff制作补丁</h2>
+<blockquote>
+<p>diff 【选项】 源文件（夹） 目的文件（夹）</p>
+</blockquote>
+<ul>
+<li><code>-r</code>
+递归。设置后diff会将两个不同版本源代码目录中的所有对应文件全部都进行一次比较，包括子目录文件。</li>
+<li><code>-N</code>
+选项确保补丁文件将正确地处理已经创建或删除文件的情况</li>
+<li><code>-u</code>
+输出每个修改前后的3行，也可以用-u5等指定输出更多上下文</li>
+<li><code>-E, -b, -w, -B, --strip-trailing-cr</code>
+忽略各种空白，可参见文档，按需选用。</li>
+</ul>
+<h2 id="patch">使用patch应用补丁</h2>
+<p>patch的作用则是将diff记录的结果（即补丁）应用到相应文件（夹）上。最常见的用法为：</p>
+<blockquote>
+<p>patch -pNUM <patchfile></p>
+</blockquote>
+<ul>
+<li><code>-p Num</code>
+忽略几层文件夹</li>
+<li><code>-E</code>
+选项说明如果发现了空文件，那么就删除它</li>
+<li><code>-R</code>
+取消打过的补丁</li>
+</ul>
+<p>为了解释 -p 参数，看看如下patch文件片段：</p>
+<blockquote>
+<p>--- old/modules/pcitable       Mon Sep 27 11:03:56 1999
++++ new/modules/pcitable       Tue Dec 19 20:05:41 2000</p>
+</blockquote>
+<p>如果使用参数 -p0，那就表示从当前目录找一个叫做old的文件夹，再在它下面寻找 modules/pcitable 文件来执行patch操作。
+而如果使用参数 -p1，那就表示忽略第一层目录（即不管old），从当前目录寻找 modules 的文件夹，再在它下面找pcitable。</p>
+<h3 id="_1">单个文件打补丁</h3>
+<div class="hlcode"><pre><span class="c"># 产生补丁</span>
+diff -uN from-file to-file &gt;to-file.patch
+
+<span class="c"># 打补丁</span>
+patch -p0 &lt; to-file.patch
+
+<span class="c"># 取消补丁</span>
+patch -RE -p0 &lt; to-file.patch
+</pre></div>
+
+
+<h3 id="_2">对文件夹打补丁</h3>
+<div class="hlcode"><pre><span class="c"># 产生补丁</span>
+diff -uNr  from-docu  to-docu  &gt;to-docu.patch
+
+<span class="c"># 打补丁</span>
+<span class="nb">cd </span>to-docu
+patch -p1 &lt; to-docu.patch
+
+<span class="c"># 取消补丁</span>
+patch -R -p1 &lt;to-docu.patch
+</pre></div>
+  
+</div>
+      
+<div id="disqus_thread"></div>
+<script>
+/**
+* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+*/
+var disqus_config = function () {
+	this.page.url = "https://cli.xuanwo.org/Tools/patch"; // Replace PAGE_URL with your page's canonical URL variable
+	this.page.identifier = "patch" ; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//clicookbook.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+    </div>
+    <div id="footer">
+      <div class="footer-left">
+        <p>
+        Copyright © 2016 Xuanwo.
+        Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+        Theme by <a href="https://git.coding.net/tankywoo/yasimple_x2.git" target="_blank">YASimple_X2</a>.
+        </p>
+      </div> <!-- end footer-left -->
+      <div class="footer-right">
+        <p>Site Generated 2016-12-22 13:04:21</p>
+      </div> <!-- end footer-right -->
+    </div>
+  </body>
+</html>

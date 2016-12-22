@@ -58,6 +58,7 @@
 <li><a href="#_16">计算元素的个数</a></li>
 <li><a href="#_17">字符串逆序输出</a></li>
 <li><a href="#wheel">上传wheel分发包</a></li>
+<li><a href="#python">获取Python版本号</a></li>
 </ul>
 </div>
 <h2 id="_1">通过迭代创建字符串</h2>
@@ -180,16 +181,18 @@
 <div class="hlcode"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s">&#39;abc&#39;</span><span class="p">,</span><span class="s">&#39;def&#39;</span><span class="p">)</span>
 <span class="n">abc</span> <span class="k">def</span>
 
-<span class="err">&gt;&gt;&gt; </span><span class="nf">print</span><span class="p">(</span><span class="s">&#39;abc&#39;</span><span class="p">,</span> <span class="s">&#39;def, end=&#39;</span><span class="c">#&#39;)</span>
+<span class="err">&gt;&gt;&gt; </span><span class="nf">print</span><span class="p">(</span><span class="s">&#39;abc&#39;</span><span class="p">,</span> <span class="s">&#39;def&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">&#39;#&#39;</span><span class="p">)</span>
 <span class="n">abc</span> <span class="n">def</span><span class="c">#</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s">&#39;abc&#39;</span><span class="p">,</span> <span class="s">&#39;def&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">&#39;+&#39;</span><span class="p">)</span>
 <span class="n">abc</span><span class="o">+</span><span class="k">def</span>
 </pre></div>
 
 
-<p>在<code>print</code>函数中：
-- <code>sep</code>参数用于控制待输出项之间的分隔符，默认为空格
-- <code>end</code>参数用于控制输出完毕后的结束符号，默认为换行</p>
+<p>在<code>print</code>函数中：</p>
+<ul>
+<li><code>sep</code>参数用于控制待输出项之间的分隔符，默认为空格</li>
+<li><code>end</code>参数用于控制输出完毕后的结束符号，默认为换行</li>
+</ul>
 <h2 id="_16">计算元素的个数</h2>
 <div class="hlcode"><pre><span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">([</span><span class="s">&#39;1&#39;</span><span class="p">,</span><span class="s">&#39;2&#39;</span><span class="p">,</span><span class="s">&#39;3&#39;</span><span class="p">])</span>
 <span class="mi">3</span>
@@ -206,6 +209,22 @@
 <p>字符串逆序只需要使用切片的小技巧即可</p>
 <h2 id="wheel">上传wheel分发包</h2>
 <div class="hlcode"><pre><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">bdist_wheel</span> <span class="n">upload</span>
+</pre></div>
+
+
+<h2 id="python">获取Python版本号</h2>
+<div class="hlcode"><pre><span class="kn">import</span> <span class="nn">platform</span>  
+<span class="k">print</span> <span class="n">platform</span><span class="o">.</span><span class="n">python_version</span><span class="p">()</span>
+<span class="c"># &#39;3.5.1&#39;</span>
+</pre></div>
+
+
+<p>或者</p>
+<div class="hlcode"><pre><span class="kn">import</span> <span class="nn">sys</span>  
+<span class="k">print</span> <span class="n">sys</span><span class="o">.</span><span class="n">version</span>
+<span class="c"># &#39;3.5.1 (default, Jun 25 2016, 11:22:53) \n[GCC 5.3.1 20160413]&#39;</span>
+<span class="k">print</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span>
+<span class="c"># sys.version_info(major=3, minor=5, micro=1, releaselevel=&#39;final&#39;, serial=0)</span>
 </pre></div>
   
 </div>
@@ -242,7 +261,7 @@ s.setAttribute('data-timestamp', +new Date());
         </p>
       </div> <!-- end footer-left -->
       <div class="footer-right">
-        <p>Site Generated 2016-11-25 16:16:22</p>
+        <p>Site Generated 2016-12-22 13:04:21</p>
       </div> <!-- end footer-right -->
     </div>
   </body>

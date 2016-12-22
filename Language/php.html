@@ -41,6 +41,8 @@
 <li><a href="#_1">判断一个变量是否为空</a></li>
 <li><a href="#_2">将两个对象合并在一起</a></li>
 <li><a href="#cgi-escape">CGI escape</a></li>
+<li><a href="#_3">获取系统信息</a></li>
+<li><a href="#_4">获取一个含有短杠的属性</a></li>
 </ul>
 </div>
 <h2 id="_1">判断一个变量是否为空</h2>
@@ -70,6 +72,28 @@
 <h2 id="cgi-escape">CGI escape</h2>
 <p>有时候需要对字符串做CGI escape，将url中不能出现字符进行escape</p>
 <div class="hlcode"><pre><span class="x">urlencode(string);</span>
+</pre></div>
+
+
+<h2 id="_3">获取系统信息</h2>
+<p>获取系统类型及版本号</p>
+<div class="hlcode"><pre><span class="x">php_uname()</span>
+</pre></div>
+
+
+<p>只获取系统类型</p>
+<div class="hlcode"><pre><span class="x">php_uname(&#39;s&#39;)</span>
+</pre></div>
+
+
+<p>只获取系统版本号</p>
+<div class="hlcode"><pre><span class="x">php_uname(&#39;r&#39;)</span>
+</pre></div>
+
+
+<h2 id="_4">获取一个含有短杠的属性</h2>
+<p>需要使用<code>{}</code>进行包裹。</p>
+<div class="hlcode"><pre><span class="x">$ref-&gt;{&#39;ref-type&#39;} = &#39;Journal Article&#39;;</span>
 </pre></div>
   
 </div>
@@ -106,7 +130,7 @@ s.setAttribute('data-timestamp', +new Date());
         </p>
       </div> <!-- end footer-left -->
       <div class="footer-right">
-        <p>Site Generated 2016-11-25 16:16:22</p>
+        <p>Site Generated 2016-12-22 13:04:21</p>
       </div> <!-- end footer-right -->
     </div>
   </body>
